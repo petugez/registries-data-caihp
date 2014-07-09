@@ -16,8 +16,8 @@
 	}, 
 	
 	"listFields": [
-		{"field":"id", "title": "ID"},
-		{"field":"baseData.name", "title":"Meno"}
+		{"field":"id", "title": "ID", "transCode":"schema.org.listFields.id"},
+		{"field":"baseData.name", "title":"Meno", "transCode":"schema.org.listFields.name"}
 	],
 	"properties": {
 		"baseData": {
@@ -26,12 +26,10 @@
 			"properties": {
 				"name": {
 					"title": "Názov organizacie",
+					"transCode": "schema.org.baseData.name",
 					"type": "string",
 					"required": true
 				}
-				
-				
-				
 			}
 		}
 	}

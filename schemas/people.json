@@ -23,15 +23,18 @@
     "listFields": [
         {
             "field": "baseData.surName",
-            "title": "Priezvisko"
+            "title": "Priezvisko",
+			"transCode":"schema.people.listFields.surName"
         },
         {
             "field": "baseData.name",
-            "title": "Meno"
+            "title": "Meno",
+			"transCode":"schema.people.listFields.name"
         },
         {
             "field": "baseData.id",
-            "title": "Registračné číslo"
+            "title": "Registračné číslo",
+			"transCode":"schema.people.listFields.id"
         }
     ],
     "properties": {
@@ -45,7 +48,7 @@
             "properties": {
                 "bornNumber": {
                     "title": "Rodné číslo",
-                    "xxtransCode": "schema.people.baseData.bornNumber",
+                    "transCode": "schema.people.baseData.bornNumber",
                     "type": "string",
                     "required": true
                 },
@@ -69,11 +72,13 @@
                 },
                 "title": {
                     "title": "Titul",
+					"transCode": "schema.people.baseData.title",
                     "type": "string",
                     "required": false
                 },
                 "birthDate": {
                     "title": "Dátum narodenia",
+					"transCode": "schema.people.baseData.birthDate",
                     "type": "date",
                     "required": true,
                     "render": {
@@ -82,6 +87,7 @@
                 },
                 "gender": {
                     "title": "Pohlavie",
+					"transCode": "schema.people.baseData.gender",
                     "type": " string",
                     "enum": [
                         "Muž",
@@ -91,6 +97,7 @@
                 },
                 "nationality": {
                     "title": "Štatna prislusnosť",
+					"transCode": "schema.people.baseData.nationality",
                     "type": "string",
                     "required": true
                 }
@@ -98,10 +105,12 @@
         },
         "photoInfo": {
             "title": "Fotografie",
+			"transCode":"schema.people.photoInfo",
             "type": "object",
             "properties": {
                 "photo": {
                     "title": "Fotografia",
+					"transCode":"schema.people.photoInfo.photo",
                     "type": "string",
                     "required": true,
                     "render": {
@@ -114,45 +123,54 @@
         },
         "contactInfo": {
             "title": "Kontaktné údaje",
+			"transCode":"schema.people.contactInfo",
             "type": "object",
             "properties": {
                 "street": {
                     "title": "Ulica",
+					"transCode":"schema.people.contactInfo.street",
                     "type": "string",
                     "required": true
                 },
                 "houseNumber": {
                     "title": "Číslo domu",
+					"transCode":"schema.people.contactInfo.houseNumber",
                     "type": "string",
                     "required": true
                 },
                 "city": {
                     "title": "Obec",
+					"transCode":"schema.people.contactInfo.city",
                     "type": "string",
                     "required": true
                 },
                 "zipCode": {
                     "title": "PSČ",
+					"transCode":"schema.people.contactInfo.zipCode",
                     "type": "string",
                     "required": true
                 },
                 "country": {
                     "title": "Štát",
+					"transCode":"schema.people.contactInfo.country",
                     "type": "string",
                     "required": true
                 },
                 "phoneNumber": {
                     "title": "Telefón",
+					"transCode":"schema.people.contactInfo.phoneNumber",
                     "type": "string",
                     "required": false
                 },
                 "mobileNumber": {
                     "title": "Mobil",
+					"transCode":"schema.people.contactInfo.mobileNumber",
                     "type": "string",
                     "required": false
                 },
                 "email": {
                     "title": "E-mail",
+					"transCode":"schema.people.contactInfo.email",
                     "type": "string",
                     "required": false
                 }
@@ -160,25 +178,30 @@
         },
         "bankInfo": {
             "title": "Bankové spojenie",
+			"transCode":"schema.people.bankInfo",
             "type": "object",
             "properties": {
                 "bankAccount": {
                     "title": "Číslo účtu",
+					"transCode":"schema.people.bankInfo.bankAccount",
                     "type": "string",
                     "required": false
                 },
                 "bankCode": {
                     "title": "Kód banky",
+					"transCode":"schema.people.bankInfo.bankCode",
                     "type": "string",
                     "required": false
                 },
                 "iban": {
                     "title": "IBAN",
+					"transCode":"schema.people.bankInfo.iban",
                     "type": "string",
                     "required": false
                 },
                 "swift": {
                     "title": "SWIFT",
+					"transCode":"schema.people.bankInfo.swift",
                     "type": "string",
                     "required": false
                 }
@@ -186,10 +209,12 @@
         },
         "hockeyPlayerInfo": {
             "title": "Profil hráča",
+			"transCode":"schema.people.hockeyPlayerInfo",
             "type": "object",
             "properties": {
                 "clubName": {
                     "title": "Názov klubu",
+					"transCode":"schema.people.hockeyPlayerInfo.clubName",
                     "required": false,
                     "$objectLink": {
                         "registry": "organizations",
@@ -198,31 +223,37 @@
                 },
                 "positionName": {
                     "title": "Post",
+					"transCode":"schema.people.hockeyPlayerInfo.positionName",
                     "type": "string",
                     "required": false
                 },
                 "dressNumber": {
                     "title": "Číslo dresu",
+					"transCode":"schema.people.hockeyPlayerInfo.dressNumber",
                     "type": "string",
                     "required": false
                 },
                 "playerHeight": {
                     "title": "Výška",
+					"transCode":"schema.people.hockeyPlayerInfo.playerHeight",
                     "type": "string",
                     "required": false
                 },
                 "playerWeight": {
                     "title": "Hmotnosť",
+					"transCode":"schema.people.hockeyPlayerInfo.playerWeight",
                     "type": "string",
                     "required": false
                 },
                 "stickHandling": {
                     "title": "Držanie hokejky",
+					"transCode":"schema.people.hockeyPlayerInfo.stickHandling",
                     "type": "string",
                     "required": false
                 },
                 "contractDate": {
                     "title": "Zmluva zo dňa",
+					"transCode":"schema.people.hockeyPlayerInfo.contractDate",
                     "type": "string",
                     "required": false,
                     "render": {
@@ -305,28 +336,33 @@
         },
         "otherInfo": {
             "title": "Ostatné údaje",
+			"transCode":"schema.people.otherInfo",
             "type": "object",
             "properties": {
                 "isPhotoPublic": {
                     "title": "Je fotka verejná",
+					"transCode":"schema.people.otherInfo.isPhotoPublic",
                     "type": "boolean",
                     "required": false
                 },
                 "idCardNumber": {
                     "title": "Číslo OP",
+					"transCode":"schema.people.otherInfo.idCardNumber",
                     "type": "string",
                     "required": false
                 },
-                "MembershipStartDate": {
+                "membershipStartDate": {
                     "title": "Člen od",
+					"transCode":"schema.people.otherInfo.membershipStartDate",
                     "type": "string",
                     "required": false,
                     "render": {
                         "component": "psui-datepicker"
                     }
                 },
-                "MembershipEndDate": {
+                "membershipEndDate": {
                     "title": "Člen do",
+					"transCode":"schema.people.otherInfo.membershipEndDate",
                     "type": "string",
                     "required": false,
                     "render": {
@@ -335,6 +371,7 @@
                 },
                 "note": {
                     "title": "Poznámka",
+					"transCode":"schema.people.otherInfo.note",
                     "type": "string",
                     "required": false,
                     "large": true
