@@ -1,7 +1,6 @@
 angular.module('registries')
 .config(['$translateProvider', function($translateProvider) {
-$translateProvider.preferredLanguage('sk');
-	$translateProvider.useMissingTranslationHandlerLog();
+	$translateProvider.preferredLanguage('cz');
 	$translateProvider.translations('sk', {
 		"schema.org.new":"Nová organizácia",
 		"schema.org.view":"Organizácia",
