@@ -32,9 +32,9 @@
 			"transCode":"schema.people.listFields.name"
         },
         {
-            "field": "baseData.id",
-            "title": "Registračné číslo",
-			"transCode":"schema.people.listFields.id"
+			"field": "contactInfo.email",
+			"title": "E-mail",
+			"xxtransCode": "schema.people.listFields.email"
         }
     ],
     "properties": {
