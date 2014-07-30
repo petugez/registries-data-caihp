@@ -1,0 +1,22 @@
+{
+	"$schema" : "http://json-schema.org/schema#",
+	"id" : "uri://registries/mailtemplates#master",
+	
+	"new" : {
+		"table" : "mailtemplates",
+		"_security" : {
+			"$ref" : "uri://registries/mailtemplates#_security"
+		},
+		"properties" : {
+			"baseData" : {
+				"$ref": "uri://registries/mailtemplates#properties/baseData"
+			}
+		}
+	},
+	"view" : {
+		"$ref" : "uri://registries/mailtemplates#master/new"
+	},
+	"search" : {
+		"$ref" : "uri://registries/mailtemplates#master/new"
+	}
+}

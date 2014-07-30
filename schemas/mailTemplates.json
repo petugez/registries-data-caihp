@@ -1,0 +1,59 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/mailtemplates",
+	"title": "Security group",
+	"type": "object",
+	"table": "mailtemplates",
+	"listFields": [
+		{
+			"field": "name",
+			"title": "Nazov skupiny"
+		}
+	],
+	"_security": {
+			"_create": {
+				"_static": [
+					"Registry - write"
+				]
+			},
+			"_read": {
+				"_static": [
+					"Registry - read"
+				]
+			},
+			"_modify": {
+				"_static": [
+					"Registry - write"
+				]
+			}
+	},
+	"properties": {
+		"baseData": {
+			"title": "Základné údaje",
+			"type": "object",
+			"properties": {
+				"name": {
+					"title": "Name",
+					"type": "string",
+					"required": true
+				},
+				"subjectTemplate": {
+					"title": "Subject Template",
+					"type": "string",
+					"required": true
+				},
+				"textTemplate":{
+					"title": "Text template",
+					"type": "string",
+					"required": true
+				},
+				"htmlTemplate":{
+					"title": "Html template",
+					"type": "string",
+					"required": false
+				}
+			}
+		}
+	}
+
+}
