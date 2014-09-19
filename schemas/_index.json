@@ -10,5 +10,13 @@
 	"userSecurity.json",
 	"statistics.json",
 	"mailTemplates.json",
-	"mailTemplatesMaster.json"
+	"mailTemplatesMaster.json",
+	"fees.json",
+	"nationality.json",
+	"towns.json",
+	"regions.json",
+	"countries.json",
+	"application.json",
+	"events.json",
+	"login.json"
 ]

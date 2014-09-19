@@ -3,12 +3,11 @@
     "id": "uri://registries/member#",
     "new": {
         "title": "Nový člen",
-		"transCode":"schema.member.new",
+        "transCode": "schema.member.new",
         "table": "people",
-        "_security" : {
-			"$ref" : "uri://registries/people#person/_security"
-			},
-
+        "_security": {
+            "$ref": "uri://registries/people#person/_security"
+        },
         "properties": {
             "baseData": {
                 "$ref": "uri://registries/people#person/properties/baseData"
@@ -31,27 +30,27 @@
         }
     },
     "view": {
-		"title": "Člen",
-		"transCode":"schema.member.view",
+        "title": "Člen",
+        "transCode": "schema.member.view",
         "table": "people",
-        "_security" : {
-			"$ref" : "uri://registries/people#person/_security"
-		},
-		"properties":{
-			"$ref": "uri://registries/member#new/properties"
-		}
+        "_security": {
+            "$ref": "uri://registries/people#person/_security"
+        },
+        "properties": {
+            "$ref": "uri://registries/member#new/properties"
+        }
     },
     "search": {
         "table": "people",
-          "_security" : {
-			"$ref" : "uri://registries/people#person/_security"
-	    },
+        "_security": {
+            "$ref": "uri://registries/people#person/_security"
+        },
         "title": "osoba",
-		"transCode":"schema.member.view",
+        "transCode": "schema.member.view",
         "listFields": {
             "$ref": "uri://registries/people#person/listFields"
         },
-        "forcedCriteria": [
+        "forcedCriterias": [
             {
                 "f": "baseData.name",
                 "op": "ex",
@@ -59,7 +58,6 @@
             }
         ],
         "properties": {
-	  
             "baseData": {
                 "$ref": "uri://registries/people#person/properties/baseData"
             },

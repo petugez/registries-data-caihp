@@ -1,13 +1,14 @@
 {
 	"$schema": "http://json-schema.org/schema#",
-	"id": "uri://registries/mailtemplates",
+	"id": "uri://registries/mailtemplates#",
 	"title": "Security group",
 	"type": "object",
 	"table": "mailtemplates",
 	"listFields": [
 		{
-			"field": "name",
-			"title": "Nazov skupiny"
+			"field": "baseData.name",
+			"title": "Nazov vzoru",
+			"transCode":"schema.mailtemplates.listFields.title"
 		}
 	],
 	"_security": {
@@ -30,25 +31,30 @@
 	"properties": {
 		"baseData": {
 			"title": "Základné údaje",
+			"transCode":"schema.mailTemplate.basedata.title",
 			"type": "object",
 			"properties": {
 				"name": {
-					"title": "Name",
+					"title": "Názov vzoru",
+					"transCode":"schema.mailTemplate.basedata.name",
 					"type": "string",
 					"required": true
 				},
 				"subjectTemplate": {
-					"title": "Subject Template",
+					"title": "Predmet vzoru",
+					"transCode":"schema.mailTemplate.basedata.subject",
 					"type": "string",
 					"required": true
 				},
 				"textTemplate":{
-					"title": "Text template",
+					"title": "Text vzoru",
+					"transCode":"schema.mailTemplate.basedata.text",
 					"type": "string",
 					"required": true
 				},
 				"htmlTemplate":{
-					"title": "Html template",
+					"title": "HTML vzor",
+					"transCode":"schema.mailTemplate.basedata.html",
 					"type": "string",
 					"required": false
 				}

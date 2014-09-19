@@ -1,14 +1,20 @@
 <div class="sidebar active" onmousewheel="menuMouseWheelHandler()">
 		<ul>
-			<li psui-accordion-element title="{{'menu.member.title' | translate}}" icon-class="glyphicon-list">
+			<li psui-accordion-element title="{{'menu.member.title' | translate}}" icon-class="glyphicon-user">
 				<ul>
 					<li><a href="#/registry/new/{{'uri://registries/member#'|uriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
 					<li><a href="#/search/{{'uri://registries/member#'|uriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
 				</ul>
 			</li>
-			<li psui-accordion-element title="{{'menu.company.title' | translate}}" icon-class="glyphicon-list">
+			<li psui-accordion-element title="{{'menu.fees.title' | translate}}" icon-class="glyphicon-credit-card">
 				<ul>
-					<li><a href="#/registry/new/{{'uri://registries/company'|uriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
+					<li><a href="#/registry/new/{{'uri://registries/fees#'|uriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
+					<li><a href="#/search/{{'uri://registries/fees#'|uriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
+				</ul>
+			</li>
+			<li psui-accordion-element title="{{'menu.company.title' | translate}}" icon-class="glyphicon-home">
+				<ul>
+					<li><a href="#/registry/new/{{'uri://registries/company'|uriescape}}"><span>{{'menu.new.lower.level.she' | translate}}</span></a></li>
 					<li><a href="#/search/{{'uri://registries/company'|uriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
 				</ul>
 			</li>
@@ -18,7 +24,7 @@
 					<li><a href="#/personal-change-password"><span>{{'menu.change.password.lower.level' | translate}}</span></a></li>
 				</ul>
 			</li>
-			<li psui-accordion-element title="{{'menu.permissions.title' | translate}}" icon-class="glyphicon-user">
+			<li psui-accordion-element title="{{'menu.permissions.title' | translate}}" icon-class="glyphicon-lock">
 				<ul>
 					<li><a href="#/registry/new/{{'uri://registries/security#groupmaster'|uriescape}}"><span>{{'menu.new.group.lower.level' | translate}}</span></a></li>
 					<li><a href="#/security/group/edit/"><span>{{'menu.permission.groups.lower.level' | translate}}</span></a></li>
@@ -29,17 +35,16 @@
 				</ul>
 			</li>
 
-			<li psui-accordion-element title="{{'menu.massmailing.title' | translate}}" icon-class="glyphicon-info-sign">
+			<li psui-accordion-element title="{{'menu.massmailing.title' | translate}}" icon-class="glyphicon-send">
 				<ul>
 				<li><a href="#/registry/new/{{'uri://registries/mailtemplates#master'|uriescape}}"><span>{{'menu.massmailing.new.lower.level' | translate}}</span></a></li>	
 					<li><a href="#/search/{{'uri://registries/mailtemplates#master'|uriescape}}"><span>{{'menu.massmailing.search.lower.level' | translate}}</span></a></li>
-
 					<li><a href="#/massmailing"><span>{{'menu.massmailing.send.title' | translate}}</span></a></li>
 				</ul>
 			</li>
 
 
-			<li psui-accordion-element title="{{'menu.statistics.title' | translate}}" icon-class="glyphicon-info-sign">
+			<li psui-accordion-element title="{{'menu.statistics.title' | translate}}" icon-class="glyphicon-stats">
 				<ul>
 					<li><a href="#/statistics"><span>{{'menu.statistics.show.title' | translate}}</span></a></li>
 				</ul>

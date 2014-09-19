@@ -2,6 +2,38 @@ angular.module('registries')
 .config(['$translateProvider', function($translateProvider) {
 	$translateProvider.preferredLanguage('cz');
 	$translateProvider.translations('sk', {
+		"schema.fees.new":"Nový príspevok",
+		"schema.fees.baseData":"Základné údaje",
+		"schema.fees.baseData.member":"Člen",
+		"schema.fees.baseData.membershipFee":"Výška príspevku",
+		"schema.fees.baseData.setupDate":"Dátum vystavenia",
+		"schema.fees.baseData.variableSymbol":"Variabilný symbol",
+		"schema.fees.baseData.dueDate":"Dátum splatnosti",
+		"schema.fees.baseData.membershipFeePaid":"Zaplatená čiastka",
+		"schema.fees.baseData.dateOfPayment":"Dátum zaplatenia",
+		"schema.fees.baseData.notes":"Poznámka",
+		"schema.fees.baseData.feePaymentStatus":"Stav",
+		"schema.fees.baseData.feePaymentStatus.paid":"Zaplatené",
+		"schema.fees.baseData.feePaymentStatus.unpaid":"Nezaplatené",
+		
+		"schema.fees.listFields.name":"Meno",
+		"schema.fees.listFields.surName":"Priezvisko",
+		"schema.fees.listFields.membershipFee":"Výška príspevku",
+		"schema.fees.listFields.dueDate":"Dátum splatnosti",
+		"schema.fees.listFields.variableSymbol":"Variabilný symbol",
+		"schema.fees.listFields.membershipFeePaid":"Zaplatená čiastka",
+		"schema.fees.listFields.dateOfPayment":"Dátum zaplatenia",
+		"schema.fees.listFields.feePaymentStatus":"Stav",
+
+		"schema.mailTemplate.basedata.title":"Základné údaje",
+		"schema.mailTemplate.basedata.name":"Názov vzoru",
+		"schema.mailTemplate.basedata.subject":"Predmet vzoru",
+		"schema.mailTemplate.basedata.text":"Text vzoru",
+		"schema.mailTemplate.basedata.html":"HTML vzor",
+		"schema.mailTemplate.listFields.title":"Názov vzoru",
+		
+		
+		
 		"schema.org.new":"Nová organizácia",
 		"schema.org.view":"Organizácia",
 		"schema.member.new":"Nový člen",
@@ -55,6 +87,38 @@ angular.module('registries')
 	});
 
 	$translateProvider.translations('cz', {
+		"schema.fees.new":"Nový príspevok",
+		"schema.fees.baseData":"Základné údaje",
+		"schema.fees.baseData.member":"Člen",
+		"schema.fees.baseData.membershipFee":"Výška príspevku",
+		"schema.fees.baseData.setupDate":"Dátum vystavenia",
+		"schema.fees.baseData.variableSymbol":"Variabilný symbol",
+		"schema.fees.baseData.dueDate":"Dátum splatnosti",
+		"schema.fees.baseData.membershipFeePaid":"Zaplatená čiastka",
+		"schema.fees.baseData.dateOfPayment":"Dátum zaplatenia",
+		"schema.fees.baseData.notes":"Poznámka",
+		"schema.fees.baseData.feePaymentStatus":"Stav",
+		"schema.fees.baseData.feePaymentStatus.paid":"Zaplatené",
+		"schema.fees.baseData.feePaymentStatus.unpaid":"Nezaplatené",
+
+		"schema.fees.listFields.name":"Meno",
+		"schema.fees.listFields.surName":"Priezvisko",
+		"schema.fees.listFields.membershipFee":"Výška príspevku",
+		"schema.fees.listFields.dueDate":"Dátum splatnosti",
+		"schema.fees.listFields.variableSymbol":"Variabilný symbol",
+		"schema.fees.listFields.membershipFeePaid":"Zaplatená čiastka",
+		"schema.fees.listFields.dateOfPayment":"Dátum zaplatenia",
+		"schema.fees.listFields.feePaymentStatus":"Stav",
+		
+		"schema.mailTemplate.basedata.title":"Základné údaje",
+		"schema.mailTemplate.basedata.name":"Názov vzoru",
+		"schema.mailTemplate.basedata.subject":"Predmet vzoru",
+		"schema.mailTemplate.basedata.text":"Text vzoru",
+		"schema.mailTemplate.basedata.html":"HTML vzor",
+		"schema.mailTemplate.listFields.title":"Názov vzoru",
+
+	
+	
 		"schema.org.new":"Nová organizace",
 		"schema.org.view":"Organizace",
 		"schema.member.new":"Nový člen",
