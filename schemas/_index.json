@@ -16,7 +16,5 @@
 	"towns.json",
 	"regions.json",
 	"countries.json",
-	"application.json",
-	"events.json",
 	"login.json"
 ]

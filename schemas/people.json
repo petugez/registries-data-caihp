@@ -170,7 +170,7 @@
                 },
                 "mobileNumber2": {
                     "title": "Mobil 2",
-                    "xxtransCode": "schema.people.contactInfo.mobileNumber",
+                    "transCode": "schema.people.contactInfo.mobileNumber2",
                     "type": "string",
                     "required": false
                 },
@@ -182,7 +182,7 @@
                 },
                 "email2": {
                     "title": "E-mail 2",
-                    "xxtransCode": "schema.people.contactInfo.email",
+                    "transCode": "schema.people.contactInfo.email2",
                     "type": "string",
                     "required": false
                 }
@@ -220,17 +220,21 @@
             }
         },
         "hockeyPlayerInfo": {
-            "title": "Profil člena",
-            "xxtransCode": "schema.people.hockeyPlayerInfo",
+            "title": "Profil hráča",
+            "transCode": "schema.people.hockeyPlayerInfo",
             "type": "object",
             "properties": {
                 "isActivePlayer": {
                     "title": "Je aktivní hráč",
-                    "xxtransCode": "schema.people.isActivePlayer",
+                    "transCode": "schema.people.isActivePlayer",
                     "type": " string",
                     "enum": [
                         "Áno",
                         "Ne"
+                    ],
+                    "enumTransCodes": [
+                    	"schema.people.isActivePlayer.yes",
+                    	"schema.people.isActivePlayer.no"
                     ],
                     "required": false,
                     "render": {
@@ -240,11 +244,15 @@
                 },
                 "isActiveAgent": {
                     "title": "Je aktivní agent",
-                    "xxtransCode": "schema.people.isActiveAgent",
+                    "transCode": "schema.people.isActiveAgent",
                     "type": " string",
                     "enum": [
                         "Áno",
                         "Ne"
+                    ],
+                    "enumTransCodes": [
+                    	"schema.people.isActiveAgent.yes",
+                    	"schema.people.isActiveAgent.no"
                     ],
                     "required": false,
                     "render": {
@@ -254,11 +262,15 @@
                 },
                 "isActiveRepresentative": {
                     "title": "Je aktivní funkcionář",
-                    "xxtransCode": "schema.people.isActiveRepresentative",
+                    "transCode": "schema.people.isActiveRepresentative",
                     "type": " string",
                     "enum": [
                         "Áno",
                         "Ne"
+                    ],
+                    "enumTransCodes": [
+                    	"schema.people.isActiveRepresentative.yes",
+                    	"schema.people.isActiveRepresentative.no"
                     ],
                     "required": false,
                     "render": {
@@ -268,11 +280,15 @@
                 },
                 "isProAm": {
                     "title": "Je PRO-AM",
-                    "xxtransCode": "schema.people.isProAm",
+                    "transCode": "schema.people.isProAm",
                     "type": " string",
                     "enum": [
                         "Áno",
                         "Ne"
+                    ],
+                    "enumTransCodes": [
+                    	"schema.people.isProAm.yes",
+                    	"schema.people.isProAm.no"
                     ],
                     "required": false,
                     "render": {
@@ -282,12 +298,17 @@
                 },
                 "competitionCategory": {
                     "title": "Kategorie soutěže",
-                    "xxtransCode": "schema.people.hockeyPlayerInfo.positionName",
+                    "transCode": "schema.people.hockeyPlayerInfo.category",
                     "type": "string",
                     "enum": [
                         "Extraliga",
                         "1.NHL",
                         "Zahraničí"
+                    ],
+                    "enumTransCodes": [
+                    	"schema.people.hockeyPlayerInfo.category.extraliga",
+                    	"schema.people.hockeyPlayerInfo.category.nhl",
+                    	"schema.people.hockeyPlayerInfo.category.foreign"
                     ],
                     "required": false,
                     "render": {
@@ -336,13 +357,13 @@
                 },
                 "dressSize": {
                     "title": "Velikost",
-                    "xxtransCode": "schema.people.hockeyPlayerInfo.stickHandling",
+                    "transCode": "schema.people.hockeyPlayerInfo.dressSize",
                     "type": "string",
                     "required": false
                 },
                 "footSize": {
                     "title": "Číslo boty",
-                    "xxtransCode": "schema.people.hockeyPlayerInfo.stickHandling",
+                    "transCode": "schema.people.hockeyPlayerInfo.footSize",
                     "type": "string",
                     "required": false
                 },
@@ -357,13 +378,13 @@
                 },
                 "registredAgentName": {
                     "title": "Jméno registrovaného agenta",
-                    "xxtransCode": "schema.people.hockeyPlayerInfo.stickHandling",
+                    "transCode": "schema.people.hockeyPlayerInfo.registredAgentName",
                     "type": "string",
                     "required": false
                 },
                 "nonregisteredAgentName": {
                     "title": "Jméno neregistrovaného agenta",
-                    "xxtransCode": "schema.people.hockeyPlayerInfo.stickHandling",
+                    "transCode": "schema.people.hockeyPlayerInfo.nonregisteredAgentName",
                     "type": "string",
                     "required": false
                 }
@@ -406,11 +427,15 @@
                 },
                 "stateOfPerson": {
                     "title": "Status",
-                    "xxtransCode": "schema.people.state.of.person",
+                    "transCode": "schema.people.stateOfPerson",
                     "type": "string",
                     "enum": [
                         "aktivní",
                         "neaktivní"
+                    ],
+                    "enumTransCodes": [
+                    	"schema.people.stateOfPerson.active",
+                    	"schema.people.stateOfPerson.inactive"
                     ],
                     "required": false,
                     "render": {

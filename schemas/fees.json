@@ -114,7 +114,7 @@
     },
     "view": {
         "title": "Členský príspevok",
-        "xxtransCode": "schema.org.view",
+        "transCode": "schema.fees.view",
         "table": "fees",
         "_security": {
             "_create": {
@@ -157,7 +157,7 @@
             }
         },
         "title": "Členský príspevok",
-        "xxtransCode": "schema.org.view",
+        "transCode": "schema.fees.search",
         "listFields": [
             {
                 "field": "baseData.member.refData.name",
