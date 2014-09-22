@@ -390,6 +390,53 @@
                 }
             }
         },
+        "membershipFeeInfo": {
+            "title": "Členské príspevky",
+            "type": "object",
+            "properties": {
+                "membershipType": {
+                    "title": "Typ členského príspevku",
+                    "type": "string",
+                    "enum": [
+                        "Extraliga do 23r.",
+                        "Extraliga nad 23r.",
+                        "1.NHL",
+                        "Agent",
+                        "Ostatní"
+                    ],
+                    "required": false,
+                    "render": {
+                        "component": "psui-selectbox",
+                        "searchable": true
+                    }
+                },
+                "paymentFrequency": {
+                    "title": "Frekvencia platby",
+                    "type": "string",
+                    "enum": [
+                        "1xročne",
+                        "2xročne",
+                        "12xročne"
+                    ],
+                    "required": false,
+                    "render": {
+                        "component": "psui-selectbox",
+                        "searchable": true
+                    }
+                },
+                "membershipFee": {
+                    "title": "Výška členského príspevku",
+                    "type": "string",
+                    "required": false
+                },
+                "notes": {
+                    "title": "Poznámka",
+                    "type": "string",
+                    "required": false,
+                    "large": true
+                }
+            }
+        },
         "otherInfo": {
             "title": "Ostatné údaje",
             "transCode": "schema.people.otherInfo",

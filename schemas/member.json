@@ -24,6 +24,9 @@
             "hockeyPlayerInfo": {
                 "$ref": "uri://registries/people#person/properties/hockeyPlayerInfo"
             },
+            "membershipFeeInfo": {
+                "$ref": "uri://registries/people#person/properties/membershipFeeInfo"
+            },
             "otherInfo": {
                 "$ref": "uri://registries/people#person/properties/otherInfo"
             }
@@ -41,31 +44,21 @@
         }
     },
     "search": {
-        "table": "people",
-        "_security": {
-            "$ref": "uri://registries/people#person/_security"
-        },
         "title": "osoba",
         "transCode": "schema.member.view",
+        "table": "people",
         "listFields": {
             "$ref": "uri://registries/people#person/listFields"
         },
-        "forcedCriterias": [
-            {
-                "f": "baseData.name",
-                "op": "ex",
-                "v": ""
-            }
-        ],
+        "_security": {
+            "$ref": "uri://registries/people#person/_security"
+        },
         "properties": {
             "baseData": {
                 "$ref": "uri://registries/people#person/properties/baseData"
             },
             "contactInfo": {
                 "$ref": "uri://registries/people#person/properties/contactInfo"
-            },
-            "bankInfo": {
-                "$ref": "uri://registries/people#person/properties/bankInfo"
             },
             "otherInfo": {
                 "$ref": "uri://registries/people#person/properties/otherInfo"
