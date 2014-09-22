@@ -32,7 +32,7 @@ angular.module('registries')
 		"schema.mailTemplate.basedata.html":"HTML vzor",
 		"schema.mailTemplate.listFields.title":"Názov vzoru",
 		
-		//nove
+
 		"schema.people.isActivePlayer":"Je aktívny hráč",
 		"schema.people.isActivePlayer.yes":"Áno",
 		"schema.people.isActivePlayer.no":"Nie",
@@ -146,7 +146,7 @@ angular.module('registries')
 		"schema.mailTemplate.basedata.html":"HTML vzor",
 		"schema.mailTemplate.listFields.title":"Názov vzoru",
 
-		//nove
+		
 		"schema.people.isActivePlayer":"Je aktivní hráč",
 		"schema.people.isActivePlayer.yes":"Áno",
 		"schema.people.isActivePlayer.no":"Ne",
