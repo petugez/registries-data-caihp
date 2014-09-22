@@ -2,6 +2,13 @@ angular.module('registries')
 .config(['$translateProvider', function($translateProvider) {
 	$translateProvider.preferredLanguage('cz');
 	$translateProvider.translations('sk', {
+		"schema.people.membershipFeeInfo.title":"Členské príspevky",
+		"schema.people.membershipFeeInfo.membershipType":"Typ členského príspevku",
+		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvencia platby",
+		"schema.people.membershipFeeInfo.membershipFee":"Výška členského príspevku",
+		"schema.people.membershipFeeInfo.notes":"Poznámka",
+
+		
 		"schema.fees.new":"Nový príspevok",
 		"schema.fees.baseData":"Základné údaje",
 		"schema.fees.baseData.member":"Člen",
@@ -36,6 +43,9 @@ angular.module('registries')
 		"schema.people.isActivePlayer":"Je aktívny hráč",
 		"schema.people.isActivePlayer.yes":"Áno",
 		"schema.people.isActivePlayer.no":"Nie",
+		"schema.people.isActiveCoach":"Je aktívny tréner",
+		"schema.people.isActiveCoach.yes":"Áno",
+		"schema.people.isActiveCoach.no":"Nie",
 		"schema.people.isActiveAgent":"Je aktívny agent",
 		"schema.people.isActiveAgent.yes":"Áno",
 		"schema.people.isActiveAgent.no":"Nie",
@@ -116,6 +126,13 @@ angular.module('registries')
 	});
 
 	$translateProvider.translations('cz', {
+		"schema.people.membershipFeeInfo.title":"Členské příspěvky",
+		"schema.people.membershipFeeInfo.membershipType":"Typ členského příspěvku",
+		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvence platby",
+		"schema.people.membershipFeeInfo.membershipFee":"Výše členského příspěvku",
+		"schema.people.membershipFeeInfo.notes":"Poznámka",
+
+	
 		"schema.fees.new":"Nový príspevok",
 		"schema.fees.baseData":"Základné údaje",
 		"schema.fees.baseData.member":"Člen",
@@ -150,6 +167,9 @@ angular.module('registries')
 		"schema.people.isActivePlayer":"Je aktivní hráč",
 		"schema.people.isActivePlayer.yes":"Áno",
 		"schema.people.isActivePlayer.no":"Ne",
+		"schema.people.isActiveCoach":"Je aktivní trenér",
+		"schema.people.isActiveCoach.yes":"Áno",
+		"schema.people.isActiveCoach.no":"Ne",
 		"schema.people.isActiveAgent":"Je aktivní agent",
 		"schema.people.isActiveAgent.yes":"Áno",
 		"schema.people.isActiveAgent.no":"Ne",

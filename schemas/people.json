@@ -93,13 +93,14 @@
                         "Muž",
                         "Žena"
                     ],
-                    "required": true
+                    "required": true,
+                    "render": {
+                        "component": "psui-selectbox",
+                        "searchable": true
+                    }
                 },
                 "nationality": {
-                    "title": "Štatna prislusnosť",
-                    "transCode": "schema.people.baseData.nationality",
-                    "type": "string",
-                    "required": true
+                    "$ref": "uri://registries/nationality#country"
                 }
             }
         },
@@ -233,8 +234,26 @@
                         "Ne"
                     ],
                     "enumTransCodes": [
-                    	"schema.people.isActivePlayer.yes",
-                    	"schema.people.isActivePlayer.no"
+                        "schema.people.isActivePlayer.yes",
+                        "schema.people.isActivePlayer.no"
+                    ],
+                    "required": false,
+                    "render": {
+                        "component": "psui-selectbox",
+                        "searchable": true
+                    }
+                },
+                "isActiveCoach": {
+                    "title": "Je aktivní trenér",
+                    "transCode": "schema.people.isActiveCoach",
+                    "type": " string",
+                    "enum": [
+                        "Áno",
+                        "Ne"
+                    ],
+                    "enumTransCodes": [
+                        "schema.people.isActiveCoach.yes",
+                        "schema.people.isActiveCoach.no"
                     ],
                     "required": false,
                     "render": {
@@ -251,8 +270,8 @@
                         "Ne"
                     ],
                     "enumTransCodes": [
-                    	"schema.people.isActiveAgent.yes",
-                    	"schema.people.isActiveAgent.no"
+                        "schema.people.isActiveAgent.yes",
+                        "schema.people.isActiveAgent.no"
                     ],
                     "required": false,
                     "render": {
@@ -269,8 +288,8 @@
                         "Ne"
                     ],
                     "enumTransCodes": [
-                    	"schema.people.isActiveRepresentative.yes",
-                    	"schema.people.isActiveRepresentative.no"
+                        "schema.people.isActiveRepresentative.yes",
+                        "schema.people.isActiveRepresentative.no"
                     ],
                     "required": false,
                     "render": {
@@ -287,8 +306,8 @@
                         "Ne"
                     ],
                     "enumTransCodes": [
-                    	"schema.people.isProAm.yes",
-                    	"schema.people.isProAm.no"
+                        "schema.people.isProAm.yes",
+                        "schema.people.isProAm.no"
                     ],
                     "required": false,
                     "render": {
@@ -306,9 +325,9 @@
                         "Zahraničí"
                     ],
                     "enumTransCodes": [
-                    	"schema.people.hockeyPlayerInfo.category.extraliga",
-                    	"schema.people.hockeyPlayerInfo.category.nhl",
-                    	"schema.people.hockeyPlayerInfo.category.foreign"
+                        "schema.people.hockeyPlayerInfo.category.extraliga",
+                        "schema.people.hockeyPlayerInfo.category.nhl",
+                        "schema.people.hockeyPlayerInfo.category.foreign"
                     ],
                     "required": false,
                     "render": {
@@ -392,10 +411,12 @@
         },
         "membershipFeeInfo": {
             "title": "Členské príspevky",
+            "transCode": "schema.people.membershipFeeInfo.title",
             "type": "object",
             "properties": {
                 "membershipType": {
                     "title": "Typ členského príspevku",
+                    "transCode": "schema.people.membershipFeeInfo.membershipType",
                     "type": "string",
                     "enum": [
                         "Extraliga do 23r.",
@@ -412,6 +433,7 @@
                 },
                 "paymentFrequency": {
                     "title": "Frekvencia platby",
+                    "transCode": "schema.people.membershipFeeInfo.paymentFrequency",
                     "type": "string",
                     "enum": [
                         "1xročne",
@@ -426,11 +448,13 @@
                 },
                 "membershipFee": {
                     "title": "Výška členského príspevku",
+                    "transCode": "schema.people.membershipFeeInfo.membershipFee",
                     "type": "string",
                     "required": false
                 },
                 "notes": {
                     "title": "Poznámka",
+                    "transCode": "schema.people.membershipFeeInfo.notes",
                     "type": "string",
                     "required": false,
                     "large": true
@@ -481,8 +505,8 @@
                         "neaktivní"
                     ],
                     "enumTransCodes": [
-                    	"schema.people.stateOfPerson.active",
-                    	"schema.people.stateOfPerson.inactive"
+                        "schema.people.stateOfPerson.active",
+                        "schema.people.stateOfPerson.inactive"
                     ],
                     "required": false,
                     "render": {
