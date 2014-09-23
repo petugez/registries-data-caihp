@@ -447,6 +447,11 @@
                         "2xročne",
                         "12xročne"
                     ],
+                    "enumTransCodes":[
+                    	"schema.people.membershipFeeInfo.paymentFrequency.1xyear",
+                    	"schema.people.membershipFeeInfo.paymentFrequency.2xyear",
+                    	"schema.people.membershipFeeInfo.paymentFrequency.12xyear"
+                    ],
                     "required": false,
                     "render": {
                         "component": "psui-selectbox",
