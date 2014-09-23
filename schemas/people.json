@@ -425,6 +425,13 @@
                         "Agent",
                         "Ostatní"
                     ],
+                    "enumTransCodes":[
+                    	"schema.people.membershipFeeInfo.membershipType.extraligaUnder23",
+                    	"schema.people.membershipFeeInfo.membershipType.extraligaOver23",
+                    	"schema.people.membershipFeeInfo.membershipType.1.NHL",
+                    	"schema.people.membershipFeeInfo.membershipType.agent",
+                    	"schema.people.membershipFeeInfo.membershipType.other"
+                    ],
                     "required": false,
                     "render": {
                         "component": "psui-selectbox",

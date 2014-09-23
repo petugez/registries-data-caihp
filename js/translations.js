@@ -7,6 +7,12 @@ angular.module('registries')
 		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvencia platby",
 		"schema.people.membershipFeeInfo.membershipFee":"Výška členského príspevku",
 		"schema.people.membershipFeeInfo.notes":"Poznámka",
+		
+    	"schema.people.membershipFeeInfo.membershipType.extraligaUnder23":"Extraliga do 23r.",
+    	"schema.people.membershipFeeInfo.membershipType.extraligaOver23":"Extraliga nad 23r.",
+    	"schema.people.membershipFeeInfo.membershipType.1.NHL":"1.NHL",
+    	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
+    	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
 
 		
 		"schema.fees.new":"Nový príspevok",
@@ -131,6 +137,12 @@ angular.module('registries')
 		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvence platby",
 		"schema.people.membershipFeeInfo.membershipFee":"Výše členského příspěvku",
 		"schema.people.membershipFeeInfo.notes":"Poznámka",
+		
+    	"schema.people.membershipFeeInfo.membershipType.extraligaUnder23":"Extraliga do 23r.",
+    	"schema.people.membershipFeeInfo.membershipType.extraligaOver23":"Extraliga nad 23r.",
+    	"schema.people.membershipFeeInfo.membershipType.1.NHL":"1.NHL",
+    	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
+    	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
 
 	
 		"schema.fees.new":"Nový príspevok",
