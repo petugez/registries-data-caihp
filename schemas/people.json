@@ -315,6 +315,24 @@
                         "searchable": true
                     }
                 },
+                "isActivePartner": {
+                    "title": "Je aktivní partner",
+                    "transCode": "schema.people.isActivePartner",
+                    "type": " string",
+                    "enum": [
+                        "Áno",
+                        "Ne"
+                    ],
+                    "enumTransCodes": [
+                        "schema.people.isActivePartner.yes",
+                        "schema.people.isActivePartner.no"
+                    ],
+                    "required": false,
+                    "render": {
+                        "component": "psui-selectbox",
+                        "searchable": true
+                    }
+                },
                 "competitionCategory": {
                     "title": "Kategorie soutěže",
                     "transCode": "schema.people.hockeyPlayerInfo.category",
@@ -344,15 +362,31 @@
                         "name": "baseData.name"
                     }
                 },
+                "positionName": {
+                    "title": "Post",
+                    "transCode": "schema.people.hockeyPlayerInfo.positionName",
+                    "type": "string",
+                    "enum": [
+                        "útočník",
+                        "obránce",
+                        "brankář",
+                        "ostatní"
+                    ],
+                    "enumTransCodes": [
+                        "schema.people.hockeyPlayerInfo.positionName.forward",
+                        "schema.people.hockeyPlayerInfo.positionName.defender",
+                        "schema.people.hockeyPlayerInfo.positionName.goalkeeper",
+                        "schema.people.hockeyPlayerInfo.positionName.other"
+                    ],
+                    "required": false,
+                    "render": {
+                        "component": "psui-selectbox",
+                        "searchable": true
+                    }
+                },
                 "dressNumber": {
                     "title": "Číslo dresu",
                     "transCode": "schema.people.hockeyPlayerInfo.dressNumber",
-                    "type": "string",
-                    "required": false
-                },
-                "nickName": {
-                    "title": "Přezdívka",
-                    "xxtransCode": "schema.people.hockeyPlayerInfo.positionName",
                     "type": "string",
                     "required": false
                 },
@@ -372,17 +406,51 @@
                     "title": "Držanie hokejky",
                     "transCode": "schema.people.hockeyPlayerInfo.stickHandling",
                     "type": "string",
-                    "required": false
+                    "enum": [
+                        "levé",
+                        "pravé"
+                    ],
+                    "enumTransCodes": [
+                        "schema.people.hockeyPlayerInfo.stickHandling.left",
+                        "schema.people.hockeyPlayerInfo.stickHandling.right"
+                    ],
+                    "required": false,
+                    "render": {
+                        "component": "psui-selectbox",
+                        "searchable": true
+                    }
                 },
                 "dressSize": {
                     "title": "Velikost",
                     "transCode": "schema.people.hockeyPlayerInfo.dressSize",
                     "type": "string",
-                    "required": false
+                    "enum": [
+                        "M",
+                        "L",
+                        "XL",
+                        "XXL"
+                    ],
+                    "enumTransCodes": [
+                        "schema.people.hockeyPlayerInfo.dressSize.M",
+                        "schema.people.hockeyPlayerInfo.dressSize.L",
+                        "schema.people.hockeyPlayerInfo.dressSize.XL",
+                        "schema.people.hockeyPlayerInfo.dressSize.XXL"
+                    ],
+                    "required": false,
+                    "render": {
+                        "component": "psui-selectbox",
+                        "searchable": true
+                    }
                 },
                 "footSize": {
                     "title": "Číslo boty",
                     "transCode": "schema.people.hockeyPlayerInfo.footSize",
+                    "type": "string",
+                    "required": false
+                },
+                "nickName": {
+                    "title": "Přezdívka",
+                    "transCode": "schema.people.hockeyPlayerInfo.nickName",
                     "type": "string",
                     "required": false
                 },

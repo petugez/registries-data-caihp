@@ -14,6 +14,19 @@ angular.module('registries')
     	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
     	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
 
+        "schema.people.hockeyPlayerInfo.positionName.forward":"Útočník",
+        "schema.people.hockeyPlayerInfo.positionName.defender":"Obranca",
+        "schema.people.hockeyPlayerInfo.positionName.goalkeeper":"Brankár",
+        "schema.people.hockeyPlayerInfo.positionName.other":"Ostatní",
+        
+	    "schema.people.hockeyPlayerInfo.dressSize.M":"M",
+	    "schema.people.hockeyPlayerInfo.dressSize.L":"L",
+	    "schema.people.hockeyPlayerInfo.dressSize.XL":"XL",
+	    "schema.people.hockeyPlayerInfo.dressSize.XXL":"XXL",
+	    
+        "schema.people.hockeyPlayerInfo.stickHandling.left":"Ľavé",
+        "schema.people.hockeyPlayerInfo.stickHandling.right":"Pravé",
+
 		
 		"schema.fees.new":"Nový príspevok",
 		"schema.fees.baseData":"Základné údaje",
@@ -44,8 +57,10 @@ angular.module('registries')
 		"schema.mailTemplate.basedata.text":"Text vzoru",
 		"schema.mailTemplate.basedata.html":"HTML vzor",
 		"schema.mailTemplate.listFields.title":"Názov vzoru",
-		
 
+		"schema.people.isActivePartner":"Je aktívny partner",
+        "schema.people.isActivePartner.yes":"Áno",
+        "schema.people.isActivePartner.no":"Nie",
 		"schema.people.isActivePlayer":"Je aktívny hráč",
 		"schema.people.isActivePlayer.yes":"Áno",
 		"schema.people.isActivePlayer.no":"Nie",
@@ -118,6 +133,7 @@ angular.module('registries')
 		"schema.people.hockeyPlayerInfo":"Profil hráča",
 		"schema.people.hockeyPlayerInfo.clubName":"Názov klubu",
 		"schema.people.hockeyPlayerInfo.positionName":"Post",
+		"schema.people.hockeyPlayerInfo.nickName":"Prezývka",
 		"schema.people.hockeyPlayerInfo.dressNumber":"Číslo dresu",
 		"schema.people.hockeyPlayerInfo.playerHeight":"Výška",
 		"schema.people.hockeyPlayerInfo.playerWeight":"Hmotnosť",
@@ -143,6 +159,19 @@ angular.module('registries')
     	"schema.people.membershipFeeInfo.membershipType.1.NHL":"1.NHL",
     	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
     	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
+    	
+        "schema.people.hockeyPlayerInfo.positionName.forward":"Útočník",
+        "schema.people.hockeyPlayerInfo.positionName.defender":"Obránce",
+        "schema.people.hockeyPlayerInfo.positionName.goalkeeper":"Brankár",
+        "schema.people.hockeyPlayerInfo.positionName.other":"Ostatní",
+        
+	    "schema.people.hockeyPlayerInfo.dressSize.M":"M",
+	    "schema.people.hockeyPlayerInfo.dressSize.L":"L",
+	    "schema.people.hockeyPlayerInfo.dressSize.XL":"XL",
+	    "schema.people.hockeyPlayerInfo.dressSize.XXL":"XXL",
+
+        "schema.people.hockeyPlayerInfo.stickHandling.left":"Levé",
+        "schema.people.hockeyPlayerInfo.stickHandling.right":"Pravé",
 
 	
 		"schema.fees.new":"Nový príspevok",
@@ -175,7 +204,10 @@ angular.module('registries')
 		"schema.mailTemplate.basedata.html":"HTML vzor",
 		"schema.mailTemplate.listFields.title":"Názov vzoru",
 
-		
+
+		"schema.people.isActivePartner":"Je aktivní partner",
+        "schema.people.isActivePartner.yes":"Áno",
+        "schema.people.isActivePartner.no":"Ne",
 		"schema.people.isActivePlayer":"Je aktivní hráč",
 		"schema.people.isActivePlayer.yes":"Áno",
 		"schema.people.isActivePlayer.no":"Ne",
@@ -250,6 +282,7 @@ angular.module('registries')
 		"schema.people.hockeyPlayerInfo":"Profil hráče",
 		"schema.people.hockeyPlayerInfo.clubName":"Název klubu",
 		"schema.people.hockeyPlayerInfo.positionName":"Post",
+		"schema.people.hockeyPlayerInfo.nickName":"Přezdívka",
 		"schema.people.hockeyPlayerInfo.dressNumber":"Číslo dresu",
 		"schema.people.hockeyPlayerInfo.playerHeight":"Výška",
 		"schema.people.hockeyPlayerInfo.playerWeight":"Hmotnost",
