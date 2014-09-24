@@ -14,6 +14,10 @@ angular.module('registries')
     	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
     	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
 
+	"schema.people.membershipFeeInfo.paymentFrequency.1xyear": "1x ročne",
+	"schema.people.membershipFeeInfo.paymentFrequency.2xyear": "2x ročne",
+	"schema.people.membershipFeeInfo.paymentFrequency.12xyear": "12x ročne",
+
         "schema.people.hockeyPlayerInfo.positionName.forward":"Útočník",
         "schema.people.hockeyPlayerInfo.positionName.defender":"Obranca",
         "schema.people.hockeyPlayerInfo.positionName.goalkeeper":"Brankár",
@@ -160,6 +164,10 @@ angular.module('registries')
     	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
     	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
     	
+	"schema.people.membershipFeeInfo.paymentFrequency.1xyear": "1x ročne",
+	"schema.people.membershipFeeInfo.paymentFrequency.2xyear": "2x ročne",
+	"schema.people.membershipFeeInfo.paymentFrequency.12xyear": "12x ročne",
+
         "schema.people.hockeyPlayerInfo.positionName.forward":"Útočník",
         "schema.people.hockeyPlayerInfo.positionName.defender":"Obránce",
         "schema.people.hockeyPlayerInfo.positionName.goalkeeper":"Brankár",
