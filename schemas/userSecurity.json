@@ -83,7 +83,7 @@
         "listFields": {
             "$ref": "uri://registries/people#person/listFields"
         },
-        "forcedCriterias": [
+        "forcedCriteria": [
             {
                 "f": "baseData.name",
                 "op": "ex",
@@ -97,11 +97,30 @@
             "contactInfo": {
                 "$ref": "uri://registries/people#person/properties/contactInfo"
             },
-            "bankInfo": {
-                "$ref": "uri://registries/people#person/properties/bankInfo"
-            },
-            "otherInfo": {
-                "$ref": "uri://registries/people#person/properties/otherInfo"
+            "systemCredentials":{
+                "type": "object",
+                "properties": {
+                    "profiles": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": "string"
+                            }
+                        }
+                    },
+                    "login":{
+                        "type":"object",
+                        "properties":{
+                            "loginName":{
+                                "type":"string"
+                            },
+                            "email":{
+                                "type":"string"
+                            }
+                        }
+                    }
+                }
             }
         }
     }

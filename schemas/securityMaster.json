@@ -1,9 +1,10 @@
 {
 	"$schema" : "http://json-schema.org/schema#",
 	"id" : "uri://registries/security#profilesmaster",
-	
+
 	"new" : {
 		"table":"securityProfiles",
+		"title": "Nový bezpečnostný profil",
 		"_security" : {
 			"$ref" : "uri://registries/security#profiles/_security"
 		},
@@ -26,8 +27,11 @@
 		"properties" : {
 			"baseData" : {
 				"$ref": "uri://registries/security#profiles/properties/baseData"
+			},
+			"security" : {
+				"$ref": "uri://registries/security#profiles/properties/security"
 			}
-		}	
-		
+		}
+
 	}
 }

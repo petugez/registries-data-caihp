@@ -2,11 +2,11 @@
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/security",
 	"type": "object",
-	
+
 	"permissions": {
 		"type": "object",
 		"properties":{
-			
+
 			"System User": {
 				"title": "Systémový používateľ",
 				"type": "boolean",
@@ -118,14 +118,14 @@
 				"title": "Základné údaje",
 				"type": "object",
 				"properties": {
-					
+
 					"name": {
-						"title": "Meno",
-						"transCode": "schema.people.baseData.name",
+						"title": "Názov",
+						"xxtransCode": "schema.people.baseData.name",
 						"type": "string",
 						"required": true
 					}
-					
+
 				}
 
 			},
@@ -157,7 +157,20 @@
 										"properties": {
 											"f": "string",
 											"op": "string",
-											"v": "string"
+											"v": "string",
+											"obj":{
+													"type":"object",
+													"properties":{
+														"refData": {
+															"type":"object",
+															"properties":{
+																"name":"string"
+															}
+														}
+													}
+
+
+											}
 										}
 									}
 								}
