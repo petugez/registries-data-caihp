@@ -5,23 +5,36 @@
 	"title": "Organizacie",
 	"_security": {
 		"_create": {
-			"_static":["Registry - write"]
+			"_static": [
+				"Registry - write"
+			]
 		},
 		"_read": {
-			"_static":["Registry - read"]
+			"_static": [
+				"Registry - read"
+			]
 		},
 		"_modify": {
-			"_static":["Registry - write"]
+			"_static": [
+				"Registry - write"
+			]
 		}
-	}, 
-	
+	},
 	"listFields": [
-		{"field":"id", "title": "ID", "transCode":"schema.org.listFields.id"},
-		{"field":"baseData.name", "title":"Meno", "transCode":"schema.org.listFields.name"}
+		{
+			"field": "id",
+			"title": "ID",
+			"transCode": "schema.org.listFields.id"
+		},
+		{
+			"field": "baseData.name",
+			"title": "Meno",
+			"transCode": "schema.org.listFields.name"
+		}
 	],
 	"properties": {
 		"baseData": {
-			"title": "Základné údaje",
+			"title": "ZÁKLADNÍ INFORMACE",
 			"type": "object",
 			"properties": {
 				"name": {

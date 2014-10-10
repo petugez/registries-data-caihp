@@ -1,607 +1,607 @@
 {
-    "$schema": "http://json-schema.org/schema#",
-    "id": "uri://registries/people#person",
-    "table": "people",
-    "title": "person",
-    "_security": {
-        "_create": {
-            "_static": [
-                "Registry - write"
-            ]
-        },
-        "_read": {
-            "_static": [
-                "Registry - read"
-            ]
-        },
-        "_modify": {
-            "_static": [
-                "Registry - write"
-            ]
-        }
-    },
-    "listFields": [
-        {
-            "field": "baseData.surName",
-            "title": "Priezvisko",
-            "transCode": "schema.people.listFields.surName"
-        },
-        {
-            "field": "baseData.name",
-            "title": "Meno",
-            "transCode": "schema.people.listFields.name"
-        },
-        {
-            "field": "contactInfo.email",
-            "title": "E-mail",
-            "xxtransCode": "schema.people.listFields.email"
-        }
-    ],
-    "properties": {
-        "systemCredentials": {
-            "$ref": "uri://registries/security#systemCredentials"
-        },
-        "baseData": {
-            "title": "Základné údaje",
-            "transCode": "schema.people.baseData",
-            "type": "object",
-            "properties": {
-                "bornNumber": {
-                    "title": "Rodné číslo",
-                    "transCode": "schema.people.baseData.bornNumber",
-                    "type": "string",
-                    "required": true
-                },
-                "name": {
-                    "title": "Meno",
-                    "transCode": "schema.people.baseData.name",
-                    "type": "string",
-                    "required": true
-                },
-                "surName": {
-                    "title": "Priezvisko",
-                    "transCode": "schema.people.baseData.surName",
-                    "type": "string",
-                    "required": true
-                },
-                "bornName": {
-                    "title": "Rodné priezvisko",
-                    "transCode": "schema.people.baseData.bornName",
-                    "type": "string",
-                    "required": false
-                },
-                "title": {
-                    "title": "Titul",
-                    "transCode": "schema.people.baseData.title",
-                    "type": "string",
-                    "required": false
-                },
-                "birthDate": {
-                    "title": "Dátum narodenia",
-                    "transCode": "schema.people.baseData.birthDate",
-                    "type": "date",
-                    "required": true,
-                    "render": {
-                        "component": "psui-datepicker"
-                    }
-                },
-                "gender": {
-                    "title": "Pohlavie",
-                    "transCode": "schema.people.baseData.gender",
-                    "type": " string",
-                    "enum": [
-                        "Muž",
-                        "Žena"
-                    ],
-                    "required": true,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "nationality": {
-                    "$ref": "uri://registries/nationality#country"
-                }
-            }
-        },
-        "photoInfo": {
-            "title": "Fotografie",
-            "transCode": "schema.people.photoInfo",
-            "type": "object",
-            "properties": {
-                "photo": {
-                    "title": "Fotografia",
-                    "transCode": "schema.people.photoInfo.photo",
-                    "type": "string",
-                    "required": true,
-                    "render": {
-                        "component": "psui-uploadable-image",
-                        "height": 244,
-                        "width": 205
-                    }
-                }
-            }
-        },
-        "contactInfo": {
-            "title": "Kontaktné údaje",
-            "transCode": "schema.people.contactInfo",
-            "type": "object",
-            "properties": {
-                "street": {
-                    "title": "Ulica",
-                    "transCode": "schema.people.contactInfo.street",
-                    "type": "string",
-                    "required": true
-                },
-                "houseNumber": {
-                    "title": "Číslo domu",
-                    "transCode": "schema.people.contactInfo.houseNumber",
-                    "type": "string",
-                    "required": true
-                },
-                "city": {
-                    "title": "Obec",
-                    "transCode": "schema.people.contactInfo.city",
-                    "type": "string",
-                    "required": true
-                },
-                "zipCode": {
-                    "title": "PSČ",
-                    "transCode": "schema.people.contactInfo.zipCode",
-                    "type": "string",
-                    "required": true
-                },
-                "country": {
-                    "title": "Štát",
-                    "transCode": "schema.people.contactInfo.country",
-                    "type": "string",
-                    "required": true
-                },
-                "phoneNumber": {
-                    "title": "Telefón",
-                    "transCode": "schema.people.contactInfo.phoneNumber",
-                    "type": "string",
-                    "required": false
-                },
-                "mobileNumber": {
-                    "title": "Mobil",
-                    "transCode": "schema.people.contactInfo.mobileNumber",
-                    "type": "string",
-                    "required": false
-                },
-                "mobileNumber2": {
-                    "title": "Mobil 2",
-                    "transCode": "schema.people.contactInfo.mobileNumber2",
-                    "type": "string",
-                    "required": false
-                },
-                "email": {
-                    "title": "E-mail",
-                    "transCode": "schema.people.contactInfo.email",
-                    "type": "string",
-                    "required": false
-                },
-                "email2": {
-                    "title": "E-mail 2",
-                    "transCode": "schema.people.contactInfo.email2",
-                    "type": "string",
-                    "required": false
-                }
-            }
-        },
-        "bankInfo": {
-            "title": "Bankové spojenie",
-            "transCode": "schema.people.bankInfo",
-            "type": "object",
-            "properties": {
-                "bankAccount": {
-                    "title": "Číslo účtu",
-                    "transCode": "schema.people.bankInfo.bankAccount",
-                    "type": "string",
-                    "required": false
-                },
-                "bankCode": {
-                    "title": "Kód banky",
-                    "transCode": "schema.people.bankInfo.bankCode",
-                    "type": "string",
-                    "required": false
-                },
-                "iban": {
-                    "title": "IBAN",
-                    "transCode": "schema.people.bankInfo.iban",
-                    "type": "string",
-                    "required": false
-                },
-                "swift": {
-                    "title": "SWIFT",
-                    "transCode": "schema.people.bankInfo.swift",
-                    "type": "string",
-                    "required": false
-                }
-            }
-        },
-        "hockeyPlayerInfo": {
-            "title": "Profil hráča",
-            "transCode": "schema.people.hockeyPlayerInfo",
-            "type": "object",
-            "properties": {
-                "isActivePlayer": {
-                    "title": "Je aktivní hráč",
-                    "transCode": "schema.people.isActivePlayer",
-                    "type": " string",
-                    "enum": [
-                        "Áno",
-                        "Ne"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.isActivePlayer.yes",
-                        "schema.people.isActivePlayer.no"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "isActiveCoach": {
-                    "title": "Je aktivní trenér",
-                    "transCode": "schema.people.isActiveCoach",
-                    "type": " string",
-                    "enum": [
-                        "Áno",
-                        "Ne"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.isActiveCoach.yes",
-                        "schema.people.isActiveCoach.no"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "isActiveAgent": {
-                    "title": "Je aktivní agent",
-                    "transCode": "schema.people.isActiveAgent",
-                    "type": " string",
-                    "enum": [
-                        "Áno",
-                        "Ne"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.isActiveAgent.yes",
-                        "schema.people.isActiveAgent.no"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "isActiveRepresentative": {
-                    "title": "Je aktivní funkcionář",
-                    "transCode": "schema.people.isActiveRepresentative",
-                    "type": " string",
-                    "enum": [
-                        "Áno",
-                        "Ne"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.isActiveRepresentative.yes",
-                        "schema.people.isActiveRepresentative.no"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "isProAm": {
-                    "title": "Je PRO-AM",
-                    "transCode": "schema.people.isProAm",
-                    "type": " string",
-                    "enum": [
-                        "Áno",
-                        "Ne"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.isProAm.yes",
-                        "schema.people.isProAm.no"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "isActivePartner": {
-                    "title": "Je aktivní partner",
-                    "transCode": "schema.people.isActivePartner",
-                    "type": " string",
-                    "enum": [
-                        "Áno",
-                        "Ne"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.isActivePartner.yes",
-                        "schema.people.isActivePartner.no"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "competitionCategory": {
-                    "title": "Kategorie soutěže",
-                    "transCode": "schema.people.hockeyPlayerInfo.category",
-                    "type": "string",
-                    "enum": [
-                        "Extraliga",
-                        "1.NHL",
-                        "Zahraničí"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.hockeyPlayerInfo.category.extraliga",
-                        "schema.people.hockeyPlayerInfo.category.nhl",
-                        "schema.people.hockeyPlayerInfo.category.foreign"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "clubName": {
-                    "title": "Názov klubu",
-                    "transCode": "schema.people.hockeyPlayerInfo.clubName",
-                    "required": false,
-                    "$objectLink": {
-                        "registry": "organizations",
-                        "name": "baseData.name"
-                    }
-                },
-                "positionName": {
-                    "title": "Post",
-                    "transCode": "schema.people.hockeyPlayerInfo.positionName",
-                    "type": "string",
-                    "enum": [
-                        "útočník",
-                        "obránce",
-                        "brankář",
-                        "ostatní"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.hockeyPlayerInfo.positionName.forward",
-                        "schema.people.hockeyPlayerInfo.positionName.defender",
-                        "schema.people.hockeyPlayerInfo.positionName.goalkeeper",
-                        "schema.people.hockeyPlayerInfo.positionName.other"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "dressNumber": {
-                    "title": "Číslo dresu",
-                    "transCode": "schema.people.hockeyPlayerInfo.dressNumber",
-                    "type": "string",
-                    "required": false
-                },
-                "playerHeight": {
-                    "title": "Výška",
-                    "transCode": "schema.people.hockeyPlayerInfo.playerHeight",
-                    "type": "string",
-                    "required": false
-                },
-                "playerWeight": {
-                    "title": "Hmotnosť",
-                    "transCode": "schema.people.hockeyPlayerInfo.playerWeight",
-                    "type": "string",
-                    "required": false
-                },
-                "stickHandling": {
-                    "title": "Držanie hokejky",
-                    "transCode": "schema.people.hockeyPlayerInfo.stickHandling",
-                    "type": "string",
-                    "enum": [
-                        "levé",
-                        "pravé"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.hockeyPlayerInfo.stickHandling.left",
-                        "schema.people.hockeyPlayerInfo.stickHandling.right"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "dressSize": {
-                    "title": "Velikost",
-                    "transCode": "schema.people.hockeyPlayerInfo.dressSize",
-                    "type": "string",
-                    "enum": [
-                        "M",
-                        "L",
-                        "XL",
-                        "XXL"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.hockeyPlayerInfo.dressSize.M",
-                        "schema.people.hockeyPlayerInfo.dressSize.L",
-                        "schema.people.hockeyPlayerInfo.dressSize.XL",
-                        "schema.people.hockeyPlayerInfo.dressSize.XXL"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "footSize": {
-                    "title": "Číslo boty",
-                    "transCode": "schema.people.hockeyPlayerInfo.footSize",
-                    "type": "string",
-                    "required": false
-                },
-                "nickName": {
-                    "title": "Přezdívka",
-                    "transCode": "schema.people.hockeyPlayerInfo.nickName",
-                    "type": "string",
-                    "required": false
-                },
-                "contractDate": {
-                    "title": "Zmluva zo dňa",
-                    "transCode": "schema.people.hockeyPlayerInfo.contractDate",
-                    "type": "string",
-                    "required": false,
-                    "render": {
-                        "component": "psui-datepicker"
-                    }
-                },
-                "registredAgentName": {
-                    "title": "Jméno registrovaného agenta",
-                    "transCode": "schema.people.hockeyPlayerInfo.registredAgentName",
-                    "type": "string",
-                    "required": false
-                },
-                "nonregisteredAgentName": {
-                    "title": "Jméno neregistrovaného agenta",
-                    "transCode": "schema.people.hockeyPlayerInfo.nonregisteredAgentName",
-                    "type": "string",
-                    "required": false
-                }
-            }
-        },
-        "membershipFeeInfo": {
-            "title": "Členské príspevky",
-            "transCode": "schema.people.membershipFeeInfo.title",
-            "type": "object",
-            "properties": {
-                "membershipType": {
-                    "title": "Typ členského príspevku",
-                    "transCode": "schema.people.membershipFeeInfo.membershipType",
-                    "type": "string",
-                    "enum": [
-                        "Extraliga do 23r.",
-                        "Extraliga nad 23r.",
-                        "1.NHL",
-                        "Agent",
-                        "Ostatní"
-                    ],
-                    "enumTransCodes":[
-                    	"schema.people.membershipFeeInfo.membershipType.extraligaUnder23",
-                    	"schema.people.membershipFeeInfo.membershipType.extraligaOver23",
-                    	"schema.people.membershipFeeInfo.membershipType.1.NHL",
-                    	"schema.people.membershipFeeInfo.membershipType.agent",
-                    	"schema.people.membershipFeeInfo.membershipType.other"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "paymentFrequency": {
-                    "title": "Frekvencia platby",
-                    "transCode": "schema.people.membershipFeeInfo.paymentFrequency",
-                    "type": "string",
-                    "enum": [
-                        "1xročne",
-                        "2xročne",
-                        "12xročne"
-                    ],
-                    "enumTransCodes":[
-                    	"schema.people.membershipFeeInfo.paymentFrequency.1xyear",
-                    	"schema.people.membershipFeeInfo.paymentFrequency.2xyear",
-                    	"schema.people.membershipFeeInfo.paymentFrequency.12xyear"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "membershipFee": {
-                    "title": "Výška členského príspevku",
-                    "transCode": "schema.people.membershipFeeInfo.membershipFee",
-                    "type": "string",
-                    "required": false
-                },
-                "notes": {
-                    "title": "Poznámka",
-                    "transCode": "schema.people.membershipFeeInfo.notes",
-                    "type": "string",
-                    "required": false,
-                    "large": true
-                }
-            }
-        },
-        "otherInfo": {
-            "title": "Ostatné údaje",
-            "transCode": "schema.people.otherInfo",
-            "type": "object",
-            "properties": {
-                "isPhotoPublic": {
-                    "title": "Je fotka verejná",
-                    "transCode": "schema.people.otherInfo.isPhotoPublic",
-                    "type": "boolean",
-                    "required": false
-                },
-                "idCardNumber": {
-                    "title": "Číslo OP",
-                    "transCode": "schema.people.otherInfo.idCardNumber",
-                    "type": "string",
-                    "required": false
-                },
-                "membershipStartDate": {
-                    "title": "Člen od",
-                    "transCode": "schema.people.otherInfo.membershipStartDate",
-                    "type": "string",
-                    "required": false,
-                    "render": {
-                        "component": "psui-datepicker"
-                    }
-                },
-                "membershipEndDate": {
-                    "title": "Člen do",
-                    "transCode": "schema.people.otherInfo.membershipEndDate",
-                    "type": "string",
-                    "required": false,
-                    "render": {
-                        "component": "psui-datepicker"
-                    }
-                },
-                "stateOfPerson": {
-                    "title": "Status",
-                    "transCode": "schema.people.stateOfPerson",
-                    "type": "string",
-                    "enum": [
-                        "aktivní",
-                        "neaktivní"
-                    ],
-                    "enumTransCodes": [
-                        "schema.people.stateOfPerson.active",
-                        "schema.people.stateOfPerson.inactive"
-                    ],
-                    "required": false,
-                    "render": {
-                        "component": "psui-selectbox",
-                        "searchable": true
-                    }
-                },
-                "note": {
-                    "title": "Poznámka",
-                    "transCode": "schema.people.otherInfo.note",
-                    "type": "string",
-                    "required": false,
-                    "large": true
-                }
-            }
-        }
-    }
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/people#person",
+	"table": "people",
+	"title": "person",
+	"_security": {
+		"_create": {
+			"_static": [
+				"Registry - write"
+			]
+		},
+		"_read": {
+			"_static": [
+				"Registry - read"
+			]
+		},
+		"_modify": {
+			"_static": [
+				"Registry - write"
+			]
+		}
+	},
+	"listFields": [
+		{
+			"field": "baseData.surName",
+			"title": "Priezvisko",
+			"transCode": "schema.people.listFields.surName"
+		},
+		{
+			"field": "baseData.name",
+			"title": "Meno",
+			"transCode": "schema.people.listFields.name"
+		},
+		{
+			"field": "contactInfo.email",
+			"title": "E-mail",
+			"xxtransCode": "schema.people.listFields.email"
+		}
+	],
+	"properties": {
+		"systemCredentials": {
+			"$ref": "uri://registries/security#systemCredentials"
+		},
+		"baseData": {
+			"title": "Základné údaje",
+			"transCode": "schema.people.baseData",
+			"type": "object",
+			"properties": {
+				"bornNumber": {
+					"title": "Rodné číslo",
+					"transCode": "schema.people.baseData.bornNumber",
+					"type": "string",
+					"required": true
+				},
+				"name": {
+					"title": "Meno",
+					"transCode": "schema.people.baseData.name",
+					"type": "string",
+					"required": true
+				},
+				"surName": {
+					"title": "Priezvisko",
+					"transCode": "schema.people.baseData.surName",
+					"type": "string",
+					"required": true
+				},
+				"bornName": {
+					"title": "Rodné priezvisko",
+					"transCode": "schema.people.baseData.bornName",
+					"type": "string",
+					"required": false
+				},
+				"title": {
+					"title": "Titul",
+					"transCode": "schema.people.baseData.title",
+					"type": "string",
+					"required": false
+				},
+				"birthDate": {
+					"title": "Dátum narodenia",
+					"transCode": "schema.people.baseData.birthDate",
+					"type": "date",
+					"required": true,
+					"render": {
+						"component": "psui-datepicker"
+					}
+				},
+				"gender": {
+					"title": "Pohlavie",
+					"transCode": "schema.people.baseData.gender",
+					"type": " string",
+					"enum": [
+						"Muž",
+						"Žena"
+					],
+					"required": true,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"nationality": {
+					"$ref": "uri://registries/nationality#country"
+				}
+			}
+		},
+		"photoInfo": {
+			"title": "Fotografie",
+			"transCode": "schema.people.photoInfo",
+			"type": "object",
+			"properties": {
+				"photo": {
+					"title": "Fotografia",
+					"transCode": "schema.people.photoInfo.photo",
+					"type": "string",
+					"required": false,
+					"render": {
+						"component": "psui-uploadable-image",
+						"height": 244,
+						"width": 205
+					}
+				}
+			}
+		},
+		"contactInfo": {
+			"title": "Kontaktné údaje",
+			"transCode": "schema.people.contactInfo",
+			"type": "object",
+			"properties": {
+				"street": {
+					"title": "Ulica",
+					"transCode": "schema.people.contactInfo.street",
+					"type": "string",
+					"required": true
+				},
+				"houseNumber": {
+					"title": "Číslo domu",
+					"transCode": "schema.people.contactInfo.houseNumber",
+					"type": "string",
+					"required": true
+				},
+				"city": {
+					"title": "Obec",
+					"transCode": "schema.people.contactInfo.city",
+					"type": "string",
+					"required": true
+				},
+				"zipCode": {
+					"title": "PSČ",
+					"transCode": "schema.people.contactInfo.zipCode",
+					"type": "string",
+					"required": true
+				},
+				"country": {
+					"title": "Štát",
+					"transCode": "schema.people.contactInfo.country",
+					"type": "string",
+					"required": true
+				},
+				"phoneNumber": {
+					"title": "Telefón",
+					"transCode": "schema.people.contactInfo.phoneNumber",
+					"type": "string",
+					"required": false
+				},
+				"mobileNumber": {
+					"title": "Mobil",
+					"transCode": "schema.people.contactInfo.mobileNumber",
+					"type": "string",
+					"required": false
+				},
+				"mobileNumber2": {
+					"title": "Mobil 2",
+					"transCode": "schema.people.contactInfo.mobileNumber2",
+					"type": "string",
+					"required": false
+				},
+				"email": {
+					"title": "E-mail",
+					"transCode": "schema.people.contactInfo.email",
+					"type": "string",
+					"required": false
+				},
+				"email2": {
+					"title": "E-mail 2",
+					"transCode": "schema.people.contactInfo.email2",
+					"type": "string",
+					"required": false
+				}
+			}
+		},
+		"bankInfo": {
+			"title": "Bankové spojenie",
+			"transCode": "schema.people.bankInfo",
+			"type": "object",
+			"properties": {
+				"bankAccount": {
+					"title": "Číslo účtu",
+					"transCode": "schema.people.bankInfo.bankAccount",
+					"type": "string",
+					"required": false
+				},
+				"bankCode": {
+					"title": "Kód banky",
+					"transCode": "schema.people.bankInfo.bankCode",
+					"type": "string",
+					"required": false
+				},
+				"iban": {
+					"title": "IBAN",
+					"transCode": "schema.people.bankInfo.iban",
+					"type": "string",
+					"required": false
+				},
+				"swift": {
+					"title": "SWIFT",
+					"transCode": "schema.people.bankInfo.swift",
+					"type": "string",
+					"required": false
+				}
+			}
+		},
+		"hockeyPlayerInfo": {
+			"title": "Profil hráča",
+			"transCode": "schema.people.hockeyPlayerInfo",
+			"type": "object",
+			"properties": {
+				"isActivePlayer": {
+					"title": "Je aktivní hráč",
+					"transCode": "schema.people.isActivePlayer",
+					"type": " string",
+					"enum": [
+						"Áno",
+						"Ne"
+					],
+					"enumTransCodes": [
+						"schema.people.isActivePlayer.yes",
+						"schema.people.isActivePlayer.no"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"isActiveCoach": {
+					"title": "Je aktivní trenér",
+					"transCode": "schema.people.isActiveCoach",
+					"type": " string",
+					"enum": [
+						"Áno",
+						"Ne"
+					],
+					"enumTransCodes": [
+						"schema.people.isActiveCoach.yes",
+						"schema.people.isActiveCoach.no"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"isActiveAgent": {
+					"title": "Je aktivní agent",
+					"transCode": "schema.people.isActiveAgent",
+					"type": " string",
+					"enum": [
+						"Áno",
+						"Ne"
+					],
+					"enumTransCodes": [
+						"schema.people.isActiveAgent.yes",
+						"schema.people.isActiveAgent.no"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"isActiveRepresentative": {
+					"title": "Je aktivní funkcionář",
+					"transCode": "schema.people.isActiveRepresentative",
+					"type": " string",
+					"enum": [
+						"Áno",
+						"Ne"
+					],
+					"enumTransCodes": [
+						"schema.people.isActiveRepresentative.yes",
+						"schema.people.isActiveRepresentative.no"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"isProAm": {
+					"title": "Je PRO-AM",
+					"transCode": "schema.people.isProAm",
+					"type": " string",
+					"enum": [
+						"Áno",
+						"Ne"
+					],
+					"enumTransCodes": [
+						"schema.people.isProAm.yes",
+						"schema.people.isProAm.no"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"isActivePartner": {
+					"title": "Je aktivní partner",
+					"transCode": "schema.people.isActivePartner",
+					"type": " string",
+					"enum": [
+						"Áno",
+						"Ne"
+					],
+					"enumTransCodes": [
+						"schema.people.isActivePartner.yes",
+						"schema.people.isActivePartner.no"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"competitionCategory": {
+					"title": "Kategorie soutěže",
+					"transCode": "schema.people.hockeyPlayerInfo.category",
+					"type": "string",
+					"enum": [
+						"Extraliga",
+						"1.NHL",
+						"Zahraničí"
+					],
+					"enumTransCodes": [
+						"schema.people.hockeyPlayerInfo.category.extraliga",
+						"schema.people.hockeyPlayerInfo.category.nhl",
+						"schema.people.hockeyPlayerInfo.category.foreign"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"clubName": {
+					"title": "Názov klubu",
+					"transCode": "schema.people.hockeyPlayerInfo.clubName",
+					"required": false,
+					"$objectLink": {
+						"registry": "organizations",
+						"name": "baseData.name"
+					}
+				},
+				"positionName": {
+					"title": "Post",
+					"transCode": "schema.people.hockeyPlayerInfo.positionName",
+					"type": "string",
+					"enum": [
+						"útočník",
+						"obránce",
+						"brankář",
+						"ostatní"
+					],
+					"enumTransCodes": [
+						"schema.people.hockeyPlayerInfo.positionName.forward",
+						"schema.people.hockeyPlayerInfo.positionName.defender",
+						"schema.people.hockeyPlayerInfo.positionName.goalkeeper",
+						"schema.people.hockeyPlayerInfo.positionName.other"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"dressNumber": {
+					"title": "Číslo dresu",
+					"transCode": "schema.people.hockeyPlayerInfo.dressNumber",
+					"type": "string",
+					"required": false
+				},
+				"playerHeight": {
+					"title": "Výška",
+					"transCode": "schema.people.hockeyPlayerInfo.playerHeight",
+					"type": "string",
+					"required": false
+				},
+				"playerWeight": {
+					"title": "Hmotnosť",
+					"transCode": "schema.people.hockeyPlayerInfo.playerWeight",
+					"type": "string",
+					"required": false
+				},
+				"stickHandling": {
+					"title": "Držanie hokejky",
+					"transCode": "schema.people.hockeyPlayerInfo.stickHandling",
+					"type": "string",
+					"enum": [
+						"levé",
+						"pravé"
+					],
+					"enumTransCodes": [
+						"schema.people.hockeyPlayerInfo.stickHandling.left",
+						"schema.people.hockeyPlayerInfo.stickHandling.right"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"dressSize": {
+					"title": "Velikost",
+					"transCode": "schema.people.hockeyPlayerInfo.dressSize",
+					"type": "string",
+					"enum": [
+						"M",
+						"L",
+						"XL",
+						"XXL"
+					],
+					"enumTransCodes": [
+						"schema.people.hockeyPlayerInfo.dressSize.M",
+						"schema.people.hockeyPlayerInfo.dressSize.L",
+						"schema.people.hockeyPlayerInfo.dressSize.XL",
+						"schema.people.hockeyPlayerInfo.dressSize.XXL"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"footSize": {
+					"title": "Číslo boty",
+					"transCode": "schema.people.hockeyPlayerInfo.footSize",
+					"type": "string",
+					"required": false
+				},
+				"nickName": {
+					"title": "Přezdívka",
+					"transCode": "schema.people.hockeyPlayerInfo.nickName",
+					"type": "string",
+					"required": false
+				},
+				"contractDate": {
+					"title": "Zmluva zo dňa",
+					"transCode": "schema.people.hockeyPlayerInfo.contractDate",
+					"type": "string",
+					"required": false,
+					"render": {
+						"component": "psui-datepicker"
+					}
+				},
+				"registredAgentName": {
+					"title": "Jméno registrovaného agenta",
+					"transCode": "schema.people.hockeyPlayerInfo.registredAgentName",
+					"type": "string",
+					"required": false
+				},
+				"nonregisteredAgentName": {
+					"title": "Jméno neregistrovaného agenta",
+					"transCode": "schema.people.hockeyPlayerInfo.nonregisteredAgentName",
+					"type": "string",
+					"required": false
+				}
+			}
+		},
+		"membershipFeeInfo": {
+			"title": "Členské príspevky",
+			"transCode": "schema.people.membershipFeeInfo.title",
+			"type": "object",
+			"properties": {
+				"membershipType": {
+					"title": "Typ členského príspevku",
+					"transCode": "schema.people.membershipFeeInfo.membershipType",
+					"type": "string",
+					"enum": [
+						"Extraliga do 23r.",
+						"Extraliga nad 23r.",
+						"1.NHL",
+						"Agent",
+						"Ostatní"
+					],
+					"enumTransCodes": [
+						"schema.people.membershipFeeInfo.membershipType.extraligaUnder23",
+						"schema.people.membershipFeeInfo.membershipType.extraligaOver23",
+						"schema.people.membershipFeeInfo.membershipType.1.NHL",
+						"schema.people.membershipFeeInfo.membershipType.agent",
+						"schema.people.membershipFeeInfo.membershipType.other"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"paymentFrequency": {
+					"title": "Frekvencia platby",
+					"transCode": "schema.people.membershipFeeInfo.paymentFrequency",
+					"type": "string",
+					"enum": [
+						"1xročne",
+						"2xročne",
+						"12xročne"
+					],
+					"enumTransCodes": [
+						"schema.people.membershipFeeInfo.paymentFrequency.1xyear",
+						"schema.people.membershipFeeInfo.paymentFrequency.2xyear",
+						"schema.people.membershipFeeInfo.paymentFrequency.12xyear"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"membershipFee": {
+					"title": "Výška členského príspevku",
+					"transCode": "schema.people.membershipFeeInfo.membershipFee",
+					"type": "string",
+					"required": false
+				},
+				"notes": {
+					"title": "Poznámka",
+					"transCode": "schema.people.membershipFeeInfo.notes",
+					"type": "string",
+					"required": false,
+					"large": true
+				}
+			}
+		},
+		"otherInfo": {
+			"title": "Ostatné údaje",
+			"transCode": "schema.people.otherInfo",
+			"type": "object",
+			"properties": {
+				"isPhotoPublic": {
+					"title": "Je fotka verejná",
+					"transCode": "schema.people.otherInfo.isPhotoPublic",
+					"type": "boolean",
+					"required": false
+				},
+				"idCardNumber": {
+					"title": "Číslo OP",
+					"transCode": "schema.people.otherInfo.idCardNumber",
+					"type": "string",
+					"required": false
+				},
+				"membershipStartDate": {
+					"title": "Člen od",
+					"transCode": "schema.people.otherInfo.membershipStartDate",
+					"type": "string",
+					"required": false,
+					"render": {
+						"component": "psui-datepicker"
+					}
+				},
+				"membershipEndDate": {
+					"title": "Člen do",
+					"transCode": "schema.people.otherInfo.membershipEndDate",
+					"type": "string",
+					"required": false,
+					"render": {
+						"component": "psui-datepicker"
+					}
+				},
+				"stateOfPerson": {
+					"title": "Status",
+					"transCode": "schema.people.stateOfPerson",
+					"type": "string",
+					"enum": [
+						"aktivní",
+						"neaktivní"
+					],
+					"enumTransCodes": [
+						"schema.people.stateOfPerson.active",
+						"schema.people.stateOfPerson.inactive"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"note": {
+					"title": "Poznámka",
+					"transCode": "schema.people.otherInfo.note",
+					"type": "string",
+					"required": false,
+					"large": true
+				}
+			}
+		}
+	}
 }
