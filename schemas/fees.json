@@ -94,13 +94,14 @@
 						"title": "Stav",
 						"transCode": "schema.fees.baseData.feePaymentStatus",
 						"type": "string",
-						"enum": [
+						"enum": ["Vystavené",
 							"Zaplatené",
 							"Nezaplatené"
 						],
 						"enumTransCodes": [
+							"schema.fees.baseData.feePaymentStatus.expected",
 							"schema.fees.baseData.feePaymentStatus.paid",
-							"schema.fees.baseData.feePaymentStatus.unpaid"
+							"schema.fees.baseData.feePaymentStatus.overdue"
 						],
 						"required": false,
 						"render": {

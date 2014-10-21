@@ -7,7 +7,7 @@ angular.module('registries')
 		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvencia platby",
 		"schema.people.membershipFeeInfo.membershipFee":"Výška členského príspevku",
 		"schema.people.membershipFeeInfo.notes":"Poznámka",
-		
+
     	"schema.people.membershipFeeInfo.membershipType.extraligaUnder23":"Extraliga do 23r.",
     	"schema.people.membershipFeeInfo.membershipType.extraligaOver23":"Extraliga nad 23r.",
     	"schema.people.membershipFeeInfo.membershipType.1.NHL":"1.NHL",
@@ -22,16 +22,16 @@ angular.module('registries')
         "schema.people.hockeyPlayerInfo.positionName.defender":"Obranca",
         "schema.people.hockeyPlayerInfo.positionName.goalkeeper":"Brankár",
         "schema.people.hockeyPlayerInfo.positionName.other":"Ostatní",
-        
+
 	    "schema.people.hockeyPlayerInfo.dressSize.M":"M",
 	    "schema.people.hockeyPlayerInfo.dressSize.L":"L",
 	    "schema.people.hockeyPlayerInfo.dressSize.XL":"XL",
 	    "schema.people.hockeyPlayerInfo.dressSize.XXL":"XXL",
-	    
+
         "schema.people.hockeyPlayerInfo.stickHandling.left":"Ľavé",
         "schema.people.hockeyPlayerInfo.stickHandling.right":"Pravé",
 
-		
+
 		"schema.fees.new":"Nový príspevok",
 		"schema.fees.baseData":"Základné údaje",
 		"schema.fees.baseData.member":"Člen",
@@ -43,9 +43,11 @@ angular.module('registries')
 		"schema.fees.baseData.dateOfPayment":"Dátum zaplatenia",
 		"schema.fees.baseData.notes":"Poznámka",
 		"schema.fees.baseData.feePaymentStatus":"Stav",
+
+		"schema.fees.baseData.feePaymentStatus.expected":"Vystavené",
 		"schema.fees.baseData.feePaymentStatus.paid":"Zaplatené",
-		"schema.fees.baseData.feePaymentStatus.unpaid":"Nezaplatené",
-		
+		"schema.fees.baseData.feePaymentStatus.overdue":"Nezaplatené",
+
 		"schema.fees.listFields.name":"Meno",
 		"schema.fees.listFields.surName":"Priezvisko",
 		"schema.fees.listFields.membershipFee":"Výška príspevku",
@@ -93,9 +95,9 @@ angular.module('registries')
 		"schema.people.stateOfPerson.inactive":"Neaktívny",
 		"schema.fees.view":"Členský príspevok",
 		"schema.fees.search":"Členský príspevok",
-		
-		
-		
+
+
+
 		"schema.org.new":"Nová organizácia",
 		"schema.org.view":"Organizácia",
 		"schema.member.new":"Nový člen",
@@ -157,13 +159,13 @@ angular.module('registries')
 		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvence platby",
 		"schema.people.membershipFeeInfo.membershipFee":"Výše členského příspěvku",
 		"schema.people.membershipFeeInfo.notes":"Poznámka",
-		
+
     	"schema.people.membershipFeeInfo.membershipType.extraligaUnder23":"Extraliga do 23r.",
     	"schema.people.membershipFeeInfo.membershipType.extraligaOver23":"Extraliga nad 23r.",
     	"schema.people.membershipFeeInfo.membershipType.1.NHL":"1.NHL",
     	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
     	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
-    	
+
 	"schema.people.membershipFeeInfo.paymentFrequency.1xyear": "1x ročne",
 	"schema.people.membershipFeeInfo.paymentFrequency.2xyear": "2x ročne",
 	"schema.people.membershipFeeInfo.paymentFrequency.12xyear": "12x ročne",
@@ -172,7 +174,7 @@ angular.module('registries')
         "schema.people.hockeyPlayerInfo.positionName.defender":"Obránce",
         "schema.people.hockeyPlayerInfo.positionName.goalkeeper":"Brankár",
         "schema.people.hockeyPlayerInfo.positionName.other":"Ostatní",
-        
+
 	    "schema.people.hockeyPlayerInfo.dressSize.M":"M",
 	    "schema.people.hockeyPlayerInfo.dressSize.L":"L",
 	    "schema.people.hockeyPlayerInfo.dressSize.XL":"XL",
@@ -181,7 +183,7 @@ angular.module('registries')
         "schema.people.hockeyPlayerInfo.stickHandling.left":"Levé",
         "schema.people.hockeyPlayerInfo.stickHandling.right":"Pravé",
 
-	
+
 		"schema.fees.new":"Nový príspevok",
 		"schema.fees.baseData":"Základné údaje",
 		"schema.fees.baseData.member":"Člen",
@@ -193,8 +195,10 @@ angular.module('registries')
 		"schema.fees.baseData.dateOfPayment":"Dátum zaplatenia",
 		"schema.fees.baseData.notes":"Poznámka",
 		"schema.fees.baseData.feePaymentStatus":"Stav",
+
+		"schema.fees.baseData.feePaymentStatus.expected":"Vystavené",
 		"schema.fees.baseData.feePaymentStatus.paid":"Zaplatené",
-		"schema.fees.baseData.feePaymentStatus.unpaid":"Nezaplatené",
+		"schema.fees.baseData.feePaymentStatus.overdue":"Nezaplatené",
 
 		"schema.fees.listFields.name":"Meno",
 		"schema.fees.listFields.surName":"Priezvisko",
@@ -204,7 +208,7 @@ angular.module('registries')
 		"schema.fees.listFields.membershipFeePaid":"Zaplatená čiastka",
 		"schema.fees.listFields.dateOfPayment":"Dátum zaplatenia",
 		"schema.fees.listFields.feePaymentStatus":"Stav",
-		
+
 		"schema.mailTemplate.basedata.title":"Základné údaje",
 		"schema.mailTemplate.basedata.name":"Názov vzoru",
 		"schema.mailTemplate.basedata.subject":"Predmet vzoru",
@@ -248,7 +252,7 @@ angular.module('registries')
 
 
 
-	
+
 		"schema.org.new":"Nová organizace",
 		"schema.org.view":"Organizace",
 		"schema.member.new":"Nový člen",
@@ -302,6 +306,6 @@ angular.module('registries')
 		"schema.people.otherInfo.membershipStartDate":"Člen od",
 		"schema.people.otherInfo.membershipEndDate":"Člen do",
 		"schema.people.otherInfo.note":"Poznámka"
-		
+
 	});
 }]);
