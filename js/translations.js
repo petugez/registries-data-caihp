@@ -14,9 +14,9 @@ angular.module('registries')
     	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
     	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
 
-	"schema.people.membershipFeeInfo.paymentFrequency.1xyear": "1x ročne",
-	"schema.people.membershipFeeInfo.paymentFrequency.2xyear": "2x ročne",
-	"schema.people.membershipFeeInfo.paymentFrequency.12xyear": "12x ročne",
+		"schema.people.membershipFeeInfo.paymentFrequency.1xyear": "1x ročne",
+		"schema.people.membershipFeeInfo.paymentFrequency.2xyear": "2x ročne",
+		"schema.people.membershipFeeInfo.paymentFrequency.12xyear": "12x ročne",
 
         "schema.people.hockeyPlayerInfo.positionName.forward":"Útočník",
         "schema.people.hockeyPlayerInfo.positionName.defender":"Obranca",
@@ -44,18 +44,43 @@ angular.module('registries')
 		"schema.fees.baseData.notes":"Poznámka",
 		"schema.fees.baseData.feePaymentStatus":"Stav",
 
-		"schema.fees.baseData.feePaymentStatus.expected":"Vystavené",
-		"schema.fees.baseData.feePaymentStatus.paid":"Zaplatené",
-		"schema.fees.baseData.feePaymentStatus.overdue":"Nezaplatené",
+		"schema.fees.baseData.feePaymentStatus.created": "Vystavený",
+		"schema.fees.baseData.feePaymentStatus.refunded":"Zaplatený",
+		"schema.fees.baseData.feePaymentStatus.differs":"Rozdiel",
+		"schema.fees.baseData.feePaymentStatus.overdue":"Po splatnosti",
+		"schema.fees.baseData.feePaymentStatus.canceled":"Zrušený",
 
 		"schema.fees.listFields.name":"Meno",
 		"schema.fees.listFields.surName":"Priezvisko",
-		"schema.fees.listFields.membershipFee":"Výška príspevku",
-		"schema.fees.listFields.dueDate":"Dátum splatnosti",
-		"schema.fees.listFields.variableSymbol":"Variabilný symbol",
-		"schema.fees.listFields.membershipFeePaid":"Zaplatená čiastka",
-		"schema.fees.listFields.dateOfPayment":"Dátum zaplatenia",
-		"schema.fees.listFields.feePaymentStatus":"Stav",
+	
+
+		"schema.payments.new": "Nová platba",
+		"schema.payments.search": "Platba",
+		"schema.payments.view": "Platba",
+
+
+		"schema.payments.baseData.accountingDate": "Učtovný dátum",
+		"schema.payments.baseData.amount": "Suma",
+		"schema.payments.baseData.constantSymbol": "Konšt.symbol",
+		"schema.payments.baseData.variableSymbol": "Var.symbol",
+		"schema.payments.baseData.specificSymbol": "Špec. Symbol",
+		"schema.payments.baseData.transactionMessage": "Správa",
+		"schema.payments.baseData.transactionType": "Typ transakcie",
+		"schema.payments.baseData.clientRef": "Klient ref.",
+		"schema.payments.baseData.clientName": "Meno klienta",
+		"schema.payments.baseData.bankCode": "Kod banky ",
+		"schema.payments.baseData.bankRef": "Banka ref",
+		"schema.payments.baseData.checksum": "Kontrolný súčet",
+		"schema.payments.baseData.status": "Stav",
+		"schema.payments.baseData.importId": "Ident.importu",
+		"schema.payments.baseData.fee":"Poplatok",
+		"schema.payments.listFields.accountingDate":"Učtovný dátum",
+		"schema.payments.listFields.clientName":"Meno klienta",
+		"schema.payments.listFields.variableSymbol":"Var.symbol",
+		"schema.payments.listFields.amount":"Suma",
+		"schema.payments.listFields.status":"Stav",
+
+
 
 		"schema.mailTemplate.basedata.title":"Základné údaje",
 		"schema.mailTemplate.basedata.name":"Názov vzoru",
@@ -96,6 +121,14 @@ angular.module('registries')
 		"schema.fees.view":"Členský príspevok",
 		"schema.fees.search":"Členský príspevok",
 
+		"schema.imports.new": "Novy import",
+		"schema.imports.search": "Import",
+		"schema.imports.view": "Import",
+		"schema.imports.baseData": "Zakladne informacie",
+		"schema.imports.file": "Súbor",
+		"schema.imports.type": "Typ súboru",
+		"schema.imports.author": "Importoval",
+		"schema.imports.createdOn":"Dátum importu",
 
 
 		"schema.org.new":"Nová organizácia",
@@ -150,7 +183,14 @@ angular.module('registries')
 		"schema.people.otherInfo.idCardNumber":"Číslo OP",
 		"schema.people.otherInfo.membershipStartDate":"Člen od",
 		"schema.people.otherInfo.membershipEndDate":"Člen do",
-		"schema.people.otherInfo.note":"Poznámka"
+		"schema.people.otherInfo.note":"Poznámka",
+
+		"menu.fees.new.lower.level" : "Novy poplatok",
+		"menu.fees.search.lower.level" : "Hladat poplatok",
+		"menu.imports.lower.level":"Hladat import",
+		"menu.imports.new.lower.level":"Novy import",
+		"menu.payments.new.lower.level":"Nova Platba",
+		"menu.payments.lower.level":"Hladat platbu",
 	});
 
 	$translateProvider.translations('cz', {
@@ -166,9 +206,9 @@ angular.module('registries')
     	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
     	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
 
-	"schema.people.membershipFeeInfo.paymentFrequency.1xyear": "1x ročne",
-	"schema.people.membershipFeeInfo.paymentFrequency.2xyear": "2x ročne",
-	"schema.people.membershipFeeInfo.paymentFrequency.12xyear": "12x ročne",
+		"schema.people.membershipFeeInfo.paymentFrequency.1xyear": "1x ročne",
+		"schema.people.membershipFeeInfo.paymentFrequency.2xyear": "2x ročne",
+		"schema.people.membershipFeeInfo.paymentFrequency.12xyear": "12x ročne",
 
         "schema.people.hockeyPlayerInfo.positionName.forward":"Útočník",
         "schema.people.hockeyPlayerInfo.positionName.defender":"Obránce",
@@ -184,30 +224,57 @@ angular.module('registries')
         "schema.people.hockeyPlayerInfo.stickHandling.right":"Pravé",
 
 
-		"schema.fees.new":"Nový príspevok",
-		"schema.fees.baseData":"Základné údaje",
+		"schema.fees.new":"Nový poplatek",
+		"schema.fees.view":"Poplatek",
+		"schema.fees.search":"Poplatek",
+		"schema.fees.baseData":"Základní údaje",
 		"schema.fees.baseData.member":"Člen",
-		"schema.fees.baseData.membershipFee":"Výška príspevku",
-		"schema.fees.baseData.setupDate":"Dátum vystavenia",
+		"schema.fees.baseData.membershipFee":"Výška poplatku",
+		"schema.fees.baseData.setupDate":"Datum vystavení",
 		"schema.fees.baseData.variableSymbol":"Variabilný symbol",
-		"schema.fees.baseData.dueDate":"Dátum splatnosti",
-		"schema.fees.baseData.membershipFeePaid":"Zaplatená čiastka",
-		"schema.fees.baseData.dateOfPayment":"Dátum zaplatenia",
+		"schema.fees.baseData.dueDate":"Datum splatnosti",
+		"schema.fees.baseData.membershipFeePaid":"Zaplacená čiastka",
+		"schema.fees.baseData.dateOfPayment":"Datum zaplacení",
 		"schema.fees.baseData.notes":"Poznámka",
 		"schema.fees.baseData.feePaymentStatus":"Stav",
 
-		"schema.fees.baseData.feePaymentStatus.expected":"Vystavené",
-		"schema.fees.baseData.feePaymentStatus.paid":"Zaplatené",
-		"schema.fees.baseData.feePaymentStatus.overdue":"Nezaplatené",
+
+
+		"schema.fees.baseData.feePaymentStatus.created": "Vytvorený",
+		"schema.fees.baseData.feePaymentStatus.refunded":"Zaplatený",
+		"schema.fees.baseData.feePaymentStatus.differs":"Rozdiel",
+		"schema.fees.baseData.feePaymentStatus.overdue":"Po splatnosti",
+		"schema.fees.baseData.feePaymentStatus.canceled":"Zrušený",
+
 
 		"schema.fees.listFields.name":"Meno",
 		"schema.fees.listFields.surName":"Priezvisko",
-		"schema.fees.listFields.membershipFee":"Výška príspevku",
-		"schema.fees.listFields.dueDate":"Dátum splatnosti",
-		"schema.fees.listFields.variableSymbol":"Variabilný symbol",
-		"schema.fees.listFields.membershipFeePaid":"Zaplatená čiastka",
-		"schema.fees.listFields.dateOfPayment":"Dátum zaplatenia",
-		"schema.fees.listFields.feePaymentStatus":"Stav",
+
+		"schema.payments.new": "Nová platba",
+		"schema.payments.search": "Platba",
+		"schema.payments.view": "Platba",
+
+		"schema.payments.baseData.accountingDate": "Učtovní datum",
+		"schema.payments.baseData.amount": "Suma",
+		"schema.payments.baseData.constantSymbol": "Konšt.symbol",
+		"schema.payments.baseData.variableSymbol": "Var.symbol",
+		"schema.payments.baseData.specificSymbol": "Špec. Symbol",
+		"schema.payments.baseData.transactionMessage": "Zpráva",
+		"schema.payments.baseData.transactionType": "Typ transakce",
+		"schema.payments.baseData.clientRef": "Klient ref.",
+		"schema.payments.baseData.clientName": "Meno klienta",
+		"schema.payments.baseData.bankCode": "Kód banky ",
+		"schema.payments.baseData.bankRef": "Banka ref",
+		"schema.payments.baseData.checksum": "Kontrolní součet",
+		"schema.payments.baseData.status": "Stav",
+		"schema.payments.baseData.importId": "Ident.importu",
+		"schema.payments.baseData.fee":"Poplatek",
+		"schema.payments.listFields.accountingDate":"Učtovní datum",
+		"schema.payments.listFields.clientName":"Meno klienta",
+		"schema.payments.listFields.variableSymbol":"Var.symbol",
+		"schema.payments.listFields.amount":"Suma",
+		"schema.payments.listFields.status":"Stav",
+
 
 		"schema.mailTemplate.basedata.title":"Základné údaje",
 		"schema.mailTemplate.basedata.name":"Názov vzoru",
@@ -249,7 +316,15 @@ angular.module('registries')
 		"schema.fees.view":"Členský príspevok",
 		"schema.fees.search":"Členský príspevok",
 
+		"schema.imports.new": "Nový import",
+		"schema.imports.search": "Import",
+		"schema.imports.view": "Import",
 
+		"schema.imports.baseData": "Zakladní informace",
+		"schema.imports.file": "Soubor",
+		"schema.imports.type": "Typ souboru",
+		"schema.imports.author": "Vytvořil",
+		"schema.imports.createdOn":"Datum importu",
 
 
 
@@ -305,7 +380,14 @@ angular.module('registries')
 		"schema.people.otherInfo.idCardNumber":"Číslo OP",
 		"schema.people.otherInfo.membershipStartDate":"Člen od",
 		"schema.people.otherInfo.membershipEndDate":"Člen do",
-		"schema.people.otherInfo.note":"Poznámka"
+		"schema.people.otherInfo.note":"Poznámka",
+
+		"menu.fees.new.lower.level" : "Nový poplatek",
+		"menu.fees.search.lower.level" : "Hledat poplatek",
+		"menu.imports.lower.level":"Hledat import",
+		"menu.imports.new.lower.level":"Nový import",
+		"menu.payments.new.lower.level":"Nova platba",
+		"menu.payments.lower.level":"Hledat platbu",
 
 	});
 }]);

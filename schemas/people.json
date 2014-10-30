@@ -62,7 +62,8 @@
 					"title": "Priezvisko",
 					"transCode": "schema.people.baseData.surName",
 					"type": "string",
-					"required": true
+					"required": true,
+					"$collate":true
 				},
 				"bornName": {
 					"title": "Rodné priezvisko",

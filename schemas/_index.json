@@ -16,5 +16,7 @@
 	"towns.json",
 	"regions.json",
 	"countries.json",
-	"login.json"
+	"login.json",
+	"imports.json",
+	"payments.json"
 ]

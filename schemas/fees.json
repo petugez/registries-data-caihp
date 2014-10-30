@@ -3,7 +3,7 @@
 	"id": "uri://registries/fees#",
 	"new": {
 		"title": "NOVÝ PŘÍSPĚVEK",
-		"xxtransCode": "schema.fees.new",
+		"transCode": "schema.fees.new",
 		"table": "fees",
 		"_security": {
 			"_create": {
@@ -22,10 +22,15 @@
 				]
 			}
 		},
+
+		"_fireEvents":{
+			"create": "event-fee-created",
+			"update": "event-fee-updated"
+		},
 		"properties": {
 			"baseData": {
 				"title": "ZÁKLADNÍ INFORMACE",
-				"xxtransCode": "schema.fees.baseData",
+				"transCode": "schema.fees.baseData",
 				"type": "object",
 				"properties": {
 					"member": {
@@ -41,37 +46,37 @@
 					},
 					"membershipFee": {
 						"title": "Výše příspěvku",
-						"xxtransCode": "schema.fees.baseData.membershipFee",
-						"type": "string",
-						"required": false
+						"transCode": "schema.fees.baseData.membershipFee",
+						"type": "number",
+						"required": true
 					},
 					"setupDate": {
 						"title": "Datum vystavení",
-						"xxtransCode": "schema.fees.baseData.setupDate",
+						"transCode": "schema.fees.baseData.setupDate",
 						"type": "string",
-						"required": false,
+						"required": true,
 						"render": {
 							"component": "psui-datepicker"
 						}
 					},
 					"variableSymbol": {
 						"title": "Variabilní symbol",
-						"xxtransCode": "schema.fees.baseData.variableSymbol",
+						"transCode": "schema.fees.baseData.variableSymbol",
 						"type": "string",
-						"required": false
+						"required": true
 					},
 					"dueDate": {
 						"title": "Datum splatnosti",
-						"xxtransCode": "schema.fees.baseData.dueDate",
+						"transCode": "schema.fees.baseData.dueDate",
 						"type": "string",
-						"required": false,
+						"required": true,
 						"render": {
 							"component": "psui-datepicker"
 						}
 					},
 					"membershipFeePaid": {
 						"title": "Zaplacená částka",
-						"xxtransCode": "schema.fees.baseData.membershipFeePaid",
+						"transCode": "schema.fees.baseData.membershipFeePaid",
 						"type": "string",
 						"required": false
 					},
@@ -94,14 +99,19 @@
 						"title": "Stav",
 						"transCode": "schema.fees.baseData.feePaymentStatus",
 						"type": "string",
-						"enum": ["Vystavené",
-							"Zaplatené",
-							"Nezaplatené"
+						"enum": ["created",
+								 "refunded",
+								 "differs",
+								 "overdue",
+								 "canceled"
+
 						],
 						"enumTransCodes": [
-							"schema.fees.baseData.feePaymentStatus.expected",
-							"schema.fees.baseData.feePaymentStatus.paid",
-							"schema.fees.baseData.feePaymentStatus.overdue"
+							"schema.fees.baseData.feePaymentStatus.created",
+							"schema.fees.baseData.feePaymentStatus.refunded",
+							"schema.fees.baseData.feePaymentStatus.differs",
+							"schema.fees.baseData.feePaymentStatus.overdue",
+							"schema.fees.baseData.feePaymentStatus.canceled"
 						],
 						"required": false,
 						"render": {
@@ -111,6 +121,7 @@
 					}
 				}
 			}
+
 		}
 	},
 	"view": {
@@ -158,7 +169,7 @@
 			}
 		},
 		"title": "Členský příspěvek",
-		"xxtransCode": "schema.fees.search",
+		"transCode": "schema.fees.search",
 		"listFields": [
 			{
 				"field": "baseData.member.refData.name",
@@ -173,32 +184,32 @@
 			{
 				"field": "baseData.membershipFee",
 				"title": "Výška príspevku",
-				"transCode": "schema.fees.listFields.membershipFee"
+				"transCode": "schema.fees.baseData.membershipFee"
 			},
 			{
 				"field": "baseData.dueDate",
 				"title": "Dátum splatnosti",
-				"transCode": "schema.fees.listFields.dueDate"
+				"transCode": "schema.fees.baseData.dueDate"
 			},
 			{
 				"field": "baseData.variableSymbol",
 				"title": "Variabilný symbol",
-				"transCode": "schema.fees.listFields.variableSymbol"
+				"transCode": "schema.fees.baseData.variableSymbol"
 			},
 			{
 				"field": "baseData.membershipFeePaid",
 				"title": "Zaplatená čiastka",
-				"transCode": "schema.fees.listFields.membershipFeePaid"
+				"transCode": "schema.fees.baseData.membershipFeePaid"
 			},
 			{
 				"field": "baseData.dateOfPayment",
 				"title": "Dátum zaplatenia",
-				"transCode": "schema.fees.listFields.dateOfPayment"
+				"transCode": "schema.fees.baseData.dateOfPayment"
 			},
 			{
 				"field": "baseData.feePaymentStatus",
 				"title": "Stav",
-				"transCode": "schema.fees.listFields.feePaymentStatus"
+				"transCode": "schema.fees.baseData.feePaymentStatus"
 			}
 		],
 		"properties": {

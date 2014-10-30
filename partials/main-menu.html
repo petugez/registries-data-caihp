@@ -8,8 +8,16 @@
 			</li>
 			<li psui-accordion-element title="{{'menu.fees.title' | translate}}" icon-class="glyphicon-credit-card">
 				<ul>
-					<li><a href="#/registry/new/{{'uri://registries/fees#'|uriescape}}"><span>{{'menu.new.lower.level' | translate}}</span></a></li>
-					<li><a href="#/search/{{'uri://registries/fees#'|uriescape}}"><span>{{'menu.search.lower.level' | translate}}</span></a></li>
+					<li><a href="#/registry/new/{{'uri://registries/fees#'|uriescape}}"><span>{{'menu.fees.new.lower.level' | translate}}</span></a></li>
+					<li><a href="#/search/{{'uri://registries/fees#'|uriescape}}"><span>{{'menu.fees.search.lower.level' | translate}}</span></a></li>
+
+
+					<li><a href="#/registry/new/{{'uri://registries/payments'|uriescape}}"><span>{{'menu.payments.new.lower.level' | translate}}</span></a></li>
+					<li><a href="#/search/{{'uri://registries/payments'|uriescape}}"><span>{{'menu.payments.lower.level' | translate}}</span></a></li>
+
+					<li><a href="#/registry/new/{{'uri://registries/imports'|uriescape}}"><span>{{'menu.imports.new.lower.level' | translate}}</span></a></li>
+					<li><a href="#/search/{{'uri://registries/imports'|uriescape}}"><span>{{'menu.imports.lower.level' | translate}}</span></a></li>
+
 				</ul>
 			</li>
 			<li psui-accordion-element title="{{'menu.company.title' | translate}}" icon-class="glyphicon-home">
@@ -31,19 +39,9 @@
 					<li><a href="#/security/user/edit"><span>{{'menu.user.permissions.lower.level' | translate}}</span></a></li>
 					<li><a href="#/registry/new/{{'uri://registries/security#profilesmaster'|uriescape}}"><span>{{'menu.new.profile.lower.level' | translate}}</span></a></li>
 					<li><a href="#/security/profile/edit"><span>{{'menu.profiles.lower.level' | translate}}</span></a></li>
-					
-				</ul>
-			</li>
-<!--
-			<li psui-accordion-element title="{{'menu.massmailing.title' | translate}}" icon-class="glyphicon-send">
-				<ul>
-				<li><a href="#/registry/new/{{'uri://registries/mailtemplates#master'|uriescape}}"><span>{{'menu.massmailing.new.lower.level' | translate}}</span></a></li>	
-					<li><a href="#/search/{{'uri://registries/mailtemplates#master'|uriescape}}"><span>{{'menu.massmailing.search.lower.level' | translate}}</span></a></li>
-					<li><a href="#/massmailing"><span>{{'menu.massmailing.send.title' | translate}}</span></a></li>
-				</ul>
-			</li>
--->
 
+				</ul>
+			</li>
 			<li psui-accordion-element title="{{'menu.statistics.title' | translate}}" icon-class="glyphicon-stats">
 				<ul>
 					<li><a href="#/statistics"><span>{{'menu.statistics.show.title' | translate}}</span></a></li>
