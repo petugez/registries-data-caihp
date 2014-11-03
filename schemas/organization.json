@@ -22,11 +22,6 @@
 	},
 	"listFields": [
 		{
-			"field": "id",
-			"title": "ID",
-			"transCode": "schema.org.listFields.id"
-		},
-		{
 			"field": "baseData.name",
 			"title": "Meno",
 			"transCode": "schema.org.listFields.name"
@@ -42,6 +37,24 @@
 					"transCode": "schema.org.baseData.name",
 					"type": "string",
 					"required": true
+				},
+				"competitionCategory": {
+					"title": "Kategorie soutěže",
+					"transCode": "schema.people.hockeyPlayerInfo.category",
+					"type": "string",
+					"enum": [
+						"Extraliga",
+						"1.NHL"
+					],
+					"enumTransCodes": [
+						"schema.people.hockeyPlayerInfo.category.extraliga",
+						"schema.people.hockeyPlayerInfo.category.nhl"
+					],
+					"required": false,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
 				}
 			}
 		}
