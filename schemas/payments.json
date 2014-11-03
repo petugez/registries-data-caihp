@@ -107,8 +107,12 @@
 						"transCode": "schema.payments.baseData.transactionType",
 						"type": "string",
 						"enum": [
-							"C",
-							"D"
+							"V hotovosti",
+							"Bankový prevod"
+						],
+						"enumTransCodes": [
+							"schema.payments.baseData.transactionType.cash",
+							"schema.payments.baseData.transactionType.bank"
 						],
 						"render": {
 							"component": "psui-selectbox",
@@ -136,9 +140,7 @@
 						"transCode": "schema.payments.baseData.importId",
 						"type": "string",
 						"required": false
-
 					},
-
 					"fee": {
 						"title": "Poplatek",
 						"transCode": "schema.payments.baseData.fee",
@@ -149,8 +151,6 @@
 							"member": "baseData.membershipFee"
 						}
 					},
-
-
 					"checksum":{
 						"title": "Kontrolny sucet",
 						"transCode": "schema.payments.baseData.checksum",

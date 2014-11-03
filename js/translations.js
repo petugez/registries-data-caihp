@@ -248,6 +248,9 @@ angular.module('registries')
 		"menu.payments.new.lower.level":"Nova Platba",
 		"menu.payments.lower.level":"Hladat platbu",
 
+		"schema.payments.baseData.transactionType.bank":"Bankový prevod",
+		"schema.payments.baseData.transactionType.cash":"V hotovosti",
+
 		"schema.statistics.view":"Štatistiky",
 		"schema.statistics.baseData":"Základné údaje",
 		"schema.statistics.member.count":"Počet členov",
@@ -511,6 +514,9 @@ angular.module('registries')
 		"menu.imports.new.lower.level":"Nový import",
 		"menu.payments.new.lower.level":"Nova platba",
 		"menu.payments.lower.level":"Hledat platbu",
+
+		"schema.payments.baseData.transactionType.bank":"Bankovní převod",
+		"schema.payments.baseData.transactionType.cash":"V hotovosti",
 
 		"schema.statistics.view":"Statistiky",
 		"schema.statistics.baseData":"Základní statistiky",
