@@ -52,7 +52,7 @@ angular.module('registries')
 
 		"schema.fees.listFields.name":"Meno",
 		"schema.fees.listFields.surName":"Priezvisko",
-	
+
 
 		"schema.payments.new": "Nová platba",
 		"schema.payments.search": "Platba",
@@ -229,11 +229,11 @@ angular.module('registries')
 		"schema.fees.search":"Poplatek",
 		"schema.fees.baseData":"Základní údaje",
 		"schema.fees.baseData.member":"Člen",
-		"schema.fees.baseData.membershipFee":"Výška poplatku",
+		"schema.fees.baseData.membershipFee":"Výše poplatku",
 		"schema.fees.baseData.setupDate":"Datum vystavení",
-		"schema.fees.baseData.variableSymbol":"Variabilný symbol",
+		"schema.fees.baseData.variableSymbol":"Variabilní symbol",
 		"schema.fees.baseData.dueDate":"Datum splatnosti",
-		"schema.fees.baseData.membershipFeePaid":"Zaplacená čiastka",
+		"schema.fees.baseData.membershipFeePaid":"Zaplacená částka",
 		"schema.fees.baseData.dateOfPayment":"Datum zaplacení",
 		"schema.fees.baseData.notes":"Poznámka",
 		"schema.fees.baseData.feePaymentStatus":"Stav",
@@ -247,8 +247,8 @@ angular.module('registries')
 		"schema.fees.baseData.feePaymentStatus.canceled":"Zrušený",
 
 
-		"schema.fees.listFields.name":"Meno",
-		"schema.fees.listFields.surName":"Priezvisko",
+		"schema.fees.listFields.name":"Jméno",
+		"schema.fees.listFields.surName":"Příjmení",
 
 		"schema.payments.new": "Nová platba",
 		"schema.payments.search": "Platba",
@@ -258,7 +258,7 @@ angular.module('registries')
 		"schema.payments.baseData.amount": "Suma",
 		"schema.payments.baseData.constantSymbol": "Konšt.symbol",
 		"schema.payments.baseData.variableSymbol": "Var.symbol",
-		"schema.payments.baseData.specificSymbol": "Špec. Symbol",
+		"schema.payments.baseData.specificSymbol": "Špec. symbol",
 		"schema.payments.baseData.transactionMessage": "Zpráva",
 		"schema.payments.baseData.transactionType": "Typ transakce",
 		"schema.payments.baseData.clientRef": "Klient ref.",
@@ -270,7 +270,7 @@ angular.module('registries')
 		"schema.payments.baseData.importId": "Ident.importu",
 		"schema.payments.baseData.fee":"Poplatek",
 		"schema.payments.listFields.accountingDate":"Učtovní datum",
-		"schema.payments.listFields.clientName":"Meno klienta",
+		"schema.payments.listFields.clientName":"Jméno klienta",
 		"schema.payments.listFields.variableSymbol":"Var.symbol",
 		"schema.payments.listFields.amount":"Suma",
 		"schema.payments.listFields.status":"Stav",

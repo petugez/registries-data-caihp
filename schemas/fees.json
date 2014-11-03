@@ -63,7 +63,8 @@
 						"title": "Variabilní symbol",
 						"transCode": "schema.fees.baseData.variableSymbol",
 						"type": "string",
-						"required": true
+						"required": false,
+						"$VariableSymbol":true
 					},
 					"dueDate": {
 						"title": "Datum splatnosti",
@@ -183,27 +184,27 @@
 			},
 			{
 				"field": "baseData.membershipFee",
-				"title": "Výška príspevku",
+				"title": "Výše poplatku",
 				"transCode": "schema.fees.baseData.membershipFee"
 			},
 			{
 				"field": "baseData.dueDate",
-				"title": "Dátum splatnosti",
+				"title": "Datum splatnosti",
 				"transCode": "schema.fees.baseData.dueDate"
 			},
 			{
 				"field": "baseData.variableSymbol",
-				"title": "Variabilný symbol",
+				"title": "Variabilní symbol",
 				"transCode": "schema.fees.baseData.variableSymbol"
 			},
 			{
 				"field": "baseData.membershipFeePaid",
-				"title": "Zaplatená čiastka",
+				"title": "Zaplacená částka",
 				"transCode": "schema.fees.baseData.membershipFeePaid"
 			},
 			{
 				"field": "baseData.dateOfPayment",
-				"title": "Dátum zaplatenia",
+				"title": "Datum zaplacení",
 				"transCode": "schema.fees.baseData.dateOfPayment"
 			},
 			{
