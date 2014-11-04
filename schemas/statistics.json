@@ -20,11 +20,6 @@
 					"title":"Pocet clenov",
 					"transCode":"schema.statistics.member.count",
 					"type":"Decimal"
-				},
-				"numberOfWomen":{
-					"title":"Pocet zien",
-					"transCode":"schema.statistics.women.count",
-					"type":"Decimal"
 				}
 			}
 		},
