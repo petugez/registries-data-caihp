@@ -531,7 +531,7 @@
 				"membershipFee": {
 					"title": "Výška členského príspevku",
 					"transCode": "schema.people.membershipFeeInfo.membershipFee",
-					"type": "string",
+					"type": "number",
 					"required": false
 				},
 				"notes": {

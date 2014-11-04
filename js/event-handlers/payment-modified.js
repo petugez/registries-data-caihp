@@ -119,7 +119,7 @@
 	};
 
 	PaymentHandler.prototype.getType=function(){
-		return ['event-payment-updated','event-payemnt-created'];
+		return ['event-payment-updated','event-payment-created'];
 	};
 
 

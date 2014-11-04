@@ -78,7 +78,7 @@
 					"membershipFeePaid": {
 						"title": "Zaplacená částka",
 						"transCode": "schema.fees.baseData.membershipFeePaid",
-						"type": "string",
+						"type": "number",
 						"required": false
 					},
 					"dateOfPayment": {
