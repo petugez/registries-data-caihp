@@ -166,7 +166,7 @@
 			{
 				"field": "baseData.file",
 				"title": "Soubor",
-				"transCode": "schema.imports.type"
+				"transCode": "schema.imports.file"
 			}
 		],
 		"properties": {
