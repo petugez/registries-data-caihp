@@ -5,28 +5,9 @@
 		"title": "NOVÝ PŘÍSPĚVEK",
 		"transCode": "schema.fees.new",
 		"table": "fees",
-		"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
-				]
-			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
-			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
-			}
-		},
 
-		"_fireEvents":{
-			"create": "event-fee-created",
-			"update": "event-fee-updated"
-		},
+		"_saveBySchema":"uri://registries/fees#view",
+
 		"properties": {
 			"baseData": {
 				"title": "ZÁKLADNÍ INFORMACE",
@@ -59,33 +40,12 @@
 							"component": "psui-datepicker"
 						}
 					},
-					"variableSymbol": {
-						"title": "Variabilní symbol",
-						"transCode": "schema.fees.baseData.variableSymbol",
-						"type": "string",
-						"required": false,
-						"$VariableSymbol":true
-					},
+
 					"dueDate": {
 						"title": "Datum splatnosti",
 						"transCode": "schema.fees.baseData.dueDate",
 						"type": "string",
 						"required": true,
-						"render": {
-							"component": "psui-datepicker"
-						}
-					},
-					"membershipFeePaid": {
-						"title": "Zaplacená částka",
-						"transCode": "schema.fees.baseData.membershipFeePaid",
-						"type": "number",
-						"required": false
-					},
-					"dateOfPayment": {
-						"title": "Dátum zaplatenia",
-						"transCode": "schema.fees.baseData.dateOfPayment",
-						"type": "string",
-						"required": false,
 						"render": {
 							"component": "psui-datepicker"
 						}
@@ -129,6 +89,12 @@
 		"title": "Členský príspevok",
 		"transCode": "schema.fees.view",
 		"table": "fees",
+
+		"_fireEvents":{
+			"create": "event-fee-created",
+			"update": "event-fee-updated"
+		},
+
 		"_security": {
 			"_create": {
 				"_static": [
@@ -147,7 +113,100 @@
 			}
 		},
 		"properties": {
-			"$ref": "uri://registries/fees#new/properties"
+			"baseData": {
+				"title": "ZÁKLADNÍ INFORMACE",
+				"transCode": "schema.fees.baseData",
+				"type": "object",
+				"properties": {
+					"member": {
+						"title": "Člen",
+						"transCode": "schema.fees.baseData.member",
+						"type": "string",
+						"required": true,
+						"$objectLink": {
+							"registry": "people",
+							"surName": "baseData.surName",
+							"name": "baseData.name"
+						}
+					},
+					"membershipFee": {
+						"title": "Výše příspěvku",
+						"transCode": "schema.fees.baseData.membershipFee",
+						"type": "number",
+						"required": true
+					},
+					"setupDate": {
+						"title": "Datum vystavení",
+						"transCode": "schema.fees.baseData.setupDate",
+						"type": "string",
+						"required": true,
+						"render": {
+							"component": "psui-datepicker"
+						}
+					},
+					"variableSymbol": {
+						"title": "Variabilní symbol",
+						"transCode": "schema.fees.baseData.variableSymbol",
+						"type": "string",
+						"required": true,
+						"$VariableSymbol":true
+					},
+					"dueDate": {
+						"title": "Datum splatnosti",
+						"transCode": "schema.fees.baseData.dueDate",
+						"type": "string",
+						"required": true,
+						"render": {
+							"component": "psui-datepicker"
+						}
+					},
+					"membershipFeePaid": {
+						"title": "Zaplacená částka",
+						"transCode": "schema.fees.baseData.membershipFeePaid",
+						"type": "number",
+						"required": false
+					},
+					"dateOfPayment": {
+						"title": "Dátum zaplatenia",
+						"transCode": "schema.fees.baseData.dateOfPayment",
+						"type": "string",
+						"required": false,
+						"render": {
+							"component": "psui-datepicker"
+						}
+					},
+					"notes": {
+						"title": "Poznámka",
+						"transCode": "schema.fees.baseData.notes",
+						"type": "string",
+						"required": false
+					},
+					"feePaymentStatus": {
+						"title": "Stav",
+						"transCode": "schema.fees.baseData.feePaymentStatus",
+						"type": "string",
+						"enum": ["created",
+								"refunded",
+								"differs",
+								"overdue",
+								"canceled"
+
+						],
+						"enumTransCodes": [
+							"schema.fees.baseData.feePaymentStatus.created",
+							"schema.fees.baseData.feePaymentStatus.refunded",
+							"schema.fees.baseData.feePaymentStatus.differs",
+							"schema.fees.baseData.feePaymentStatus.overdue",
+							"schema.fees.baseData.feePaymentStatus.canceled"
+						],
+						"required": false,
+						"render": {
+							"component": "psui-selectbox",
+							"searchable": true
+						}
+					}
+				}
+			}
 		}
 	},
 	"search": {
