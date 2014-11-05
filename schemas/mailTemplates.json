@@ -8,7 +8,12 @@
 		{
 			"field": "baseData.name",
 			"title": "Nazov vzoru",
-			"transCode":"schema.mailtemplates.listFields.title"
+			"transCode":"schema.mailTemplate.basedata.name"
+		},
+		{
+			"field": "baseData.subjectTemplate",
+			"title": "Predment",
+			"transCode":"schema.mailTemplate.basedata.subject"
 		}
 	],
 	"_security": {

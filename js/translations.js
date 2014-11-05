@@ -54,10 +54,10 @@ angular.module('registries')
 		"menu.statistics.title":"Štatistiky",
 		"menu.statistics.show.title":"Zobraziť",
 		"menu.massmailing.title":"Hromadná pošta",
-		"menu.massmailing.new.lower.level":"Nový vzor", 
+		"menu.massmailing.new.lower.level":"Nový vzor",
 		"menu.massmailing.search.lower.level":"Vyhľadáť",
 		"menu.massmailing.send.title":"Odoslať",
-		
+
 		"schema.people.membershipFeeInfo.title":"Členské príspevky",
 		"schema.people.membershipFeeInfo.membershipType":"Typ členského príspevku",
 		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvencia platby",
@@ -186,6 +186,11 @@ angular.module('registries')
 		"schema.imports.author": "Importoval",
 		"schema.imports.createdOn":"Dátum importu",
 
+		"schema.mailTemplate.basedata.name":"Názov vzoru",
+		"schema.mailTemplate.basedata.subject":"Predment správy",
+		"schema.mailTemplate.basedata.text":"Text správy(plaintext)",
+		"schema.mailTemplate.basedata.html":"Text správy(html)",
+
 
 		"schema.org.new":"Nová organizácia",
 		"schema.org.view":"Organizácia",
@@ -269,7 +274,6 @@ angular.module('registries')
 		"menu.schedule.title":"Termín stretnutia",
 		"menu.match.title": "Stretnutie",
 		"menu.delegateReport.title": "Správa delegáta",
-		"menu.statistics.title":"Statistiky",
 		"menu.company.title": "Organizace",
 		"menu.my.profile.title": "Můj profil",
 		"menu.permissions.title": "Oprávnění",
@@ -302,10 +306,16 @@ angular.module('registries')
 		"menu.statistics.title":"Statistiky",
 		"menu.statistics.show.title":"Zobrazit",
 		"menu.massmailing.title":"Hromadní pošta",
-		"menu.massmailing.new.lower.level":"Nový vzor", 
+		"menu.massmailing.new.lower.level":"Nový vzor",
 		"menu.massmailing.search.lower.level":"Vyhledat vzor",
 		"menu.massmailing.send.title":"Odeslat",
-	
+
+		"schema.mailTemplate.basedata.name":"Název šablony",
+		"schema.mailTemplate.basedata.subject":"Predment mailu",
+
+		"schema.mailTemplate.basedata.text":"Telo - plaintext",
+		"schema.mailTemplate.basedata.html":"Telo - html",
+
 		"schema.people.membershipFeeInfo.title":"Členské příspěvky",
 		"schema.people.membershipFeeInfo.membershipType":"Typ členského příspěvku",
 		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvence platby",
@@ -317,7 +327,7 @@ angular.module('registries')
     	"schema.people.membershipFeeInfo.membershipType.1.NHL":"1.NHL",
     	"schema.people.membershipFeeInfo.membershipType.agent":"Agent",
     	"schema.people.membershipFeeInfo.membershipType.other":"Ostatní",
-    	
+
 		"schema.people.membershipFeeInfo.paymentFrequency.1xyear": "1x ročne",
 		"schema.people.membershipFeeInfo.paymentFrequency.2xyear": "2x ročne",
 		"schema.people.membershipFeeInfo.paymentFrequency.12xyear": "12x ročne",
@@ -438,7 +448,10 @@ angular.module('registries')
 		"schema.imports.author": "Vytvořil",
 		"schema.imports.createdOn":"Datum importu",
 
-
+		"schema.mailTemplate.basedata.name":"Název vzoru",
+		"schema.mailTemplate.basedata.subject":"Předmět zprávy",
+		"schema.mailTemplate.basedata.text":"Text zprávy(plaintext)",
+		"schema.mailTemplate.basedata.html":"Text zprávy(html)",
 
 		"schema.org.new":"Nová organizace",
 		"schema.org.view":"Organizace",
