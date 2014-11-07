@@ -274,7 +274,7 @@
 		],
 		"properties": {
 			"baseData": {
-				"$ref": "uri://registries/fees#new/properties/baseData"
+				"$ref": "uri://registries/fees#view/properties/baseData"
 			}
 		}
 	}
