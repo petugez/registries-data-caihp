@@ -6,6 +6,8 @@
 		"transCode": "schema.imports.new",
 		"table": "imports",
 
+		"_saveBySchema":"uri://registries/imports#view",
+
 		"_fireEvents":{
             "create": "event-import-created"
         },
@@ -54,13 +56,6 @@
 							"component": "psui-selectbox",
 							"searchable": true
 						}
-					},
-
-					"createdOn": {
-						"title": "Vytvorene",
-						"transCode": "schema.imports.createdOn",
-						"type": "Date",
-						"$timestamp" : true
 					}
 				}
 			}
