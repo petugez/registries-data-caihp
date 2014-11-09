@@ -36,7 +36,8 @@
 					"title": "Názov organizacie",
 					"transCode": "schema.org.baseData.name",
 					"type": "string",
-					"required": true
+					"required": true,
+					"$collate":true
 				},
 				"competitionCategory": {
 					"title": "Kategorie soutěže",
