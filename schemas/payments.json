@@ -47,7 +47,12 @@
 						"title": "Ref. klient",
 						"transCode": "schema.payments.baseData.clientName",
 						"type": "string",
-						"required": true
+						"required": true,
+						"$objectLink": {
+							"registry": "people",
+							"surName": "baseData.surName",
+							"name": "baseData.name"
+						}
 					},
 					"clientRef": {
 						"title": "Ref. klient",
@@ -102,8 +107,12 @@
 						"transCode": "schema.payments.baseData.transactionType",
 						"type": "string",
 						"enum": [
-							"C",
-							"D"
+							"V hotovosti",
+							"Bankový prevod"
+						],
+						"enumTransCodes": [
+							"schema.payments.baseData.transactionType.cash",
+							"schema.payments.baseData.transactionType.bank"
 						],
 						"render": {
 							"component": "psui-selectbox",
@@ -131,9 +140,7 @@
 						"transCode": "schema.payments.baseData.importId",
 						"type": "string",
 						"required": false
-
 					},
-
 					"fee": {
 						"title": "Poplatek",
 						"transCode": "schema.payments.baseData.fee",
@@ -144,8 +151,6 @@
 							"member": "baseData.membershipFee"
 						}
 					},
-
-
 					"checksum":{
 						"title": "Kontrolny sucet",
 						"transCode": "schema.payments.baseData.checksum",
