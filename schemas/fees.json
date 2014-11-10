@@ -21,8 +21,8 @@
 						"required": true,
 						"$objectLink": {
 							"registry": "people",
-							"surName": "baseData.surName",
-							"name": "baseData.name"
+							"surName": "baseData.surName.v",
+							"name": "baseData.name.v"
 						}
 					},
 					"membershipFee": {
@@ -125,8 +125,8 @@
 						"required": true,
 						"$objectLink": {
 							"registry": "people",
-							"surName": "baseData.surName",
-							"name": "baseData.name"
+							"surName": "baseData.surName.v",
+							"name": "baseData.name.v"
 						}
 					},
 					"membershipFee": {
