@@ -47,7 +47,12 @@
 						"title": "Ref. klient",
 						"transCode": "schema.payments.baseData.clientName",
 						"type": "string",
-						"required": true
+						"required": true,
+						"$objectLink": {
+							"registry": "people",
+							"surName": "baseData.surName",
+							"name": "baseData.name"
+						}
 					},
 					"clientRef": {
 						"title": "Ref. klient",
