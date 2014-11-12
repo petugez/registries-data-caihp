@@ -57,6 +57,9 @@
             "baseData": {
                 "$ref": "uri://registries/people#person/properties/baseData"
             },
+	    "hockeyPlayerInfo": {
+                "$ref": "uri://registries/people#person/properties/hockeyPlayerInfo"
+            },
             "contactInfo": {
                 "$ref": "uri://registries/people#person/properties/contactInfo"
             },
