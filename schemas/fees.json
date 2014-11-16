@@ -148,8 +148,7 @@
 						"title": "Variabilní symbol",
 						"transCode": "schema.fees.baseData.variableSymbol",
 						"type": "string",
-						"required": true,
-						"$VariableSymbol":true
+						"required": true
 					},
 					"dueDate": {
 						"title": "Datum splatnosti",

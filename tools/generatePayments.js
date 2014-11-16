@@ -104,14 +104,23 @@ function iterateData(uid,data,udc,feeDao,renderService,createdOn,cb){
 }
 
 function saveItem(uid,item,udc,feeDao,renderService,index,createdOn,callback){
+		// //GENERATED UNIQUE VS
+		// var bill = {"import":{id:uid}, baseData:{member:{registry:'people',oid:item.id},membershipFee:Number(item.membershipFeeInfo.membershipFee),
+		// 					setupDate:dateUtils.dateToReverse(createdOn),
+		// 					dueDate:dateUtils.dateToReverse(dateUtils.dateAddDays(createdOn,15)),feePaymentStatus:'created',variableSymbol:createVS(dateUtils.dateToReverse(createdOn),index)}};
 
 		var bill = {"import":{id:uid}, baseData:{member:{registry:'people',oid:item.id},membershipFee:Number(item.membershipFeeInfo.membershipFee),
 							setupDate:dateUtils.dateToReverse(createdOn),
-							dueDate:dateUtils.dateToReverse(dateUtils.dateAddDays(createdOn,15)),feePaymentStatus:'created',variableSymbol:createVS(dateUtils.dateToReverse(createdOn),index)}};
+							dueDate:dateUtils.dateToReverse(dateUtils.dateAddDays(createdOn,15)),feePaymentStatus:'created',variableSymbol:bornNumberToVS(item.baseData.bornNumber)}};
 
 		createMail(renderService,index,item,bill);
 		feeDao.save(bill,callback);
 
+}
+
+function bornNumberToVS(bn){
+	if (!bn) return "";
+	else return bn.replace('/','');
 }
 
 function createVS(createdOnReverse, index){

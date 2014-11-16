@@ -22,85 +22,92 @@
 					this.ctx.mongoDriver,
 					{collectionName: 'payments'}
 			);
-			if (payment.baseData.status!='Standalone'){
 
-				var feesDao = new universalDaoModule.UniversalDao(
-					this.ctx.mongoDriver,
-					{collectionName: 'fees'}
-				);
+			var feesDao = new universalDaoModule.UniversalDao(
+				this.ctx.mongoDriver,
+				{collectionName: 'fees'}
+			);
 
-				//Search for fee
+			if (payment.baseData.status==='Paired' || !payment.baseData.status ){
+
+				if ( !payment.baseData.fee || !payment.baseData.fee.oid ){
+						payment.baseData.status='Unpaired';
+						paymentDao.save(payment,function(err,data){
+
+						});
+				} else {
+					feesDao.get(payment.baseData.fee.oid,function(err,fee){
+						if (payment.baseData.amount!=fee.baseData.membershipFee || payment.baseData.variableSymbol!=fee.baseData.variableSymbol){
+							var feeId= payment.baseData.fee.oid ;
+
+							payment.baseData.status='Unpaired';
+							payment.baseData.fee=null;
+
+							paymentDao.save(payment,function(err,data){
+									eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{entityId:feeId},[feeId],function(err,data){
+											if (err){
+												log.err(err);
+												return;
+											}
+											log.debug('fees recount scheduled');
+										} );
+							});
+						}
+					});
+				}
+			}
+			if (payment.baseData.status==='Standalone'){
+				//has paired fee
+				if (payment.baseData.fee.oid){
+					feesDao.get(payment.baseData.fee.oid,function(err,payment){
+							var feeId= payment.baseData.fee.oid ;
+							payment.baseData.fee=null;
+							paymentDao.save(payment,function(err,data){
+									eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{entityId:feeId},[feeId],function(err,data){
+											if (err){
+												log.err(err);
+												return;
+											}
+											log.debug('fees recount scheduled');
+										} );
+							});
+					});
+				}
+				return;
+			}
+
+			if (payment.baseData.status==='Unpaired'){
+
+				//search for pair
 				var qf=QueryFilter.create();
 				qf.addCriterium("baseData.variableSymbol","eq",payment.baseData.variableSymbol);
-				qf.addCriterium("baseData.feePaymentStatus","neq",'canceled');
+				qf.addCriterium("baseData.feePaymentStatus","in",["created","overdue"]);
+				qf.addCriterium("baseData.membershipFee","eq",payment.baseData.amount);
+				qf.addSort('baseData.dueDate','asc');
 				feesDao.find(qf,function(err,fees){
-					//update fee.payments
-					if (err){
-						log.error(err);
-						return;
-					}
-					var feesIdToRecount=[];
-
-					if ( fees.length===1 ){
+					if ( fees.length>0 ){
 						//update payment.status
 						var fee=fees[0];
 
-							if (payment.baseData.feeId && payment.baseData.feeId!=fee.id){
-								//throw recount old;
-								feesIdToRecount.push(payment.baseData.feeId);
-							}
-							payment.baseData.fee={registry:"fees",oid:fee.id};
-							payment.baseData.status='Paired';
-							feesIdToRecount.push(payment.baseData.fee.oid);
-							//throw  recount this
-					} else {
-
-						if (payment.baseData.fee){
-							feesIdToRecount.push(payment.baseData.fee.oid);
+						if (payment.baseData.feeId && payment.baseData.feeId!=fee.id){
+							//throw recount old;
+							feesIdToRecount.push(payment.baseData.feeId);
 						}
-						payment.baseData.status='Unpaired';
-						payment.baseData.fee=null;
-					}
+						payment.baseData.fee={registry:"fees",oid:fee.id};
+						payment.baseData.status='Paired';
 
-					paymentDao.save(payment,function(err,data){
-						feesIdToRecount.map(function(feeId){
-
-							eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{entityId:feeId},[feeId],function(err,data){
+						paymentDao.save(payment,function(err,data){
+								eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{entityId:fee.id},[],function(err,data){
 									if (err){
 										log.err(err);
 										return;
 									}
 									log.debug('fees recount scheduled');
-								} );
+								});
 						});
-
-					});
+					}
 				});
-
-			}else {
-
-				if (payment.baseData.fee){
-					feesIdToRecount.push(payment.baseData.fee.oid);
-				}
-				payment.baseData.status='Unpaired';
-				payment.baseData.fee=null;
-
-				paymentDao.save(payment,function(err,data){
-					feesIdToRecount.map(function(feeId){
-
-						eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{entityId:feeId},[feeId],function(err,data){
-								if (err){
-									log.err(err);
-									return;
-								}
-								log.debug('fees recount scheduled');
-							} );
-					});
-
-				});
-
 			}
-
 		};
 	}
 
@@ -111,6 +118,9 @@
 		if ("event-payment-created" === event.eventType){
 			this.handlePaymentChange(event);
 		} else
+		if ("event-payment-unpair"===event.eventType){
+			this.handlePaymentChange(event);
+		}else
 		if ("event-payment-updated" === event.eventType){
 				this.handlePaymentChange(event);
 		} else{}
