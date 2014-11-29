@@ -8,6 +8,41 @@
         "_security": {
             "$ref": "uri://registries/people#person/_security"
         },
+        "_fireEvents":{
+            "create": "event-player-created",
+            "update": "event-player-updated"
+        },
+        "properties": {
+            "baseData": {
+                "$ref": "uri://registries/people#person/properties/baseData"
+            },
+            "contactInfo": {
+                "$ref": "uri://registries/people#person/properties/contactInfo"
+            },
+            "photoInfo": {
+                "$ref": "uri://registries/people#person/properties/photoInfo"
+            },
+            "hockeyPlayerInfo": {
+                "$ref": "uri://registries/people#person/properties/hockeyPlayerInfo"
+            },
+            "otherInfo": {
+                "$ref": "uri://registries/people#person/properties/otherInfo"
+            }
+        }
+    },
+    "view": {
+        "title": "Člen",
+        "transCode": "schema.member.view",
+        "table": "people",
+
+        "_fireEvents":{
+            "create": "event-player-created",
+            "update": "event-player-updated"
+        },
+
+        "_security": {
+            "$ref": "uri://registries/people#person/_security"
+        },
         "properties": {
             "baseData": {
                 "$ref": "uri://registries/people#person/properties/baseData"
@@ -30,17 +65,6 @@
             "otherInfo": {
                 "$ref": "uri://registries/people#person/properties/otherInfo"
             }
-        }
-    },
-    "view": {
-        "title": "Člen",
-        "transCode": "schema.member.view",
-        "table": "people",
-        "_security": {
-            "$ref": "uri://registries/people#person/_security"
-        },
-        "properties": {
-            "$ref": "uri://registries/member#new/properties"
         }
     },
     "search": {
