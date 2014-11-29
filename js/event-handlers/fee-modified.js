@@ -44,8 +44,18 @@
 						} );
 				}
 
-				if (!entity.baseData.variableSymbol && entity.baseData.member && entity.baseData.member.oid){
+				var update=false;
+				if (!entity.baseData.feePaymentStatus ){
+					entity.baseData.feePaymentStatus='created';
+					update=true;
+				}
+
+				if ( entity.baseData.member && entity.baseData.member.oid && !entity.baseData.variableSymbol || update  ){
 					peopleDao.get(entity.baseData.member.oid,function(err,person){
+
+						if (!entity.baseData.club && person.hockeyPlayerInfo.clubName){
+							entity.baseData.club=person.hockeyPlayerInfo.clubName;
+						}
 						var vs=(person.baseData.bornNumber || '0000000000');
 						entity.baseData.variableSymbol = vs.replace('/','');
 						feesDao.save(entity,function(err,data){

@@ -25,6 +25,7 @@
 							"name": "baseData.name.v"
 						}
 					},
+
 					"membershipFee": {
 						"title": "Výše příspěvku",
 						"transCode": "schema.fees.baseData.membershipFee",
@@ -55,30 +56,6 @@
 						"transCode": "schema.fees.baseData.notes",
 						"type": "string",
 						"required": false
-					},
-					"feePaymentStatus": {
-						"title": "Stav",
-						"transCode": "schema.fees.baseData.feePaymentStatus",
-						"type": "string",
-						"enum": ["created",
-								 "refunded",
-								 "differs",
-								 "overdue",
-								 "canceled"
-
-						],
-						"enumTransCodes": [
-							"schema.fees.baseData.feePaymentStatus.created",
-							"schema.fees.baseData.feePaymentStatus.refunded",
-							"schema.fees.baseData.feePaymentStatus.differs",
-							"schema.fees.baseData.feePaymentStatus.overdue",
-							"schema.fees.baseData.feePaymentStatus.canceled"
-						],
-						"required": false,
-						"render": {
-							"component": "psui-selectbox",
-							"searchable": true
-						}
 					}
 				}
 			}
@@ -126,6 +103,15 @@
 						"$objectLink": {
 							"registry": "people",
 							"surName": "baseData.surName.v",
+							"name": "baseData.name.v"
+						}
+					},
+					"club": {
+						"title": "Názov klubu",
+						"transCode": "schema.people.hockeyPlayerInfo.clubName",
+						"required": false,
+						"$objectLink": {
+							"registry": "organizations",
 							"name": "baseData.name.v"
 						}
 					},
@@ -241,25 +227,33 @@
 				"transCode": "schema.fees.listFields.surName"
 			},
 			{
+				"field": "baseData.club.refData.name",
+				"title": "Klub",
+				"transCode": "schema.org.baseData.name"
+			},
+			{
 				"field": "baseData.membershipFee",
 				"title": "Výše poplatku",
 				"transCode": "schema.fees.baseData.membershipFee"
-			},
-			{
-				"field": "baseData.dueDate",
-				"title": "Datum splatnosti",
-				"transCode": "schema.fees.baseData.dueDate"
-			},
-			{
-				"field": "baseData.variableSymbol",
-				"title": "Variabilní symbol",
-				"transCode": "schema.fees.baseData.variableSymbol"
 			},
 			{
 				"field": "baseData.membershipFeePaid",
 				"title": "Zaplacená částka",
 				"transCode": "schema.fees.baseData.membershipFeePaid"
 			},
+			{
+				"field": "baseData.variableSymbol",
+				"title": "Variabilní symbol",
+				"transCode": "schema.fees.baseData.variableSymbol"
+			},
+
+			{
+				"field": "baseData.dueDate",
+				"title": "Datum splatnosti",
+				"transCode": "schema.fees.baseData.dueDate"
+			},
+
+
 			{
 				"field": "baseData.dateOfPayment",
 				"title": "Datum zaplacení",
@@ -270,6 +264,7 @@
 				"title": "Stav",
 				"transCode": "schema.fees.baseData.feePaymentStatus"
 			}
+
 		],
 		"properties": {
 			"baseData": {
