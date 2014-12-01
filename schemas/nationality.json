@@ -8,6 +8,7 @@
 		"type": "string",
 		"enum": [
 			"CZE",
+			"SVK",
 			"AFG",
 			"ALA",
 			"ALB",
@@ -260,6 +261,7 @@
 		],
 		"enumTransCodes": [
 			"schemas.countries.enum.CZE",
+			"schemas.countries.enum.SVK",
 			"schemas.countries.enum.AFG",
 			"schemas.countries.enum.ALA",
 			"schemas.countries.enum.ALB",
