@@ -84,8 +84,6 @@
 
 			var eventScheduler = this.ctx.eventScheduler;
 
-			log.error('event',event);
-
 			feesDao.get(event.entityId,function(err,fee){
 				if (err){
 					log.error(err);
@@ -94,83 +92,95 @@
 				if (!fee){
 					return;
 				}
+				feesDao.getWithTimeLock(fee,3000,function(err,feeLock){
 
-				//find allready paired payments
-				var qf=QueryFilter.create();
-				qf.addCriterium("baseData.fee.oid","eq",fee.id);
-				qf.addSort('baseData.accountingDate','asc');
-
-				paymentsDao.find(qf,function(err,data){
 					if (err){
-						log.error('paymentsDao',err);
+						log.error(err);
 						return;
 					}
 
-					var found=false;
-					var paymentsToUnpair=[];
-					var payments=data.map(function(payment){
-						if (payment.baseData.variableSymbol===fee.baseData.variableSymbol && payment.baseData.amount===fee.baseData.membershipFee && !found ){
-							found=true;
-							fee.baseData.membershipFeePaid=payment.baseData.amount;
-							fee.baseData.dateOfPayment=payment.baseData.accountingDate;
-						} else {
-							paymentsToUnpair.push(payment);
-						}
-					});
-
-					if (found){
-						fee.baseData.feePaymentStatus='refunded';
-					} else {
-						fee.baseData.membershipFeePaid=0;
-						fee.baseData.dateOfPayment=null;
-
-						if (fee.baseData.feePaymentStatus!='canceled'){
-							if (fee.baseData.dueDate && dateUtils.isReverseAfterNow(fee.baseData.dueDate)){
-								fee.baseData.feePaymentStatus='created';
-							} else {
-								fee.baseData.feePaymentStatus='overdue';
-							}
-						 //check for addepts
-
-
-							var qf=QueryFilter.create();
-							qf.addCriterium("baseData.variableSymbol","eq",fee.baseData.variableSymbol);
-							qf.addCriterium("baseData.amount","eq",fee.baseData.membershipFee);
-							qf.addCriterium("baseData.status","eq",'Unpaired');
-							qf.addSort('baseData.accountingDate','asc');
-							qf.setLimit(1);
-
-							paymentsDao.find(qf,function(err,data){
-								if (data.length===1){
-									eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-payment-updated',{entity:data[0]},[],function(err,data){
-											if (err){
-												log.err(err);
-												return;
-											}
-											log.debug('payment repair scheduled');
-									});
-								}
-
-							});
-						}
+					if (!feeLock){
+						log.debug('fees: not able to get lock');
+						return;
 					}
-					feesDao.save(fee,function(err,data){
+
+					//find allready paired payments
+					var qf=QueryFilter.create();
+					qf.addCriterium("baseData.fee.oid","eq",fee.id);
+					qf.addSort('baseData.accountingDate','asc');
+
+					paymentsDao.find(qf,function(err,data){
 						if (err){
-							log.error(err);
+							log.error('paymentsDao',err);
 							return;
 						}
 
-						paymentsToUnpair.map(function(payment){
-							eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-payment-updated',{entity:payment},[],function(err,data){
-									if (err){
-										log.err(err);
-										return;
-									}
-									log.debug('payment repair scheduled');
-								} );
+						fee.baseData.membershipFeePaid=0;
+						fee.baseData.dateOfPayment=null;
+
+						var found=false;
+						var paymentsToUnpair=[];
+						var payments=data.map(function(payment){
+							if (!found && payment.baseData.variableSymbol===fee.baseData.variableSymbol && payment.baseData.amount===fee.baseData.membershipFee && !found ){
+								found=true;
+								fee.baseData.membershipFeePaid=payment.baseData.amount;
+								fee.baseData.dateOfPayment=payment.baseData.accountingDate;
+								fee.baseData.membershipFeePaid=payment.baseData.amount;
+							} else {
+								paymentsToUnpair.push(payment);
+							}
 						});
-						log.debug('fee updated',fee);
-					});
+						console.log('schould be unpaired',payments);
+
+						if (found){
+							fee.baseData.feePaymentStatus='refunded';
+						} else {
+							if (fee.baseData.feePaymentStatus!='canceled'){
+								if (fee.baseData.dueDate && dateUtils.isReverseAfterNow(fee.baseData.dueDate)){
+									fee.baseData.feePaymentStatus='created';
+								} else {
+									fee.baseData.feePaymentStatus='overdue';
+								}
+							 //check for addepts
+								var qf=QueryFilter.create();
+								qf.addCriterium('baseData.variableSymbol','eq',fee.baseData.variableSymbol);
+								qf.addCriterium('baseData.amount','eq',fee.baseData.membershipFee);
+								qf.addCriterium('baseData.status','eq','Unpaired');
+								qf.addSort('baseData.accountingDate','asc');
+								qf.setLimit(1);
+
+								paymentsDao.find(qf,function(err,data){
+									if (data.length===1){
+										eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-payment-updated',{entity:data[0]},[],function(err,data){
+												if (err){
+													log.err(err);
+													return;
+												}
+												log.debug('payment repair scheduled');
+										});
+									}
+
+								});
+							}
+						}
+						feesDao.save(fee,function(err,data){
+							if (err){
+								log.error(err);
+								return;
+							}
+
+							paymentsToUnpair.map(function(payment){
+								eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-payment-unpair',{entity:payment},[],function(err,data){
+										if (err){
+											log.err(err);
+											return;
+										}
+										log.debug('payment repair scheduled');
+									} );
+							});
+							log.debug('fee updated',fee);
+						});
+				});
 				});
 			});
 
@@ -181,11 +191,11 @@
 	FeeHandler.prototype.handle = function(event) {
 		log.info('handle called',event,FeeHandler.prototype.ctx);
 
-		if ("event-fee-created" === event.eventType){
+		if ('event-fee-created' === event.eventType){
 			this.handleFeeChange(event);
-		}else if ("event-fee-updated" === event.eventType){
+		}else if ('event-fee-updated' === event.eventType){
 			this.handleFeeChange(event);
-		} else if ("event-fee-recount"===event.eventType ){
+		} else if ('event-fee-recount'===event.eventType ){
 			this.handleFeeRecount(event);
 		}
 	};

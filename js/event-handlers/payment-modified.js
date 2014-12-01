@@ -11,12 +11,41 @@
 		this.ctx=ctx;
 		var self=this;
 
-		this.handlePaymentChange=function(event){
-
+		this.handleUnpair=function(event){
 			var eventScheduler = this.ctx.eventScheduler;
 
 			var payment = event.entity;
 
+
+			var paymentDao = new universalDaoModule.UniversalDao(
+					this.ctx.mongoDriver,
+					{collectionName: 'payments'}
+			);
+
+			payment.fee=null;
+			payment.baseData.status='Unpaired';
+
+			paymentDao.save(payment,function(err,data){
+				if (err){
+					log.error(err);
+					return;
+				}
+
+				eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-payment-updated',{entity:payment},[payment.id],function(err,data){
+						if (err){
+							log.err(err);
+							return;
+						}
+						log.debug('fees recount scheduled');
+					} );
+			});
+		};
+
+
+		this.handlePaymentChange=function(event){
+
+			var eventScheduler = this.ctx.eventScheduler;
+			var payment = event.entity;
 
 			var paymentDao = new universalDaoModule.UniversalDao(
 					this.ctx.mongoDriver,
@@ -80,9 +109,9 @@
 
 				//search for pair
 				var qf=QueryFilter.create();
-				qf.addCriterium("baseData.variableSymbol","eq",payment.baseData.variableSymbol);
-				qf.addCriterium("baseData.feePaymentStatus","in",["created","overdue"]);
-				qf.addCriterium("baseData.membershipFee","eq",payment.baseData.amount);
+				qf.addCriterium('baseData.variableSymbol','eq',payment.baseData.variableSymbol);
+				qf.addCriterium('baseData.feePaymentStatus','in',['created','overdue']);
+				qf.addCriterium('baseData.membershipFee','eq',payment.baseData.amount);
 				qf.addSort('baseData.dueDate','asc');
 				feesDao.find(qf,function(err,fees){
 					if ( fees.length>0 ){
@@ -93,7 +122,7 @@
 							//throw recount old;
 							feesIdToRecount.push(payment.baseData.feeId);
 						}
-						payment.baseData.fee={registry:"fees",oid:fee.id};
+						payment.baseData.fee={registry:'fees',oid:fee.id};
 						payment.baseData.status='Paired';
 
 						paymentDao.save(payment,function(err,data){
@@ -111,27 +140,24 @@
 		};
 	}
 
-
 	PaymentHandler.prototype.handle = function(event) {
 		log.info('handle called',event,PaymentHandler.prototype.ctx);
 
-		if ("event-payment-created" === event.eventType){
+		if ('event-payment-created' === event.eventType){
 			this.handlePaymentChange(event);
 		} else
-		if ("event-payment-unpair"===event.eventType){
-			this.handlePaymentChange(event);
+		if ('event-payment-unpair'===event.eventType){
+			this.handleUnpair(event);
 		}else
-		if ("event-payment-updated" === event.eventType){
+		if ('event-payment-updated' === event.eventType){
 				this.handlePaymentChange(event);
 		} else{}
-
 
 	};
 
 	PaymentHandler.prototype.getType=function(){
-		return ['event-payment-updated','event-payment-created'];
+		return ['event-payment-updated','event-payment-created','event-payment-unpair'];
 	};
-
 
 	module.exports = function( ctx) {
 		return new PaymentHandler(ctx);
