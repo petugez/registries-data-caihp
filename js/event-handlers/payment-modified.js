@@ -11,133 +11,81 @@
 		this.ctx=ctx;
 		var self=this;
 
-		this.handleUnpair=function(event){
-			var eventScheduler = this.ctx.eventScheduler;
 
-			var payment = event.entity;
+		this.handlePaymentChange=function (event){
 
+				var eventScheduler = this.ctx.eventScheduler;
+				var payment = event.entity;
 
-			var paymentDao = new universalDaoModule.UniversalDao(
-					this.ctx.mongoDriver,
-					{collectionName: 'payments'}
-			);
-
-			payment.fee=null;
-			payment.baseData.status='Unpaired';
-
-			paymentDao.save(payment,function(err,data){
-				if (err){
-					log.error(err);
-					return;
-				}
-
-				eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-payment-updated',{entity:payment},[payment.id],function(err,data){
-						if (err){
-							log.err(err);
-							return;
-						}
-						log.debug('fees recount scheduled');
-					} );
-			});
-		};
+				var paymentDao = new universalDaoModule.UniversalDao(
+						this.ctx.mongoDriver,
+						{collectionName: 'payments'}
+				);
+				var peopleDao = new universalDaoModule.UniversalDao(
+						this.ctx.mongoDriver,
+						{collectionName: 'people'}
+				);
 
 
-		this.handlePaymentChange=function(event){
 
-			var eventScheduler = this.ctx.eventScheduler;
-			var payment = event.entity;
 
-			var paymentDao = new universalDaoModule.UniversalDao(
-					this.ctx.mongoDriver,
-					{collectionName: 'payments'}
-			);
+				if (payment.baseData.variableSymbol){
 
-			var feesDao = new universalDaoModule.UniversalDao(
-				this.ctx.mongoDriver,
-				{collectionName: 'fees'}
-			);
+					//search for pair
+					var qf=QueryFilter.create();
+					var vsToSearch=payment.baseData.variableSymbol.substring(0,6)+'/'+payment.baseData.variableSymbol.substring(6);
+					qf.addCriterium('baseData.bornNumber','eq',vsToSearch);
+					peopleDao.find(qf,function(err,data){
+						if (data.length==1){
+							if (!payment.baseData.member || !payment.baseData.member.oid){
+								payment.baseData.member={registry:'people',oid:data[0].id};
+							}
+							payment.baseData.status='Paired';
 
-			if (payment.baseData.status==='Paired' || !payment.baseData.status ){
-
-				if ( !payment.baseData.fee || !payment.baseData.fee.oid ){
-						payment.baseData.status='Unpaired';
-						paymentDao.save(payment,function(err,data){
-
-						});
-				} else {
-					feesDao.get(payment.baseData.fee.oid,function(err,fee){
-						if (payment.baseData.amount!=fee.baseData.membershipFee || payment.baseData.variableSymbol!=fee.baseData.variableSymbol){
-							var feeId= payment.baseData.fee.oid ;
-
-							payment.baseData.status='Unpaired';
-							payment.baseData.fee=null;
-
-							paymentDao.save(payment,function(err,data){
-									eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{entityId:feeId},[feeId],function(err,data){
-											if (err){
-												log.err(err);
-												return;
-											}
-											log.debug('fees recount scheduled');
-										} );
-							});
-						}
-					});
-				}
-			}
-			if (payment.baseData.status==='Standalone'){
-				//has paired fee
-				if (payment.baseData.fee.oid){
-					feesDao.get(payment.baseData.fee.oid,function(err,payment){
-							var feeId= payment.baseData.fee.oid ;
-							payment.baseData.fee=null;
-							paymentDao.save(payment,function(err,data){
-									eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{entityId:feeId},[feeId],function(err,data){
-											if (err){
-												log.err(err);
-												return;
-											}
-											log.debug('fees recount scheduled');
-										} );
-							});
-					});
-				}
-				return;
-			}
-
-			if (payment.baseData.status==='Unpaired'){
-
-				//search for pair
-				var qf=QueryFilter.create();
-				qf.addCriterium('baseData.variableSymbol','eq',payment.baseData.variableSymbol);
-				qf.addCriterium('baseData.feePaymentStatus','in',['created','overdue']);
-				qf.addCriterium('baseData.membershipFee','eq',payment.baseData.amount);
-				qf.addSort('baseData.dueDate','asc');
-				feesDao.find(qf,function(err,fees){
-					if ( fees.length>0 ){
-						//update payment.status
-						var fee=fees[0];
-
-						if (payment.baseData.feeId && payment.baseData.feeId!=fee.id){
-							//throw recount old;
-							feesIdToRecount.push(payment.baseData.feeId);
-						}
-						payment.baseData.fee={registry:'fees',oid:fee.id};
-						payment.baseData.status='Paired';
-
-						paymentDao.save(payment,function(err,data){
-								eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{entityId:fee.id},[],function(err,data){
+							eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{peopleId:data[0].id},[payment.id],function(err,data){
 									if (err){
 										log.err(err);
 										return;
 									}
 									log.debug('fees recount scheduled');
-								});
+								} );
+						}
+						else {
+							payment.baseData.status='Unpaired';
+							payment.baseData.member=null;
+						}
+						paymentDao.save(payment,function(err,data){
+							log.debug('payemnt status updated');
+						});
+
+					});
+				} else {
+
+					if (payment.baseData.member && payment.baseData.member.oid){
+
+
+						peopleDao.get(payment.baseData.member.oid,function(err,user){
+
+							payment.baseData.clientName= user.baseData.name.v+' '+user.baseData.surName.v;
+							payment.baseData.status='Paired';
+
+							eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{peopleId:payment.baseData.member.oid},[payment.id],function(err,data){
+									if (err){
+										log.err(err);
+										return;
+									}
+									log.debug('fees recount scheduled');
+								} );
+							paymentDao.save(payment,function(err,data){
+								log.debug('payemnt status updated');
+							});
 						});
 					}
-				});
-			}
+				}
 		};
+
+
+
 	}
 
 	PaymentHandler.prototype.handle = function(event) {
@@ -146,9 +94,7 @@
 		if ('event-payment-created' === event.eventType){
 			this.handlePaymentChange(event);
 		} else
-		if ('event-payment-unpair'===event.eventType){
-			this.handleUnpair(event);
-		}else
+
 		if ('event-payment-updated' === event.eventType){
 				this.handlePaymentChange(event);
 		} else{}

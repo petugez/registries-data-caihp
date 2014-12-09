@@ -39,11 +39,18 @@
 							"component": "psui-datepicker"
 						}
 					},
-					"clientName": {
-						"title": "Ref. klient",
-						"transCode": "schema.payments.baseData.clientName",
+
+
+					"member": {
+						"title": "Člen",
+						"transCode": "schema.fees.baseData.member",
 						"type": "string",
-						"required": true
+						"required": true,
+						"$objectLink": {
+							"registry": "people",
+							"surName": "baseData.surName.v",
+							"name": "baseData.name.v"
+						}
 					},
 					"bankCode": {
 						"title": "Ref. banka",
@@ -55,12 +62,6 @@
 						"title": "Suma",
 						"transCode": "schema.payments.baseData.amount",
 						"type": "number",
-						"required": true
-					},
-					"variableSymbol": {
-						"title": "Variabilny Symbol",
-						"transCode": "schema.payments.baseData.variableSymbol",
-						"type": "string",
 						"required": true
 					},
 					"constantSymbol": {
@@ -80,20 +81,6 @@
 						"transCode": "schema.payments.baseData.transactionMessage",
 						"type": "string",
 						"required": false
-					},
-					"transactionType": {
-						"title": "Datum zauctovania",
-						"transCode": "schema.payments.baseData.transactionType",
-						"type": "string",
-						"enum": [
-							"C",
-							"D"
-						],
-						"render": {
-							"component": "psui-selectbox",
-							"searchable": true
-						},
-						"required": true
 					}
 
 				}
@@ -145,6 +132,18 @@
 						"transCode": "schema.payments.baseData.clientName",
 						"type": "string",
 						"required": true
+					},
+
+					"member": {
+						"title": "Člen",
+						"transCode": "schema.fees.baseData.member",
+						"type": "string",
+						"required": true,
+						"$objectLink": {
+							"registry": "people",
+							"surName": "baseData.surName.v",
+							"name": "baseData.name.v"
+						}
 					},
 					"clientRef": {
 						"title": "Ref. klient",
