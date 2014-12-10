@@ -25,7 +25,40 @@ process.argv.forEach(function(val, index, array) {
 	console.log(index + ': ' + val);
 });
 
-console.log('file to process', process.argv[2]);
+
+
+
+var freq= process.argv[2];
+
+var freqToSearch=null;
+var freqToDivide=null;
+
+
+
+switch (freq){
+	case "1":
+		freqToSearch="1xročne";
+		freqToDivide=1;
+		break;
+
+	case "2":
+		freqToSearch="2xročne";
+		freqToDivide=2;
+		break;
+	case "4":
+		var freqToSearch="4xročne";
+		freqToDivide=4;
+
+		break;
+
+	case "12":
+		freqToSearch = "12xročne";
+		freqToDivide=12;
+		break;
+
+	default: throw new  Error("invalid freq use as parameter 1,2,4,12");
+}
+
 
 var schema='uri://registries/member#new';
 
@@ -56,17 +89,17 @@ mongoDriver.init(config.mongoDbURI, function(err) {
 				console.log(e);
 			}
 			var uid=uuid.v4();
-			go(udc,feeDao,renderService,schema,uid,function(err){if (err) console.log(err); mongoDriver.close(); console.log('import.id',uid) });
+			go(udc,feeDao,renderService,schema,uid,freqToSearch,freqToDivide,function(err){if (err) console.log(err); mongoDriver.close(); console.log('import.id',uid) });
 	});
 
 });
 
 
-function go(udc,feeDao,renderService,schema,uid,callback) {
+function go(udc,feeDao,renderService,schema,uid,freqToSearch,freqToDivide ,callback) {
 
 	var createdOn=new Date();
 
-	var req={params:{schema:schema},body:{'criteria':[{'f':'membershipFeeInfo.paymentFrequency','v':'12xročne','op':'eq'},{'f':'contactInfo.email','v':'','op':'ex'},{'f':'hockeyPlayerInfo.isActivePlayer','v':'Áno','op':'eq'}]}};
+	var req={params:{schema:schema},body:{'criteria':[{'f':'membershipFeeInfo.paymentFrequency','v':freqToSearch,'op':'eq'},{'f':'contactInfo.email','v':'','op':'ex'},{'f':'hockeyPlayerInfo.isActivePlayer','v':'Áno','op':'eq'}]}};
 
 	var res=function (){
 		this.send=function (code ,data){
@@ -76,7 +109,7 @@ function go(udc,feeDao,renderService,schema,uid,callback) {
 			return this;
 		};
 		this.json=function(data){
-			iterateData(uid,data,udc,feeDao,renderService,createdOn,callback);
+			iterateData(uid,data,udc,feeDao,renderService,createdOn,freqToDivide,callback);
 		};
 	};
 
@@ -90,12 +123,12 @@ function go(udc,feeDao,renderService,schema,uid,callback) {
 }
 
 
-function iterateData(uid,data,udc,feeDao,renderService,createdOn,cb){
+function iterateData(uid,data,udc,feeDao,renderService,createdOn,freqToDivide,cb){
 	var index=1;
 	var toCall=data.map(function (item){
 		return function(callback){
 			mongoDriver.nextSequence('feeIndex',function(err,data){
-				saveItem(uid,item,udc,feeDao,renderService,data.seq%1000000,createdOn,callback);
+				saveItem(uid,item,udc,feeDao,renderService,data.seq%1000000,createdOn,freqToDivide,callback);
 			});
 		};
 	});
@@ -103,13 +136,13 @@ function iterateData(uid,data,udc,feeDao,renderService,createdOn,cb){
 	async.parallel(toCall,cb);
 }
 
-function saveItem(uid,item,udc,feeDao,renderService,index,createdOn,callback){
+function saveItem(uid,item,udc,feeDao,renderService,index,createdOn,freqToDivide,callback){
 		// //GENERATED UNIQUE VS
 		// var bill = {"import":{id:uid}, baseData:{member:{registry:'people',oid:item.id},membershipFee:Number(item.membershipFeeInfo.membershipFee),
 		// 					setupDate:dateUtils.dateToReverse(createdOn),
 		// 					dueDate:dateUtils.dateToReverse(dateUtils.dateAddDays(createdOn,15)),feePaymentStatus:'created',variableSymbol:createVS(dateUtils.dateToReverse(createdOn),index)}};
 
-		var bill = {"import":{id:uid}, baseData:{member:{registry:'people',oid:item.id},membershipFee:Number(item.membershipFeeInfo.membershipFee),
+		var bill = {"import":{id:uid}, baseData:{member:{registry:'people',oid:item.id},membershipFee:(Number(item.membershipFeeInfo.membershipFee)/freqToDivide).toFixed(2),
 							setupDate:dateUtils.dateToReverse(createdOn),
 							dueDate:dateUtils.dateToReverse(dateUtils.dateAddDays(createdOn,15)),feePaymentStatus:'created',variableSymbol:bornNumberToVS(item.baseData.bornNumber)}};
 

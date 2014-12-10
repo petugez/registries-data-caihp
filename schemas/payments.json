@@ -173,7 +173,7 @@
 						"title": "Variabilny Symbol",
 						"transCode": "schema.payments.baseData.variableSymbol",
 						"type": "string",
-						"required": true
+						"required": false
 					},
 					"constantSymbol": {
 						"title": "Konstatny Symbol",
@@ -192,20 +192,6 @@
 						"transCode": "schema.payments.baseData.transactionMessage",
 						"type": "string",
 						"required": false
-					},
-					"transactionType": {
-						"title": "Datum zauctovania",
-						"transCode": "schema.payments.baseData.transactionType",
-						"type": "string",
-						"enum": [
-							"C",
-							"D"
-						],
-						"render": {
-							"component": "psui-selectbox",
-							"searchable": true
-						},
-						"required": true
 					},
 					"status": {
 						"title": "Stav spracovania",
@@ -228,17 +214,6 @@
 						"type": "string",
 						"required": false
 
-					},
-
-					"fee": {
-						"title": "Poplatek",
-						"transCode": "schema.payments.baseData.fee",
-						"required": false,
-						"$objectLink": {
-							"registry": "fees",
-							"setupDate": "baseData.setupDate",
-							"member": "baseData.membershipFee"
-						}
 					},
 					"checksum":{
 						"title": "Kontrolny sucet",

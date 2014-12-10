@@ -504,6 +504,7 @@
 					],
 					"required": false,
 					"render": {
+
 						"component": "psui-selectbox",
 						"searchable": true
 					}
@@ -515,11 +516,13 @@
 					"enum": [
 						"1xročne",
 						"2xročne",
+						"4xročne",
 						"12xročne"
 					],
 					"enumTransCodes": [
 						"schema.people.membershipFeeInfo.paymentFrequency.1xyear",
 						"schema.people.membershipFeeInfo.paymentFrequency.2xyear",
+						"schema.people.membershipFeeInfo.paymentFrequency.4xyear",
 						"schema.people.membershipFeeInfo.paymentFrequency.12xyear"
 					],
 					"required": false,

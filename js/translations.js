@@ -72,6 +72,7 @@ angular.module('registries')
 
 		"schema.people.membershipFeeInfo.paymentFrequency.1xyear": "1x ročne",
 		"schema.people.membershipFeeInfo.paymentFrequency.2xyear": "2x ročne",
+		"schema.people.membershipFeeInfo.paymentFrequency.4xyear": "4x ročne",
 		"schema.people.membershipFeeInfo.paymentFrequency.12xyear": "12x ročne",
 
         "schema.people.hockeyPlayerInfo.positionName.forward":"Útočník",
