@@ -45,7 +45,7 @@
 						}
 					},
 					"type": {
-						"title": "Fotografia",
+						"title": "typ",
 						"transCode": "schema.imports.type",
 						"type": " string",
 						"enum": [
