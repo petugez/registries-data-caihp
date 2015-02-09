@@ -4,12 +4,12 @@
 	
 	"new" : {
 		"table" : "mailtemplates",
-		"_security" : {
-			"$ref" : "uri://registries/mailtemplates#_security"
+		"security" : {
+			"$ref" : "uri://registries/mailtemplates#models/mailTemplate/security"
 		},
 		"properties" : {
 			"baseData" : {
-				"$ref": "uri://registries/mailtemplates#properties/baseData"
+				"$ref": "uri://registries/mailtemplates#models/mailTemplate/properties/baseData"
 			}
 		}
 	},
@@ -18,14 +18,14 @@
 	},
 	"search" : {
 		"table": "mailtemplates",
-		"_security" : {
-			"$ref" : "uri://registries/mailtemplates#_security"
+		"security" : {
+			"$ref" : "uri://registries/mailtemplates#models/mailTemplate/security"
 		},
 		"properties" : {
 			"$ref" : "uri://registries/mailtemplates#master/new/properties"
 		},
 		"listFields" : {
-			"$ref" : "uri://registries/mailtemplates#listFields"
+			"$ref" : "uri://registries/mailtemplates#views/mailTemplate/search/listFields"
 		}
 	}
 }

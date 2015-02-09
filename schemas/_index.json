@@ -2,10 +2,8 @@
 	"security.json",
 	"securityMaster.json",
 	"people.json",
-	"company.json",
 	"group.json",
 	"groupMaster.json",
-	"member.json",
 	"organization.json",
 	"userSecurity.json",
 	"statistics.json",
@@ -18,5 +16,7 @@
 	"countries.json",
 	"login.json",
 	"imports.json",
-	"payments.json"
+	"payments.json",
+	"commonEnums.json",
+	"commonTypes.json"
 ]

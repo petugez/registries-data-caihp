@@ -5,8 +5,8 @@
         "title": "Nový člen",
         "transCode": "schema.member.new",
         "table": "people",
-        "_security": {
-            "$ref": "uri://registries/people#person/_security"
+        "security": {
+            "$ref": "uri://registries/people#person/security"
         },
         "_fireEvents":{
             "create": "event-player-created",
@@ -40,8 +40,8 @@
             "update": "event-player-updated"
         },
 
-        "_security": {
-            "$ref": "uri://registries/people#person/_security"
+        "security": {
+            "$ref": "uri://registries/people#person/security"
         },
         "properties": {
             "baseData": {
@@ -74,8 +74,8 @@
         "listFields": {
             "$ref": "uri://registries/people#person/listFields"
         },
-        "_security": {
-            "$ref": "uri://registries/people#person/_security"
+        "security": {
+            "$ref": "uri://registries/people#person/security"
         },
         "properties": {
             "baseData": {

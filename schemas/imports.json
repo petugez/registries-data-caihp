@@ -1,172 +1,113 @@
 {
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/imports#",
-	"new": {
-		"title": "Novy Import",
-		"transCode": "schema.imports.new",
-		"table": "imports",
 
-		"_saveBySchema":"uri://registries/imports#view",
-
-		"_fireEvents":{
-            "create": "event-import-created"
-        },
-
-		"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
-				]
-			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
-			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
-			}
-		},
-		"properties": {
-			"baseData": {
-				"title": "ZÁKLADNÍ INFORMACE",
-				"transCode": "schema.imports.baseData",
-				"type": "object",
-				"properties": {
-					"file": {
-						"title": "Subor",
-						"transCode": "schema.imports.file",
-						"type": "string",
-						"required": true,
-						"render": {
-							"component": "psui-uploadable-file"
-						}
-					},
-					"type": {
-						"title": "typ",
-						"transCode": "schema.imports.type",
-						"type": " string",
-						"enum": [
-							"Bankový výpis - CSV"
-						],
-						"required": true,
-						"render": {
-							"component": "psui-selectbox",
-							"searchable": true
-						}
+	"blocks": {
+		"import": {
+			"title": "ZÁKLADNÍ INFORMACE",
+			"transCode": "schema.imports.baseData",
+			"type": "object",
+			"properties": {
+				"file": {
+					"title": "Subor",
+					"transCode": "schema.imports.file",
+					"type": "string",
+					"required": true,
+					"render": {
+						"component": "psui-uploadable-file"
 					}
+				},
+				"type": {
+					"title": "Fotografia",
+					"transCode": "schema.imports.type",
+					"type": " string",
+					"enum": [
+						"Bankový výpis - CSV"
+					],
+					"required": true,
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"createdOn": {
+					"title": "Vytvorene",
+					"transCode": "schema.imports.createdOn",
+					"type": "Date",
+					"timestamp" : true
 				}
 			}
 		}
 	},
-	"view": {
-		"title": "Novy Import",
-		"transCode": "schema.imports.view",
-		"table": "imports",
 
-		"_fireEvents":{
-			"create": "event-import-created"
-		},
-
-		"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
-				]
+	"models": {
+		"import": {
+			"title": "Novy import",
+			"transCode": "schema.imports.new",
+			"table": "imports",
+			"security": {
+				"create": {
+					"static": [
+						"Registry - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Registry - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Registry - write"
+					]
+				}
 			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
+			"fireEvents":{
+				"create": "event-import-created"
 			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
-			}
-		},
-		"properties": {
-			"baseData": {
-				"title": "ZÁKLADNÍ INFORMACE",
-				"transCode": "schema.imports.baseData",
-				"type": "object",
-				"properties": {
-					"file": {
-						"title": "Subor",
-						"transCode": "schema.imports.file",
-						"type": "string",
-						"required": true,
-						"render": {
-							"component": "psui-uploadable-file"
-						}
-					},
-					"type": {
-						"title": "Fotografia",
-						"transCode": "schema.imports.type",
-						"type": " string",
-						"enum": [
-							"Bankový výpis - CSV"
-						],
-						"required": true,
-						"render": {
-							"component": "psui-selectbox",
-							"searchable": true
-						}
-					},
-
-					"createdOn": {
-						"title": "Vytvorene",
-						"transCode": "schema.imports.createdOn",
-						"type": "Date",
-						"$timestamp" : true
-					}
+			"properties": {
+				"baseData": {
+					"extends":"uri://registries/imports#blocks/import"
 				}
 			}
 		}
 	},
-	"search": {
-		"table": "imports",
-		"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
+
+	"views": {
+		"import": {
+			"new": {
+				"extends":"uri://registries/imports#models/import",
+				"saveBySchema":"uri://registries/imports#views/import/view",
+				"properties":{
+					"baseData": {
+						"properties": {
+							"createdOn": null
+						}
+					}
+				}
+			},
+			"view": {
+				"extends":"uri://registries/imports#models/import"
+			},
+			"search": {
+				"extends":"uri://registries/imports#models/import",
+				"listFields": [
+					{
+						"field": "baseData.createdOn",
+						"title": "Vyrvoril",
+						"transCode": "schema.imports.createdOn"
+					},
+					{
+						"field": "baseData.type",
+						"title": "Typ",
+						"transCode": "schema.imports.type"
+					},
+					{
+						"field": "baseData.file",
+						"title": "Soubor",
+						"transCode": "schema.imports.file"
+					}
 				]
-			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
-			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
-			}
-		},
-		"title": "Import",
-		"transCode": "schema.imports.search",
-		"listFields": [
-			{
-				"field": "baseData.createdOn",
-				"title": "Vyrvoril",
-				"transCode": "schema.imports.createdOn"
-			},
-			{
-				"field": "baseData.type",
-				"title": "Typ",
-				"transCode": "schema.imports.type"
-			},
-			{
-				"field": "baseData.file",
-				"title": "Soubor",
-				"transCode": "schema.imports.file"
-			}
-		],
-		"properties": {
-			"baseData": {
-				"$ref": "uri://registries/imports#view/properties/baseData"
 			}
 		}
 	}

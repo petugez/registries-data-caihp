@@ -1,274 +1,205 @@
 {
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/fees#",
-	"new": {
-		"title": "NOVÝ PŘÍSPĚVEK",
-		"transCode": "schema.fees.new",
-		"table": "fees",
 
-		"_saveBySchema":"uri://registries/fees#view",
+	"blocks": {
+		"fee": {
+			"title": "ZÁKLADNÍ INFORMACE",
+			"transCode": "schema.fees.baseData",
+			"type": "object",
+			"properties": {
+				"member": {
+					"title": "Člen",
+					"transCode": "schema.fees.baseData.member",
+					"type": "string",
+					"required": true,
+					"objectLink": {
+						"registry": "people",
+						"surName": "baseData.surName.v",
+						"name": "baseData.name.v"
+					}
+				},
+				"club": {
+					"title": "Organizácia",
+					"transCode": "schema.org.baseData.name",
+					"objectLink": {
+						"registry": "organizations",
+						"name": "baseData.name.v"
+					}
+				},
+				"membershipFee": {
+					"title": "Výše příspěvku",
+					"transCode": "schema.fees.baseData.membershipFee",
+					"type": "number",
+					"required": true
+				},
+				"setupDate": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Datum vystavení",
+					"transCode": "schema.fees.baseData.setupDate",
+					"required": true
+				},
+				"variableSymbol": {
+					"title": "Variabilní symbol",
+					"transCode": "schema.fees.baseData.variableSymbol",
+					"type": "string",
+					"required": true
+				},
+				"dueDate": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Datum splatnosti",
+					"transCode": "schema.fees.baseData.dueDate",
+					"required": true
+				},
+				"membershipFeePaid": {
+					"title": "Zaplacená částka",
+					"transCode": "schema.fees.baseData.membershipFeePaid",
+					"type": "number"
+				},
+				"dateOfPayment": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Dátum zaplatenia",
+					"transCode": "schema.fees.baseData.dateOfPayment"
+				},
+				"notes": {
+					"title": "Poznámka",
+					"transCode": "schema.fees.baseData.notes",
+					"type": "string"
+				},
+				"feePaymentStatus": {
+					"title": "Stav",
+					"transCode": "schema.fees.baseData.feePaymentStatus",
+					"type": "string",
+					"enum": ["created",
+							"refunded",
+							"differs",
+							"overdue",
+							"canceled"
 
-		"properties": {
-			"baseData": {
-				"title": "ZÁKLADNÍ INFORMACE",
-				"transCode": "schema.fees.baseData",
-				"type": "object",
-				"properties": {
-					"member": {
-						"title": "Člen",
-						"transCode": "schema.fees.baseData.member",
-						"type": "string",
-						"required": true,
-						"$objectLink": {
-							"registry": "people",
-							"surName": "baseData.surName.v",
-							"name": "baseData.name.v"
-						}
-					},
-
-					"membershipFee": {
-						"title": "Výše příspěvku",
-						"transCode": "schema.fees.baseData.membershipFee",
-						"type": "number",
-						"required": true
-					},
-					"setupDate": {
-						"title": "Datum vystavení",
-						"transCode": "schema.fees.baseData.setupDate",
-						"type": "string",
-						"required": true,
-						"render": {
-							"component": "psui-datepicker"
-						}
-					},
-
-					"dueDate": {
-						"title": "Datum splatnosti",
-						"transCode": "schema.fees.baseData.dueDate",
-						"type": "string",
-						"required": true,
-						"render": {
-							"component": "psui-datepicker"
-						}
-					},
-					"notes": {
-						"title": "Poznámka",
-						"transCode": "schema.fees.baseData.notes",
-						"type": "string",
-						"required": false
+					],
+					"enumTransCodes": [
+						"schema.fees.baseData.feePaymentStatus.created",
+						"schema.fees.baseData.feePaymentStatus.refunded",
+						"schema.fees.baseData.feePaymentStatus.differs",
+						"schema.fees.baseData.feePaymentStatus.overdue",
+						"schema.fees.baseData.feePaymentStatus.canceled"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
 					}
 				}
 			}
-
 		}
 	},
-	"view": {
-		"title": "Členský príspevok",
-		"transCode": "schema.fees.view",
-		"table": "fees",
 
-		"_fireEvents":{
-			"create": "event-fee-created",
-			"update": "event-fee-updated"
-		},
-
-		"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
-				]
+	"models": {
+		"fee": {
+			"title": "Příspěvek",
+			"transCode": "schema.fees.title",
+			"table": "fees",
+			"security": {
+				"create": {
+					"static": [
+						"Registry - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Registry - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Registry - write"
+					]
+				}
 			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
-			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
+			"fireEvents":{
+				"create": "event-fee-created",
+				"update": "event-fee-updated"
+			},		
+			"properties": {
+				"baseData": {
+					"extends":"uri://registries/fees#blocks/fee"
+				}
 			}
-		},
-		"properties": {
-			"baseData": {
-				"title": "ZÁKLADNÍ INFORMACE",
-				"transCode": "schema.fees.baseData",
-				"type": "object",
-				"properties": {
-					"member": {
-						"title": "Člen",
-						"transCode": "schema.fees.baseData.member",
-						"type": "string",
-						"required": true,
-						"$objectLink": {
-							"registry": "people",
-							"surName": "baseData.surName.v",
-							"name": "baseData.name.v"
+		}
+	},
+
+	"views": {
+		"fee": {
+			"new":{
+				"extends":"uri://registries/fees#models/fee",
+				"saveBySchema":"uri://registries/fees#views/fee/view",
+				"properties":{
+					"baseData": {
+						"properties": {
+							"club": null,
+							"variableSymbol": null,
+							"membershipFeePaid": null,
+							"dateOfPayment": null,
+							"feePaymentStatus": null
 						}
+					}
+				}
+			},
+			"view": {
+				"extends":"uri://registries/fees#models/fee"
+			},
+			"search": {
+				"extends":"uri://registries/fees#models/fee",
+				"listFields": [
+					{
+						"field": "baseData.member.refData.name",
+						"title": "Meno",
+						"transCode": "schema.fees.listFields.name"
 					},
-					"club": {
-						"title": "Názov klubu",
-						"transCode": "schema.people.hockeyPlayerInfo.clubName",
-						"required": false,
-						"$objectLink": {
-							"registry": "organizations",
-							"name": "baseData.name.v"
-						}
+					{
+						"field": "baseData.member.refData.surName",
+						"title": "Priezvisko",
+						"transCode": "schema.fees.listFields.surName"
 					},
-					"membershipFee": {
-						"title": "Výše příspěvku",
-						"transCode": "schema.fees.baseData.membershipFee",
-						"type": "number",
-						"required": true
+					{
+						"field": "baseData.club.refData.name",
+						"title": "Organizacia",
+						"transCode": "schema.org.baseData.name"
 					},
-					"setupDate": {
-						"title": "Datum vystavení",
-						"transCode": "schema.fees.baseData.setupDate",
-						"type": "string",
-						"required": true,
-						"render": {
-							"component": "psui-datepicker"
-						}
+					{
+						"field": "baseData.membershipFee",
+						"title": "Výše poplatku",
+						"transCode": "schema.fees.baseData.membershipFee"
 					},
-					"variableSymbol": {
-						"title": "Variabilní symbol",
-						"transCode": "schema.fees.baseData.variableSymbol",
-						"type": "string",
-						"required": true
-					},
-					"dueDate": {
-						"title": "Datum splatnosti",
-						"transCode": "schema.fees.baseData.dueDate",
-						"type": "string",
-						"required": true,
-						"render": {
-							"component": "psui-datepicker"
-						}
-					},
-					"membershipFeePaid": {
+					{
+						"field": "baseData.membershipFeePaid",
 						"title": "Zaplacená částka",
-						"transCode": "schema.fees.baseData.membershipFeePaid",
-						"type": "number",
-						"required": false
+						"transCode": "schema.fees.baseData.membershipFeePaid"
 					},
-					"dateOfPayment": {
-						"title": "Dátum zaplatenia",
-						"transCode": "schema.fees.baseData.dateOfPayment",
-						"type": "string",
-						"required": false,
-						"render": {
-							"component": "psui-datepicker"
-						}
+					{
+						"field": "baseData.variableSymbol",
+						"title": "Variabilní symbol",
+						"transCode": "schema.fees.baseData.variableSymbol"
 					},
-					"notes": {
-						"title": "Poznámka",
-						"transCode": "schema.fees.baseData.notes",
-						"type": "string",
-						"required": false
+
+					{
+						"field": "baseData.dueDate",
+						"title": "Datum splatnosti",
+						"transCode": "schema.fees.baseData.dueDate"
 					},
-					"feePaymentStatus": {
+
+
+					{
+						"field": "baseData.dateOfPayment",
+						"title": "Datum zaplacení",
+						"transCode": "schema.fees.baseData.dateOfPayment"
+					},
+					{
+						"field": "baseData.feePaymentStatus",
 						"title": "Stav",
-						"transCode": "schema.fees.baseData.feePaymentStatus",
-						"type": "string",
-						"enum": ["created",
-								"refunded",
-								"differs",
-								"overdue",
-								"canceled"
-
-						],
-						"enumTransCodes": [
-							"schema.fees.baseData.feePaymentStatus.created",
-							"schema.fees.baseData.feePaymentStatus.refunded",
-							"schema.fees.baseData.feePaymentStatus.differs",
-							"schema.fees.baseData.feePaymentStatus.overdue",
-							"schema.fees.baseData.feePaymentStatus.canceled"
-						],
-						"required": false,
-						"render": {
-							"component": "psui-selectbox",
-							"searchable": true
-						}
+						"transCode": "schema.fees.baseData.feePaymentStatus"
 					}
-				}
-			}
-		}
-	},
-	"search": {
-		"table": "fees",
-		"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
+
 				]
-			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
-			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
-			}
-		},
-		"title": "Členský příspěvek",
-		"transCode": "schema.fees.search",
-		"listFields": [
-			{
-				"field": "baseData.member.refData.name",
-				"title": "Meno",
-				"transCode": "schema.fees.listFields.name"
-			},
-			{
-				"field": "baseData.member.refData.surName",
-				"title": "Priezvisko",
-				"transCode": "schema.fees.listFields.surName"
-			},
-			{
-				"field": "baseData.club.refData.name",
-				"title": "Klub",
-				"transCode": "schema.org.baseData.name"
-			},
-			{
-				"field": "baseData.membershipFee",
-				"title": "Výše poplatku",
-				"transCode": "schema.fees.baseData.membershipFee"
-			},
-			{
-				"field": "baseData.membershipFeePaid",
-				"title": "Zaplacená částka",
-				"transCode": "schema.fees.baseData.membershipFeePaid"
-			},
-			{
-				"field": "baseData.variableSymbol",
-				"title": "Variabilní symbol",
-				"transCode": "schema.fees.baseData.variableSymbol"
-			},
-
-			{
-				"field": "baseData.dueDate",
-				"title": "Datum splatnosti",
-				"transCode": "schema.fees.baseData.dueDate"
-			},
-
-
-			{
-				"field": "baseData.dateOfPayment",
-				"title": "Datum zaplacení",
-				"transCode": "schema.fees.baseData.dateOfPayment"
-			},
-			{
-				"field": "baseData.feePaymentStatus",
-				"title": "Stav",
-				"transCode": "schema.fees.baseData.feePaymentStatus"
-			}
-
-		],
-		"properties": {
-			"baseData": {
-				"$ref": "uri://registries/fees#view/properties/baseData"
 			}
 		}
 	}

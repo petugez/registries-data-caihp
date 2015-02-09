@@ -4,9 +4,9 @@
 	"view": {
 	"title": "statistics",
 	"transCode":"schema.statistics.view",
-	"_security": {
-		"_read": {
-			"_static":["Registry - read"]
+	"security": {
+		"read": {
+			"static":["Registry - read"]
 		}
 	},
 	"properties":{

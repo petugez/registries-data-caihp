@@ -1,284 +1,194 @@
 {
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/payments#",
-	"new": {
-		"title": "Platba",
-		"transCode": "schema.payments.new",
-		"table": "payments",
 
-		"_saveBySchema":"uri://registries/payments#view",
-		"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
-				]
-			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
-			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
-			}
-		},
-		"properties": {
-			"baseData": {
-				"title": "ZÁKLADNÍ INFORMACE",
-				"xtransCode": "schema.payments.baseData",
-				"type": "object",
-				"properties": {
-					"accountingDate": {
-						"title": "Datum zauctovania",
-						"transCode": "schema.payments.baseData.accountingDate",
-						"type": "string",
-						"required": true,
-						"render": {
-							"component": "psui-datepicker"
-						}
-					},
-
-
-					"member": {
-						"title": "Člen",
-						"transCode": "schema.fees.baseData.member",
-						"type": "string",
-						"required": true,
-						"$objectLink": {
-							"registry": "people",
-							"surName": "baseData.surName.v",
-							"name": "baseData.name.v"
-						}
-					},
-					"bankCode": {
-						"title": "Ref. banka",
-						"transCode": "schema.payments.baseData.bankCode",
-						"type": "string",
-						"required": false
-					},
-					"amount": {
-						"title": "Suma",
-						"transCode": "schema.payments.baseData.amount",
-						"type": "number",
-						"required": true
-					},
-					"constantSymbol": {
-						"title": "Konstatny Symbol",
-						"transCode": "schema.payments.baseData.constantSymbol",
-						"type": "string",
-						"required": false
-					},
-					"specificSymbol": {
-						"title": "Specificky Symbol",
-						"transCode": "schema.payments.baseData.specificSymbol",
-						"type": "string",
-						"required": false
-					},
-					"transactionMessage": {
-						"title": "Sprava pre prijemncu",
-						"transCode": "schema.payments.baseData.transactionMessage",
-						"type": "string",
-						"required": false
+	"blocks": {
+		"payment": {
+			"title": "ZÁKLADNÍ INFORMACE",
+			"xtransCode": "schema.payments.baseData",
+			"type": "object",
+			"properties": {
+				"accountingDate": {
+					"title": "Datum zauctovania",
+					"transCode": "schema.payments.baseData.accountingDate",
+					"type": "string",
+					"required": true,
+					"render": {
+						"component": "psui-datepicker"
 					}
-
+				},
+				"clientName": {
+					"title": "Ref. klient",
+					"transCode": "schema.payments.baseData.clientName",
+					"type": "string",
+					"required": true
+				},
+				"member": {
+					"title": "Člen",
+					"transCode": "schema.fees.baseData.member",
+					"type": "string",
+					"required": true,
+					"objectLink": {
+						"registry": "people",
+						"surName": "baseData.surName.v",
+						"name": "baseData.name.v"
+					}
+				},
+				"clientRef": {
+					"title": "Ref. klient",
+					"transCode": "schema.payments.baseData.clientRef",
+					"type": "string"
+				},
+				"bankCode": {
+					"title": "Ref. banka",
+					"transCode": "schema.payments.baseData.bankCode",
+					"type": "string"
+				},
+				"bankRef": {
+					"title": "Ref. banka",
+					"transCode": "schema.payments.baseData.bankRef",
+					"type": "string"
+				},
+				"amount": {
+					"title": "Suma",
+					"transCode": "schema.payments.baseData.amount",
+					"type": "number",
+					"required": true
+				},
+				"variableSymbol": {
+					"title": "Variabilny Symbol",
+					"transCode": "schema.payments.baseData.variableSymbol",
+					"type": "string"
+				},
+				"constantSymbol": {
+					"title": "Konstatny Symbol",
+					"transCode": "schema.payments.baseData.constantSymbol",
+					"type": "string"
+				},
+				"specificSymbol": {
+					"title": "Specificky Symbol",
+					"transCode": "schema.payments.baseData.specificSymbol",
+					"type": "string"
+				},
+				"transactionMessage": {
+					"title": "Sprava pre prijemncu",
+					"transCode": "schema.payments.baseData.transactionMessage",
+					"type": "string"
+				},
+				"status": {
+					"title": "Stav spracovania",
+					"transCode": "schema.payments.baseData.status",
+					"type": " string",
+					"enum": [
+						"Paired",
+						"Unpaired",
+						"Standalone"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"importId":{
+					"title": "Identifikator importu",
+					"transCode": "schema.payments.baseData.importId",
+					"type": "string"
+				},
+				"checksum":{
+					"title": "Kontrolny sucet",
+					"transCode": "schema.payments.baseData.checksum",
+					"type": "string"
 				}
 			}
 		}
 	},
-	"view": {
-		"title": "Platba",
-		"transCode": "schema.payments.view",
-		"table": "payments",
-		"_fireEvents":{
-			"create": "event-payment-created",
-			"update": "event-payment-updated"
-		},
-		"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
-				]
+
+	"models": {
+		"payment": {
+			"title": "Platba",
+			"transCode": "schema.payments.new",
+			"table": "payments",
+			"security": {
+				"create": {
+					"static": [
+						"Registry - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Registry - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Registry - write"
+					]
+				}
 			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
+			"fireEvents":{
+				"create": "event-payment-created",
+				"update": "event-payment-updated"
 			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
-			}
-		},
-		"properties": {
-			"baseData": {
-				"title": "ZÁKLADNÍ INFORMACE",
-				"xtransCode": "schema.payments.baseData",
-				"type": "object",
-				"properties": {
-					"accountingDate": {
-						"title": "Datum zauctovania",
-						"transCode": "schema.payments.baseData.accountingDate",
-						"type": "string",
-						"required": true,
-						"render": {
-							"component": "psui-datepicker"
-						}
-					},
-					"clientName": {
-						"title": "Ref. klient",
-						"transCode": "schema.payments.baseData.clientName",
-						"type": "string",
-						"required": true
-					},
-
-					"member": {
-						"title": "Člen",
-						"transCode": "schema.fees.baseData.member",
-						"type": "string",
-						"required": true,
-						"$objectLink": {
-							"registry": "people",
-							"surName": "baseData.surName.v",
-							"name": "baseData.name.v"
-						}
-					},
-					"clientRef": {
-						"title": "Ref. klient",
-						"transCode": "schema.payments.baseData.clientRef",
-						"type": "string",
-						"required": false
-					},
-					"bankCode": {
-						"title": "Ref. banka",
-						"transCode": "schema.payments.baseData.bankCode",
-						"type": "string",
-						"required": false
-					},
-					"bankRef": {
-						"title": "Ref. banka",
-						"transCode": "schema.payments.baseData.bankRef",
-						"type": "string",
-						"required": false
-					},
-					"amount": {
-						"title": "Suma",
-						"transCode": "schema.payments.baseData.amount",
-						"type": "number",
-						"required": true
-					},
-					"variableSymbol": {
-						"title": "Variabilny Symbol",
-						"transCode": "schema.payments.baseData.variableSymbol",
-						"type": "string",
-						"required": false
-					},
-					"constantSymbol": {
-						"title": "Konstatny Symbol",
-						"transCode": "schema.payments.baseData.constantSymbol",
-						"type": "string",
-						"required": false
-					},
-					"specificSymbol": {
-						"title": "Specificky Symbol",
-						"transCode": "schema.payments.baseData.specificSymbol",
-						"type": "string",
-						"required": false
-					},
-					"transactionMessage": {
-						"title": "Sprava pre prijemncu",
-						"transCode": "schema.payments.baseData.transactionMessage",
-						"type": "string",
-						"required": false
-					},
-					"status": {
-						"title": "Stav spracovania",
-						"transCode": "schema.payments.baseData.status",
-						"type": " string",
-						"enum": [
-							"Paired",
-							"Unpaired",
-							"Standalone"
-						],
-						"required": false,
-						"render": {
-							"component": "psui-selectbox",
-							"searchable": true
-						}
-					},
-					"importId":{
-						"title": "Identifikator importu",
-						"transCode": "schema.payments.baseData.importId",
-						"type": "string",
-						"required": false
-
-					},
-					"checksum":{
-						"title": "Kontrolny sucet",
-						"transCode": "schema.payments.baseData.checksum",
-						"type": "string",
-						"required": false
-					}
-
+			"properties": {
+				"baseData": {
+					"extends":"uri://registries/payments#blocks/payment"
 				}
 			}
 		}
 	},
-	"search": {
-		"table": "payments",
-		"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
-				]
-			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
-			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
-			}
-		},
-		"title": "Platba",
-		"transCode": "schema.payments.search",
-		"listFields": [
 
-			{
-				"field": "baseData.accountingDate",
-				"title": "Dátum",
-				"transCode": "schema.payments.listFields.accountingDate"
+	"views": {
+		"payment": {
+			"new": {
+				"extends":"uri://registries/payments#models/payment",
+				"saveBySchema":"uri://registries/payments#views/payment/view",
+				"properties":{
+					"baseData": {
+						"properties": {
+							"clientName": null,
+							"clientRef": null,
+							"bankRef": null,
+							"variableSymbol": null,
+							"status": null,
+							"importId": null,
+							"checksum": null
+						}
+					}
+				}
 			},
-			{
-				"field": "baseData.clientName",
-				"title": "Platca",
-				"transCode": "schema.payments.listFields.clientName"
+			"view": {
+				"extends":"uri://registries/payments#models/payment"
 			},
-			{
-				"field": "baseData.variableSymbol",
-				"title": "Var. Symbol",
-				"transCode": "schema.payments.listFields.variableSymbol"
-			},
-			{
-				"field": "baseData.amount",
-				"title": "Suma",
-				"transCode": "schema.payments.listFields.amount"
-			},
-			{
-				"field": "baseData.status",
-				"title": "Stav",
-				"transCode": "schema.payments.listFields.status"
-			}
+			"search": {
+				"extends":"uri://registries/payments#models/payment",
+				"listFields": [
+					{
+						"field": "baseData.accountingDate",
+						"title": "Dátum",
+						"transCode": "schema.payments.listFields.accountingDate"
+					},
+					{
+						"field": "baseData.clientName",
+						"title": "Platca",
+						"transCode": "schema.payments.listFields.clientName"
+					},
+					{
+						"field": "baseData.variableSymbol",
+						"title": "Var. Symbol",
+						"transCode": "schema.payments.listFields.variableSymbol"
+					},
+					{
+						"field": "baseData.amount",
+						"title": "Suma",
+						"transCode": "schema.payments.listFields.amount"
+					},
+					{
+						"field": "baseData.status",
+						"title": "Stav",
+						"transCode": "schema.payments.listFields.status"
+					}
 
-		],
-		"properties": {
-			"baseData": {
-				"$ref": "uri://registries/payments#view/properties/baseData"
+				]
 			}
 		}
 	}

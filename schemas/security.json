@@ -6,7 +6,6 @@
 	"permissions": {
 		"type": "object",
 		"properties":{
-
 			"System User": {
 				"title": "Systémový používateľ",
 				"type": "boolean",
@@ -90,19 +89,19 @@
 		"type": "object",
 		"table": "securityProfiles",
 		"title": "Security Profiles",
-		"_security": {
-			"_create": {
-				"_static": [
+		"security": {
+			"create": {
+				"static": [
 					"Security - write"
 				]
 			},
-			"_read": {
-				"_static": [
+			"read": {
+				"static": [
 					"Security - read"
 				]
 			},
-			"_modify": {
-				"_static": [
+			"modify": {
+				"static": [
 					"Security - write"
 				]
 			}
@@ -110,28 +109,26 @@
 		"listFields": [
 			{
 			"field": "baseData.name",
-			"title": "Nazov profilu"
+			"title": "Názov profilu",
+			"transCode":"schema.security.listFields.name"
 			}
 		],
 		"properties": {
 			"baseData": {
 				"title": "Základné údaje",
+				"transCode":"schema.security.baseData",
 				"type": "object",
 				"properties": {
-
 					"name": {
-						"title": "Názov",
-						"xxtransCode": "schema.people.baseData.name",
+						"title": "Názov profilu",
+						"transCode": "schema.security.baseData.name",
 						"type": "string",
 						"required": true
 					}
-
 				}
-
 			},
 			"security": {
 				"properties":{
-
 					"permissions": {
 						"$ref": "uri://registries/security#permissions"
 					},
@@ -159,17 +156,15 @@
 											"op": "string",
 											"v": "string",
 											"obj":{
-													"type":"object",
-													"properties":{
-														"refData": {
-															"type":"object",
-															"properties":{
-																"name":"string"
-															}
+												"type":"object",
+												"properties":{
+													"refData": {
+														"type":"object",
+														"properties":{
+															"name":"string"
 														}
 													}
-
-
+												}
 											}
 										}
 									}

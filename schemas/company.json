@@ -5,8 +5,8 @@
         "title": "Nová organizácia",
 		"transCode":"schema.org.new",
         "table": "organizations",
-        "_security" : {
-			"$ref" : "uri://registries/organization#_security"
+        "security" : {
+			"$ref" : "uri://registries/organization#security"
 			},
 
         "properties": {
@@ -19,8 +19,8 @@
         "title": "Organizácia",
 		"transCode":"schema.org.view",
         "table": "organizations",
-        "_security" : {
-			"$ref" : "uri://registries/organization#_security"
+        "security" : {
+			"$ref" : "uri://registries/organization#security"
 		},
 		"properties":{
 			"$ref": "uri://registries/company#new/properties"
@@ -28,8 +28,8 @@
 	},
 	"search": {
 		"table": "organizations",
-		"_security" : {
-			"$ref" : "uri://registries/organization#_security"
+		"security" : {
+			"$ref" : "uri://registries/organization#security"
 	    },
         "title": "organizácia",
 		"transCode":"schema.org.view",

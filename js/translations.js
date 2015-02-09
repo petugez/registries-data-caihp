@@ -58,6 +58,7 @@ angular.module('registries')
 		"menu.massmailing.search.lower.level":"Vyhľadáť",
 		"menu.massmailing.send.title":"Odoslať",
 
+		"schema.people.personalProfile":"Môj profil",
 		"schema.people.membershipFeeInfo.title":"Členské príspevky",
 		"schema.people.membershipFeeInfo.membershipType":"Typ členského príspevku",
 		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvencia platby",
@@ -89,7 +90,7 @@ angular.module('registries')
         "schema.people.hockeyPlayerInfo.stickHandling.right":"Pravé",
 
 
-		"schema.fees.new":"Nový príspevok",
+		"schema.fees.title":"Príspevok",
 		"schema.fees.baseData":"Základné údaje",
 		"schema.fees.baseData.member":"Člen",
 		"schema.fees.baseData.membershipFee":"Výška príspevku",
@@ -194,9 +195,8 @@ angular.module('registries')
 
 
 		"schema.org.new":"Nová organizácia",
-		"schema.org.view":"Organizácia",
-		"schema.member.new":"Nový člen",
-		"schema.member.view":"Člen",
+		"schema.org.title":"Organizácia",
+		"schema.people.title":"Člen",
 		"schema.org.baseData.name": "Názov organizácie",
 		"schema.org.listFields.id": "ID",
 		"schema.org.listFields.name": "Meno",
@@ -253,6 +253,20 @@ angular.module('registries')
 		"menu.imports.new.lower.level":"Novy import",
 		"menu.payments.new.lower.level":"Nova Platba",
 		"menu.payments.lower.level":"Hladat platbu",
+
+		"schema.group.listFields.id":"ID",
+		"schema.group.listFields.name":"Názov skupiny",
+		"schema.groupmaster.new":"Nová skupina",
+		"schema.group.baseData":"Základné údaje",	
+		"schema.group.baseData.id":"Identifikátor",
+		"schema.group.baseData.name":"Názov skupiny",
+		"schema.group.baseData.parent":"Rodič",
+
+		"schema.security.listFields.name":"Názov profilu",
+		"schema.security.baseData.name":"Názov profilu",
+		"schema.security.baseData":"Základné údaje",
+
+		"schema.securityMaster.new":"Nový bezpečnostný profil"
 	});
 
 	$translateProvider.translations('cz', {
@@ -302,8 +316,8 @@ angular.module('registries')
 		"menu.permission.groups.lower.level": "Skupiny oprávnění",
 		"menu.user.permissions.lower.level": "Oprávnění uživatelů",
 		"menu.schema.list.lower.level": "Seznam schémat",
-		"menu.new.profile.lower.level":"Nový bezpečnostnej profil",
-		"menu.profiles.lower.level":"Hledat bezpečnostnej profil",
+		"menu.new.profile.lower.level":"Nový bezpečnostní profil",
+		"menu.profiles.lower.level":"Hledat bezpečnostní profil",
 		"menu.statistics.title":"Statistiky",
 		"menu.statistics.show.title":"Zobrazit",
 		"menu.massmailing.title":"Hromadní pošta",
@@ -317,6 +331,7 @@ angular.module('registries')
 		"schema.mailTemplate.basedata.text":"Telo - plaintext",
 		"schema.mailTemplate.basedata.html":"Telo - html",
 
+		"schema.people.personalProfile":"Můj profil",
 		"schema.people.membershipFeeInfo.title":"Členské příspěvky",
 		"schema.people.membershipFeeInfo.membershipType":"Typ členského příspěvku",
 		"schema.people.membershipFeeInfo.paymentFrequency":"Frekvence platby",
@@ -347,7 +362,7 @@ angular.module('registries')
         "schema.people.hockeyPlayerInfo.stickHandling.right":"Pravé",
 
 
-		"schema.fees.new":"Nový poplatek",
+		"schema.fees.title":"Poplatek",
 		"schema.fees.view":"Poplatek",
 		"schema.fees.search":"Poplatek",
 		"schema.fees.baseData":"Základní údaje",
@@ -455,9 +470,8 @@ angular.module('registries')
 		"schema.mailTemplate.basedata.html":"Text zprávy(html)",
 
 		"schema.org.new":"Nová organizace",
-		"schema.org.view":"Organizace",
-		"schema.member.new":"Nový člen",
-		"schema.member.view":"Člen",
+		"schema.org.title":"Organizace",
+		"schema.people.title":"Člen",
 		"schema.org.baseData.name": "Název organizace",
 		"schema.org.listFields.id": "ID",
 		"schema.org.listFields.name": "Jméno",
@@ -515,5 +529,18 @@ angular.module('registries')
 		"menu.payments.new.lower.level":"Nova platba",
 		"menu.payments.lower.level":"Hledat platbu",
 
+		"schema.group.listFields.id":"ID",
+		"schema.group.listFields.name":"Název skupiny",
+		"schema.groupmaster.new":"Nová skupina",
+		"schema.group.baseData":"Základní údaje",	
+		"schema.group.baseData.id":"Identifikátor",
+		"schema.group.baseData.name":"Název skupiny",
+		"schema.group.baseData.parent":"Rodič",
+
+		"schema.security.listFields.name":"Název profilu",
+		"schema.security.baseData.name":"Název profilu",
+		"schema.security.baseData":"Základní údaje",
+
+		"schema.securityMaster.title":"Bezpečnostní profil"
 	});
 }]);

@@ -1,40 +1,9 @@
 {
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/mailtemplates#",
-	"title": "Security group",
-	"type": "object",
-	"table": "mailtemplates",
-	"listFields": [
-		{
-			"field": "baseData.name",
-			"title": "Nazov vzoru",
-			"transCode":"schema.mailTemplate.basedata.name"
-		},
-		{
-			"field": "baseData.subjectTemplate",
-			"title": "Predment",
-			"transCode":"schema.mailTemplate.basedata.subject"
-		}
-	],
-	"_security": {
-			"_create": {
-				"_static": [
-					"Registry - write"
-				]
-			},
-			"_read": {
-				"_static": [
-					"Registry - read"
-				]
-			},
-			"_modify": {
-				"_static": [
-					"Registry - write"
-				]
-			}
-	},
-	"properties": {
-		"baseData": {
+
+	"blocks": {
+		"mailTemplate": {
 			"title": "Základné údaje",
 			"transCode":"schema.mailTemplate.basedata.title",
 			"type": "object",
@@ -60,11 +29,64 @@
 				"htmlTemplate":{
 					"title": "HTML vzor",
 					"transCode":"schema.mailTemplate.basedata.html",
-					"type": "string",
-					"required": false
+					"type": "string"
 				}
 			}
 		}
-	}
+	},
 
+	"models": {
+		"mailTemplate": {
+			"title": "Security group",
+			"table": "mailtemplates",
+			"security": {
+				"create": {
+					"static": [
+						"Registry - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Registry - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Registry - write"
+					]
+				}
+			},
+			"properties": {
+				"baseData": {
+					"extends":"uri://registries/mailtemplates#blocks/mailTemplate"
+				}
+			}
+		}
+	},
+
+	"views": {
+		"mailTemplate": {
+			"new": {
+				"extends":"uri://registries/mailtemplates#models/mailTemplate"
+			},
+			"view": {
+				"extends":"uri://registries/mailtemplates#models/mailTemplate"
+			},
+			"search": {
+				"extends":"uri://registries/mailtemplates#models/mailTemplate",
+				"listFields": [
+					{
+						"field": "baseData.name",
+						"title": "Nazov vzoru",
+						"transCode":"schema.mailTemplate.basedata.name"
+					},
+					{
+						"field": "baseData.subjectTemplate",
+						"title": "Predment",
+						"transCode":"schema.mailTemplate.basedata.subject"
+					}
+				]
+			}
+		}
+	}
 }

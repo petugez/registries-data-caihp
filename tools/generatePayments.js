@@ -60,7 +60,7 @@ switch (freq){
 }
 
 
-var schema='uri://registries/member#new';
+var schema='uri://registries/people#views/fullperson/new';
 
 mongoDriver.init(config.mongoDbURI, function(err) {
 	if (err) {
@@ -99,7 +99,7 @@ function go(udc,feeDao,renderService,schema,uid,freqToSearch,freqToDivide ,callb
 
 	var createdOn=new Date();
 
-	var req={params:{schema:schema},body:{'criteria':[{'f':'membershipFeeInfo.paymentFrequency','v':freqToSearch,'op':'eq'},{'f':'contactInfo.email','v':'','op':'ex'},{'f':'hockeyPlayerInfo.isActivePlayer','v':'Áno','op':'eq'}]}};
+	var req={params:{schema:schema},body:{'criteria':[{'f':'membershipFeeInfo.paymentFrequency','v':freqToSearch,'op':'eq'},{'f':'contact.email','v':'','op':'ex'},{'f':'hockeyPlayerInfo.isActivePlayer','v':'Áno','op':'eq'}]}};
 
 	var res=function (){
 		this.send=function (code ,data){
