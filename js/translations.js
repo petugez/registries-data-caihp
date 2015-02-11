@@ -58,6 +58,19 @@ angular.module('registries')
 		"menu.massmailing.search.lower.level":"Vyhľadáť",
 		"menu.massmailing.send.title":"Odoslať",
 
+		"accounting.info.user.info":"Sumárne informácie",
+		"accounting.info.user.payments":"Prijaté platby",
+		"accounting.info.user.fees.unpaid":"Nezaplatené poplatky",
+		"accounting.info.user.fees.history":"Zaplatené poplatky",
+
+		"accounting.info.company.fees.topay": "Poplatky k na zaplatenie",
+		"accounting.info.company.fees.topay.value": "v sume",
+		"accounting.info.company.fees.overdue": "Poplatky po splatnosti",
+		"accounting.info.company.fees.overdue.value": "v sume",
+
+
+
+
 		"schema.people.personalProfile":"Môj profil",
 		"schema.people.membershipFeeInfo.title":"Členské príspevky",
 		"schema.people.membershipFeeInfo.membershipType":"Typ členského príspevku",
@@ -257,7 +270,7 @@ angular.module('registries')
 		"schema.group.listFields.id":"ID",
 		"schema.group.listFields.name":"Názov skupiny",
 		"schema.groupmaster.new":"Nová skupina",
-		"schema.group.baseData":"Základné údaje",	
+		"schema.group.baseData":"Základné údaje",
 		"schema.group.baseData.id":"Identifikátor",
 		"schema.group.baseData.name":"Názov skupiny",
 		"schema.group.baseData.parent":"Rodič",
@@ -324,6 +337,19 @@ angular.module('registries')
 		"menu.massmailing.new.lower.level":"Nový vzor",
 		"menu.massmailing.search.lower.level":"Vyhledat vzor",
 		"menu.massmailing.send.title":"Odeslat",
+
+		"accounting.info.user.info":"Sumárne informace",
+		"accounting.info.user.payments":"Přijaté platby",
+		"accounting.info.user.fees.unpaid":"Nezaplacené poplatky",
+		"accounting.info.user.fees.history":"Zaplacené poplatky",
+		"accounting.info.club.user.status":"Bilance členú",
+		"accounting.info.company.fees.topay": "Poplatky k zaplaceni",
+		"accounting.info.company.fees.topay.value": "v sume",
+		"accounting.info.company.fees.overdue": "Poplatky po splatnosti",
+		"accounting.info.company.fees.overdue.value": "v sume",
+
+
+
 
 		"schema.mailTemplate.basedata.name":"Název šablony",
 		"schema.mailTemplate.basedata.subject":"Predment mailu",
@@ -532,7 +558,7 @@ angular.module('registries')
 		"schema.group.listFields.id":"ID",
 		"schema.group.listFields.name":"Název skupiny",
 		"schema.groupmaster.new":"Nová skupina",
-		"schema.group.baseData":"Základní údaje",	
+		"schema.group.baseData":"Základní údaje",
 		"schema.group.baseData.id":"Identifikátor",
 		"schema.group.baseData.name":"Název skupiny",
 		"schema.group.baseData.parent":"Rodič",

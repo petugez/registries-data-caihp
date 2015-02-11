@@ -1,0 +1,113 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="psui-search col-md-12 col-lg-8 ">
+			<div>
+
+				<fieldset>
+
+					<legend>{{'accounting.info.user.info'|translate}} </legend>
+
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'schema.org.baseData.name'|translate}}</label>
+							<div class=" psui-inlineedit-view">
+									{{model.baseData.name}}
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'accounting.info.company.fees.topay'|translate}}</label>
+							<div class=" psui-inlineedit-view">
+									{{model.accounting.overal.feesToPay}}
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'accounting.info.company.fees.topay.value' |translate}}</label>
+							<div class=" psui-inlineedit-view">
+									{{model.accounting.overal.feesToPayValue}}
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'accounting.info.company.fees.overdue' |translate}}</label>
+							<div class=" psui-inlineedit-view">
+									{{model.accounting.overal.feesOverdue}}
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'accounting.info.company.fees.overdue.value' |translate}}</label>
+							<div class=" psui-inlineedit-view">
+									{{model.accounting.overal.feesOverdueValue}}
+							</div>
+						</div>
+
+				</fieldset>
+
+				<fieldset>
+				<legend>{{'accounting.info.club.user.status' |translate}} </legend>
+					<div class="table-responsive" id="table1" ng-show="model.accounting.people" >
+						<table  class="table"  >
+							<thead>
+								<tr>
+									<th>{{'schema.people.baseData.name'|translate}}</th>
+									<th>{{'schema.people.baseData.surName'|translate}}</th>
+									<th>{{'schema.people.membershipFeeInfo.membershipFee'|translate}}</th>
+									<th>{{'accounting.info.company.fees.topay'|translate}}</th>
+									<th>{{'accounting.info.company.fees.topay.value'|translate}}</th>
+									<th>{{'accounting.info.company.fees.overdue' |translate}}</th>
+									<th>{{'accounting.info.company.fees.overdue.value' |translate}}</th>
+									<th>Credit</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr  ng-repeat="line in model.accounting.people" >
+										<td width="15%">{{line.name}}</td>
+										<td width="20%">{{line.surName}}</td>
+										<td width="10%">{{line.fee}}</td>
+
+										<td width="10%">{{line.feesToPay}}</td>
+										<td width="10%">{{line.feesToPayValue}}</td>
+
+										<td width="10%">{{line.feesOverdue}}</td>
+										<td width="10%">{{line.feesOverdueValue}}</td>
+										<td width="10%">{{line.credit}}</td>
+
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					<div class="table-responsive" ng-show="model.accounting.people.length==0"  >
+						<table  >
+							<thead>
+								<tr>
+									<th>{{'schema.people.baseData.name'|translate}}</th>
+									<th>{{'schema.people.baseData.surName'|translate}}</th>
+									<th>{{'schema.people.membershipFeeInfo.membershipFee'|translate}}</th>
+									<th>{{'accounting.info.company.fees.topay'|translate}}</th>
+									<th>{{'accounting.info.company.fees.topay.value'|translate}}</th>
+									<th>{{'accounting.info.company.fees.overdue' |translate}}</th>
+									<th>{{'accounting.info.company.fees.overdue.value' |translate}}</th>
+									<th>Credit</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="list-row">
+										<td colspan="{{headers.length}}" >
+											{{'generic.search.nodata.found'|translate}}
+										</td>
+									</tr>
+							</tbody>
+						</table>
+					</div>
+					<br>
+					<div class="row form-group">
+							<button class="btn btn-secundary pull-right"  ng-show="model.accounting.people" ng-click="exportTable('table1')"> {{'generic.search.export.csv' | translate}} </button>
+					</div>
+				</fieldset>
+
+
+			</div>
+		</div>
+	</div>
+
+</div>

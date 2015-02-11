@@ -413,7 +413,16 @@
 				"extends":"uri://registries/people#models/fullperson"
 			},
 			"view":{
-				"extends":"uri://registries/people#models/fullperson"
+				"extends":"uri://registries/people#models/fullperson",
+				"clientActions": [
+						{
+							"__DIRECTIVE__": "generate-action-link",
+							"title": "Poplatky",
+							"schemaFrom": "uri://registries/people#views/fullperson/view",
+							"generateBy": "USER-ACCOUNTING",
+							"template": "userAccounting.html"
+						}
+				]
 			},
 			"search":{
 				"extends":"uri://registries/people#models/fullperson",

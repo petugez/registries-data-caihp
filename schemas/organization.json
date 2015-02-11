@@ -72,7 +72,16 @@
 				"extends":"uri://registries/organization#models/organization"
 			},
 			"view": {
-				"extends":"uri://registries/organization#models/organization"
+				"extends":"uri://registries/organization#models/organization",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "generate-action-link",
+						"title": "Poplatky",
+						"schemaFrom": "uri://registries/organization#views/organization/view",
+						"generateBy": "CLUB-ACCOUNTING",
+						"template": "clubAccounting.html"
+					}
+				]
 			},
 			"search": {
 				"extends":"uri://registries/organization#models/organization",
@@ -87,14 +96,14 @@
 		}
 	},
 
-	
-	
+
+
 	"properties": {
 		"baseData": {
 			"title": "ZÁKLADNÍ INFORMACE",
 			"type": "object",
 			"properties": {
-				
+
 			}
 		}
 	}

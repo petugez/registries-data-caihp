@@ -1,0 +1,216 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="psui-search col-md-12 col-lg-8 ">
+			<div>
+
+				<fieldset>
+					<legend>{{'accounting.info.user.info'|translate}} </legend>
+
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'schema.people.baseData.name'|translate}}</label>
+							<div class=" psui-inlineedit-view">
+									{{model.baseData.name}}
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'schema.people.baseData.surname'|translate}}</label>
+							<div class=" psui-inlineedit-view">
+								{{model.baseData.surName}}
+
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'schema.people.hockeyPlayerInfo.clubName'|translate}}</label>
+							<div class=" psui-inlineedit-view">
+								{{model.hockeyPlayerInfo.clubName.refData.name}}
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'schema.people.contactInfo.email'|translate}}</label>
+							<div class=" psui-inlineedit-view">
+								{{model.contactInfo.email}}
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'schema.people.hockeyPlayerInfo.category'|translate}}</label>
+							<div class=" psui-inlineedit-view">
+								{{model.hockeyPlayerInfo.competitionCategory}}
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="name" class="col-sm-4 control-label">{{'schema.people.membershipFeeInfo.membershipFee'|translate}}</label>
+							<div class=" psui-inlineedit-view">
+									{{model.membershipFeeInfo.membershipFee}}
+							</div>
+						</div>
+
+
+				</fieldset>
+
+
+
+				<fieldset>
+				<legend>{{'accounting.info.user.payments' |translate}} </legend>
+					<div class="table-responsive" id='table1' ng-show="model.accounting.payments">
+						<table class="table"  >
+							<thead>
+								<tr>
+									<th>Datum</th>
+									<th>Klient</th>
+
+									<th>VS</th>
+									<th>Suma</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="payment in model.accounting.payments">
+										<td width="10%">{{payment.baseData.accountingDate|dateToString}}</td>
+										<td width="20%">{{payment.baseData.clientName}}</td>
+										<td width="20%">{{payment.baseData.variableSymbol}}</td>
+										<td width="10%" >{{payment.baseData.amount}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="table-responsive" ng-show="model.accounting.payments==0">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Datum</th>
+									<th>Klient</th>
+
+									<th>VS</th>
+									<th>Suma</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="list-row">
+										<td colspan="{{headers.length}}">
+											{{'generic.search.nodata.found'|translate}}
+										</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<br>
+					<div class="row form-group">
+						<button class="btn btn-secundary pull-right"  ng-show="model.accounting.payments" ng-click="exportTable('table1')"> {{'generic.search.export.csv' | translate}} </button>
+					</div>
+				</fieldset>
+				<fieldset>
+				<legend>{{'accounting.info.user.fees.unpaid' |translate}} </legend>
+					<div class="table-responsive" id='table2' ng-show="model.accounting.counted.toPay">
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Datum vystavenia</th>
+									<th>Datum splatnosti</th>
+									<th>Suma</th>
+									<th>Zaplatena suma</th>
+									<th>Stav</th>
+								</tr>
+
+							</thead>
+							<tbody>
+								<tr ng-repeat="fee in  model.accounting.counted.toPay">
+									<td width="20%">{{fee.entity.baseData.setupDate|dateToString}}</td>
+									<td width="20%">{{fee.entity.baseData.dueDate|dateToString}}</td>
+									<td>{{fee.entity.baseData.membershipFee}}</td>
+									<td>{{fee.entity.baseData.membershipFeePaid}}</td>
+									<td>{{fee.entity.baseData.feePaymentStatus}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="table-responsive" ng-show="model.accounting.counted.toPay==0">
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Datum vystavenia</th>
+									<th>Datum splatnosti</th>
+									<th>Suma</th>
+									<th>Zaplatena suma</th>
+									<th>Stav</th>
+								</tr>
+
+							</thead>
+							<tbody>
+
+								<tr class="list-row">
+										<td colspan="{{headers.length}}">
+											{{'generic.search.nodata.found'|translate}}
+										</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<br>
+					<div class="row form-group">
+						<button class="btn btn-secundary pull-right"  ng-show=" model.accounting.counted.toPay" ng-click="exportTable('table2')"> {{'generic.search.export.csv' | translate}} </button>
+					</div>
+				</fieldset>
+				<fieldset>
+				<legend>{{'accounting.info.user.fees.history' |translate}} </legend>
+					<div class="table-responsive" id="table3" ng-show="model.accounting.counted.paid" >
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Datum vystavenia</th>
+									<th>Datum splatnosti</th>
+									<th>Datum zaplatenia</th>
+									<th>Suma</th>
+									<th>Zaplatena suma</th>
+									<th>Stav</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr  ng-repeat="fee in  model.accounting.counted.paid" >
+										<td width="20%">{{fee.entity.baseData.setupDate|dateToString}}</td>
+										<td width="20%">{{fee.entity.baseData.dueDate|dateToString}}</td>
+										<td width="20%">{{fee.entity.baseData.dateOfPayment|dateToString}}</td>
+										<td>{{fee.entity.baseData.membershipFee}}</td>
+										<td>{{fee.entity.baseData.membershipFeePaid}}</td>
+										<td>{{fee.entity.baseData.feePaymentStatus}}</td>
+								</tr>
+
+							</tbody>
+						</table>
+						</div>
+						<div class="table-responsive" ng-show="model.accounting.counted.paid==0" >
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Datum vystavenia</th>
+										<th>Datum splatnosti</th>
+										<th>Datum zaplatenia</th>
+										<th>Suma</th>
+										<th>Zaplatena suma</th>
+										<th>Stav</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="list-row">
+											<td colspan="{{headers.length}}" >
+												{{'generic.search.nodata.found'|translate}}
+											</td>
+										</tr>
+								</tbody>
+							</table>
+							</div>
+						<br>
+						<div class="row form-group">
+							<button class="btn btn-secundary pull-right"  ng-show="model.accounting.counted.paid" ng-click="exportTable('table3')"> {{'generic.search.export.csv' | translate}} </button>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+
+</div>
