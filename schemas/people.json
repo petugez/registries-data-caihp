@@ -134,6 +134,33 @@
 				}
 			}
 		},
+		"bankInfo": {
+			"title": "Bankové spojenie",
+			"transCode": "schema.people.bankInfo",
+			"type": "object",
+			"properties": {
+				"bankAccount": {
+					"title": "Číslo účtu",
+					"transCode": "schema.people.bankInfo.bankAccount",
+					"type": "string"
+				},
+				"bankCode": {
+					"title": "Kód banky",
+					"transCode": "schema.people.bankInfo.bankCode",
+					"type": "string"
+				},
+				"iban": {
+					"title": "IBAN",
+					"transCode": "schema.people.bankInfo.iban",
+					"type": "string"
+				},
+				"swift": {
+					"title": "SWIFT",
+					"transCode": "schema.people.bankInfo.swift",
+					"type": "string"
+				}
+			}
+		},
 		"hockeyPlayerInfo": {
 			"title": "Profil hráča",
 			"transCode": "schema.people.hockeyPlayerInfo",
@@ -300,6 +327,68 @@
 				}
 			}
 		},
+		"membershipFeeInfo": {
+			"title": "Členské príspevky",
+			"transCode": "schema.people.membershipFeeInfo.title",
+			"type": "object",
+			"properties": {
+				"membershipType": {
+					"title": "Typ členského príspevku",
+					"transCode": "schema.people.membershipFeeInfo.membershipType",
+					"type": "string",
+					"enum": [
+						"Extraliga do 23r.",
+						"Extraliga nad 23r.",
+						"1.NHL",
+						"Agent",
+						"Ostatní"
+					],
+					"enumTransCodes": [
+						"schema.people.membershipFeeInfo.membershipType.extraligaUnder23",
+						"schema.people.membershipFeeInfo.membershipType.extraligaOver23",
+						"schema.people.membershipFeeInfo.membershipType.1.NHL",
+						"schema.people.membershipFeeInfo.membershipType.agent",
+						"schema.people.membershipFeeInfo.membershipType.other"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"paymentFrequency": {
+					"title": "Frekvencia platby",
+					"transCode": "schema.people.membershipFeeInfo.paymentFrequency",
+					"type": "string",
+					"enum": [
+						"1xročne",
+						"2xročne",
+						"4xročne",
+						"12xročne"
+					],
+					"enumTransCodes": [
+						"schema.people.membershipFeeInfo.paymentFrequency.1xyear",
+						"schema.people.membershipFeeInfo.paymentFrequency.2xyear",
+						"schema.people.membershipFeeInfo.paymentFrequency.4xyear",
+						"schema.people.membershipFeeInfo.paymentFrequency.12xyear"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"membershipFee": {
+					"title": "Výška členského príspevku",
+					"transCode": "schema.people.membershipFeeInfo.membershipFee",
+					"type": "number"
+				},
+				"notes": {
+					"title": "Poznámka",
+					"transCode": "schema.people.membershipFeeInfo.notes",
+					"type": "string",
+					"large": true
+				}
+			}
+		},
 		"otherInfo": {
 			"title": "Ostatné údaje",
 			"transCode": "schema.people.otherInfo",
@@ -371,39 +460,32 @@
 				"contact":{
 					"$ref":"uri://registries/people#blocks/contact"
 				},
+				"bankInfo": {
+					"$ref":"uri://registries/people#blocks/bankInfo"
+				},
 				"photoInfo":{
 					"$ref":"uri://registries/people#blocks/photoInfo"
+				},
+				"hockeyPlayerInfo":{
+					"$ref":"uri://registries/people#blocks/hockeyPlayerInfo"
+				},
+				"membershipFeeInfo": {
+					"$ref":"uri://registries/people#blocks/membershipFeeInfo"
+				},
+				"otherInfo":{
+					"$ref":"uri://registries/people#blocks/otherInfo"
 				}
 			}
 		},
 		"fullperson":{
 			"extends":"uri://registries/people#models/person",
 			"title":"Osoba",
-			"transCode":"schema.people.title",
-			"properties":{
-				"hockeyPlayerInfo":{
-					"$ref":"uri://registries/people#blocks/hockeyPlayerInfo"
-				},
-				"otherInfo":{
-					"$ref":"uri://registries/people#blocks/otherInfo"
-				}
-			}
+			"transCode":"schema.people.title"
 		},
 		"personalProfile": {
 			"extends":"uri://registries/people#models/person",
 			"title":"Môj profil",
-			"transCode":"schema.people.personalProfile",
-			"properties":{
-				"photoInfo":{
-					"$ref":"uri://registries/people#blocks/photoInfo"
-				},
-				"contact":{
-					"$ref":"uri://registries/people#blocks/contact"
-				},
-				"otherInfo":{
-					"$ref":"uri://registries/people#blocks/otherInfo"
-				}
-			}
+			"transCode":"schema.people.personalProfile"
 		}
 	},
 
