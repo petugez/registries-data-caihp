@@ -1,0 +1,5 @@
+db.people.update({"hockeyPlayerInfo.isActiveAgent":"Áno"},{$set:{ "player.isPlayer":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isActiveRepresentative":"Áno"},{$set:{ "player.isPlayer":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isActiveCoach":"Áno"},{$set:{ "player.isPlayer":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isActivePlayer":"Áno"},{$set:{ "player.isPlayer":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isActivePartner":"Áno"},{$set:{ "player.isPlayer":"TRUE"}},{multi:true})

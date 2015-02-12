@@ -283,6 +283,9 @@ angular.module('registries')
 	});
 
 	$translateProvider.translations('cz', {
+		"enum.boolean.true":"Ano",
+		"enum.boolean.false":"Ne",
+
 		"menu.member.title": "Člen",
 		"menu.player.title": "Hráč",
 		"menu.fees.title": "Poplatek",
