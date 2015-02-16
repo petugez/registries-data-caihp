@@ -457,7 +457,7 @@
 				"baseData":{
 					"extends":"uri://registries/people#blocks/person"
 				},
-				"contact":{
+				"contactInfo":{
 					"$ref":"uri://registries/people#blocks/contact"
 				},
 				"bankInfo": {

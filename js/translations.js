@@ -285,6 +285,9 @@ angular.module('registries')
 	$translateProvider.translations('cz', {
 		"enum.boolean.true":"Ano",
 		"enum.boolean.false":"Ne",
+		"enum.active.A":"aktivní",
+		"enum.active.I":"neaktivní",
+
 
 		"menu.member.title": "Člen",
 		"menu.player.title": "Hráč",

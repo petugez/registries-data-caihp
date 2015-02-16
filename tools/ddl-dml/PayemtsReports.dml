@@ -3,3 +3,11 @@ db.people.update({"hockeyPlayerInfo.isActiveRepresentative":"Áno"},{$set:{ "hoc
 db.people.update({"hockeyPlayerInfo.isActiveCoach":"Áno"},{$set:{ "hockeyPlayerInfo.isActiveCoach":"TRUE"}},{multi:true})
 db.people.update({"hockeyPlayerInfo.isActivePlayer":"Áno"},{$set:{ "hockeyPlayerInfo.isActivePlayer":"TRUE"}},{multi:true})
 db.people.update({"hockeyPlayerInfo.isActivePartner":"Áno"},{$set:{ "hockeyPlayerInfo.isActivePartner":"TRUE"}},{multi:true})
+
+db.people.update({"otherInfo.stateOfPerson":"aktivní"},{$set:{ "otherInfo.stateOfPerson":"active"}},{multi:true})
+
+// remove invalid fees
+db.fees.remove({"baseData.membershipFee":{$in:['Nan',null]}})
+
+// recount statuses
+NODE_ENV=prod node util/init/entityTouch.js uri://registries/fees#views/fee/view

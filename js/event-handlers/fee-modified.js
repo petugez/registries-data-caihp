@@ -8,7 +8,7 @@
 	var QueryFilter = require(process.cwd()+'/build/server/QueryFilter.js');
 
 
- 	function VirtualAccount(){
+	function VirtualAccount(){
 
 		this.dates=[];
 		this.trans={};
@@ -19,10 +19,10 @@
 			this.dates.push(date);
 			this.dates=this.dates.sort(function(a,b){
 				if (a < b)
-     				return -1;
-  				if (a > b)
-    				return 1;
-  				return 0;});
+					return -1;
+					if (a > b)
+						return 1;
+				return 0;});
 		};
 
 		this.getTrans=function(revdate){
@@ -174,7 +174,7 @@
 
 			//get users fees and payments
 			var qf=QueryFilter.create();
-			qf.addCriterium("baseData.member.oid","eq",peopleId);
+			qf.addCriterium('baseData.member.oid','eq',peopleId);
 			// qf.addSort('baseData.accountingDate','asc');
 
 			var va =  new VirtualAccount();
@@ -189,7 +189,7 @@
 				}
 
 				var qf=QueryFilter.create();
-				qf.addCriterium("baseData.member.oid","eq",peopleId);
+				qf.addCriterium('baseData.member.oid','eq',peopleId);
 				// qf.addSort('baseData.setupDate','asc');
 
 
@@ -294,7 +294,7 @@
 
 			var eventScheduler = this.ctx.eventScheduler;
 
-			eventScheduler.unscheduleEvents(entity.id,null,function(err,data){
+			eventScheduler.unscheduleEvents(entity.id,['event-fee-recount'],function(err,data){
 				eventScheduler.scheduleEvent(new Date().getTime()+1000,'event-fee-recount',{peopleId:entity.baseData.member.oid},[entity.id],function(err,data){
 						if (err){
 							log.err(err);
@@ -374,7 +374,7 @@
 		//
 		// 			//find allready paired payments
 		// 			var qf=QueryFilter.create();
-		// 			qf.addCriterium("baseData.fee.oid","eq",fee.id);
+		// 			qf.addCriterium('baseData.fee.oid','eq',fee.id);
 		// 			qf.addSort('baseData.accountingDate','asc');
 		//
 		// 			paymentsDao.find(qf,function(err,data){
