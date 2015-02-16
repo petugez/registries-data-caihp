@@ -72,7 +72,7 @@
 				}
 			}
 		},
-		"contact": {
+		"contactInfo": {
 			"title": "Kontaktné údaje",
 			"transCode": "schema.people.contactInfo",
 			"type": "object",
@@ -458,7 +458,7 @@
 					"extends":"uri://registries/people#blocks/person"
 				},
 				"contactInfo":{
-					"$ref":"uri://registries/people#blocks/contact"
+					"$ref":"uri://registries/people#blocks/contactInfo"
 				},
 				"bankInfo": {
 					"$ref":"uri://registries/people#blocks/bankInfo"
@@ -523,12 +523,12 @@
 						"transCode":"schema.people.baseData.name"
 					},
 					{
-						"field": "contact.email",
+						"field": "contactInfo.email",
 						"title": "E-mail",
 						"transCode": "schema.people.contactInfo.email"
 					},
 					{
-						"field": "contact.city",
+						"field": "contactInfo.city",
 						"title": "Mesto",
 						"transCode":"schema.people.contactInfo.city"
 					}
