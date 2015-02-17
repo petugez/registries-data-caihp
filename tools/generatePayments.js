@@ -81,6 +81,10 @@ mongoDriver.init(config.mongoDbURI, function(err) {
 				collectionName :'fees'
 	});
 
+	var eventsDao = new universalDaoModule.UniversalDao(mongoDriver, {
+				collectionName :'events'
+	});
+
 	fs.mkdir('mails',function(e){
 		if(!e || (e && e.code === 'EEXIST')){
 				//do something with contents
@@ -89,27 +93,27 @@ mongoDriver.init(config.mongoDbURI, function(err) {
 				console.log(e);
 			}
 			var uid=uuid.v4();
-			go(udc,feeDao,renderService,schema,uid,freqToSearch,freqToDivide,function(err){if (err) console.log(err); mongoDriver.close(); console.log('import.id',uid) });
+			go(udc,feeDao,eventsDao,renderService,schema,uid,freqToSearch,freqToDivide,function(err){if (err) console.log(err); mongoDriver.close(); console.log('import.id',uid) });
 	});
 
 });
 
 
-function go(udc,feeDao,renderService,schema,uid,freqToSearch,freqToDivide ,callback) {
+function go(udc,feeDao,eventsDao,renderService,schema,uid,freqToSearch,freqToDivide ,callback) {
 
 	var createdOn=new Date();
 
-	var req={params:{schema:schema},body:{'criteria':[{'f':'membershipFeeInfo.paymentFrequency','v':freqToSearch,'op':'eq'},{'f':'contact.email','v':'','op':'ex'},{'f':'hockeyPlayerInfo.isActivePlayer','v':'Áno','op':'eq'}]}};
+	var req={params:{schema:schema},body:{'criteria':[{'f':'membershipFeeInfo.paymentFrequency','v':freqToSearch,'op':'eq'},{'f':'contactInfo.email','v':'','op':'ex'},{'f':'hockeyPlayerInfo.isActivePlayer','v':'TRUE','op':'eq'}]}};
 
 	var res=function (){
 		this.send=function (code ,data){
-			iterateData(uid,data,udc,feeDao,renderService,createdOn,callback);
+			iterateData(uid,data,udc,feeDao,eventsDao,renderService,createdOn,callback);
 		};
 		this.status=function(status){
 			return this;
 		};
 		this.json=function(data){
-			iterateData(uid,data,udc,feeDao,renderService,createdOn,freqToDivide,callback);
+			iterateData(uid,data,udc,feeDao,eventsDao,renderService,createdOn,freqToDivide,callback);
 		};
 	};
 
@@ -123,12 +127,12 @@ function go(udc,feeDao,renderService,schema,uid,freqToSearch,freqToDivide ,callb
 }
 
 
-function iterateData(uid,data,udc,feeDao,renderService,createdOn,freqToDivide,cb){
+function iterateData(uid,data,udc,feeDao,eventsDao,renderService,createdOn,freqToDivide,cb){
 	var index=1;
 	var toCall=data.map(function (item){
 		return function(callback){
 			mongoDriver.nextSequence('feeIndex',function(err,data){
-				saveItem(uid,item,udc,feeDao,renderService,data.seq%1000000,createdOn,freqToDivide,callback);
+				saveItem(uid,item,udc,feeDao,eventsDao,renderService,data.seq%1000000,createdOn,freqToDivide,callback);
 			});
 		};
 	});
@@ -136,18 +140,44 @@ function iterateData(uid,data,udc,feeDao,renderService,createdOn,freqToDivide,cb
 	async.parallel(toCall,cb);
 }
 
-function saveItem(uid,item,udc,feeDao,renderService,index,createdOn,freqToDivide,callback){
+function saveItem(uid,item,udc,feeDao,eventsDao,renderService,index,createdOn,freqToDivide,callback){
 		// //GENERATED UNIQUE VS
 		// var bill = {"import":{id:uid}, baseData:{member:{registry:'people',oid:item.id},membershipFee:Number(item.membershipFeeInfo.membershipFee),
 		// 					setupDate:dateUtils.dateToReverse(createdOn),
 		// 					dueDate:dateUtils.dateToReverse(dateUtils.dateAddDays(createdOn,15)),feePaymentStatus:'created',variableSymbol:createVS(dateUtils.dateToReverse(createdOn),index)}};
 
-		var bill = {"import":{id:uid}, baseData:{member:{registry:'people',oid:item.id},membershipFee:(Number(item.membershipFeeInfo.membershipFee)/freqToDivide).toFixed(2),
+		var dueDate=dateUtils.dateAddDays(createdOn,15);
+		var bill = {"import":{id:uid}, baseData:{member:{registry:'people',oid:item.id},membershipFee:Number((Number(item.membershipFeeInfo.membershipFee)/freqToDivide).toFixed(2)),
 							setupDate:dateUtils.dateToReverse(createdOn),
-							dueDate:dateUtils.dateToReverse(dateUtils.dateAddDays(createdOn,15)),feePaymentStatus:'created',variableSymbol:bornNumberToVS(item.baseData.bornNumber)}};
+							dueDate:dateUtils.dateToReverse(dueDate),feePaymentStatus:'created',variableSymbol:bornNumberToVS(item.baseData.bornNumber)}};
 
 		createMail(renderService,index,item,bill);
-		feeDao.save(bill,callback);
+
+		feeDao.save(bill,function (err,fee){
+			if (err){
+				log.error(err);
+				callback(err);
+				return;
+			}
+
+			var	eventRecount={  "fireOnTS" : new Date().getDate()+60000, "eventType" : "event-fee-recount", "eventData" : { "peopleId" : fee.id }, "refIds" : [ fee.id ], "scheduledOn" : new Date().getDate() }
+			eventsDao.save(eventRecount,function(err,data){
+				if (err){
+					log.error(err);
+					callback(err);
+					return;
+				}
+				var eventDue={ "fireOnTS" : dateUtils.strToTS(dateUtils.reverseToString( bill.baseData.dueDate)), "eventType" : "event-fee-recount", "eventData" : { "peopleId" : fee.id }, "refIds" : [ data.id ], "scheduledOn" : new Date().getDate()  }
+				eventsDao.save(eventDue,function(err,data){
+					if (err){
+						log.error(err);
+						callback(err);
+						return;
+					}
+					callback();
+				});
+			});
+		});
 
 }
 
