@@ -1,13 +1,31 @@
-db.people.update({"hockeyPlayerInfo.isActiveAgent":"Áno"},{$set:{ "hockeyPlayerInfo.isActiveAgent":"TRUE"}},{multi:true})
-db.people.update({"hockeyPlayerInfo.isActiveRepresentative":"Áno"},{$set:{ "hockeyPlayerInfo.isActiveRepresentative":"TRUE"}},{multi:true})
-db.people.update({"hockeyPlayerInfo.isActiveCoach":"Áno"},{$set:{ "hockeyPlayerInfo.isActiveCoach":"TRUE"}},{multi:true})
-db.people.update({"hockeyPlayerInfo.isActivePlayer":"Áno"},{$set:{ "hockeyPlayerInfo.isActivePlayer":"TRUE"}},{multi:true})
+
+db.people.update({"hockeyPlayerInfo.isActivePlayer":"Áno"},{$set:{ "hockeyPlayerInfo.isActivePartner":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isActivePlayer":"Ne"},{$set:{ "hockeyPlayerInfo.isActivePartner":"FALSE"}},{multi:true})
+
+
+db.people.update({"hockeyPlayerInfo.isActiveCoach":"Áno"},{$set:{ "hockeyPlayerInfo.isActivePartner":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isActiveCoach":"Ne"},{$set:{ "hockeyPlayerInfo.isActivePartner":"FALSE"}},{multi:true})
+
+db.people.update({"hockeyPlayerInfo.isActiveAgent":"Áno"},{$set:{ "hockeyPlayerInfo.isActivePartner":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isActiveAgent":"Ne"},{$set:{ "hockeyPlayerInfo.isActivePartner":"FALSE"}},{multi:true})
+
+db.people.update({"hockeyPlayerInfo.isActiveRepresentative":"Áno"},{$set:{ "hockeyPlayerInfo.isActivePartner":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isActiveRepresentative":"Ne"},{$set:{ "hockeyPlayerInfo.isActivePartner":"FALSE"}},{multi:true})
+
+db.people.update({"hockeyPlayerInfo.isProAm":"Áno"},{$set:{ "hockeyPlayerInfo.isActivePartner":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isProAm":"Ne"},{$set:{ "hockeyPlayerInfo.isActivePartner":"FALSE"}},{multi:true})
+
 db.people.update({"hockeyPlayerInfo.isActivePartner":"Áno"},{$set:{ "hockeyPlayerInfo.isActivePartner":"TRUE"}},{multi:true})
+db.people.update({"hockeyPlayerInfo.isActivePartner":"Ne"},{$set:{ "hockeyPlayerInfo.isActivePartner":"FALSE"}},{multi:true})
+
+db.people.update({"hockeyPlayerInfo.isActivePartner":"Ne"},{$set:{ "hockeyPlayerInfo.isActivePartner":"FALSE"}},{multi:true})
+
 
 db.people.update({"otherInfo.stateOfPerson":"aktivní"},{$set:{ "otherInfo.stateOfPerson":"active"}},{multi:true})
+db.people.update({"otherInfo.stateOfPerson":"neaktivní"},{$set:{ "otherInfo.stateOfPerson":"inactive"}},{multi:true})
 
 // remove invalid fees
-db.fees.remove({"baseData.membershipFee":{$in:['Nan',null]}})
+db.fees.remove({"baseData.membershipFee":{$in:['NaN',null]}})
 
 // recount statuses
 NODE_ENV=prod node util/init/entityTouch.js uri://registries/fees#views/fee/view
