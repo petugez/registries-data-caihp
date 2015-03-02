@@ -18,5 +18,6 @@
 	"imports.json",
 	"payments.json",
 	"commonEnums.json",
-	"commonTypes.json"
+	"commonTypes.json",
+	"requisitions.json"
 ]

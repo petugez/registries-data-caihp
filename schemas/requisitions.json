@@ -1,0 +1,174 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/requisitions#",
+
+	"blocks": {
+		"attachments":{
+			"type": "object",
+			"transCode": "schema.requisitions.attachments",
+			"properties": {
+				"attachments": {
+					"title": "Hráči",
+					"transCode": "schema.requisitions.attachments",
+					"type": "array",
+					"items": {
+						"objectLink": {
+							"registry": "attachments",
+							"fileName": "baseData.fileName",
+							"mimeType": "baseData.mimeType",
+							"createdOn": "baseData.createdOn"
+						},
+						"required": false
+					}
+				}
+			}
+		},
+		"baseData": {
+			"title": "ZÁKLADNÍ INFORMACE",
+			"transCode": "schema.requisitions.basedata",
+			"type": "object",
+			"properties": {
+				"applicant": {
+					"title": "Člen",
+					"transCode": "schema.requisitions.basedata.applicant",
+					"type": "string",
+					"required": true,
+					"objectLink": {
+						"registry": "people",
+						"surName": "baseData.surName.v",
+						"name": "baseData.name.v"
+					}
+				},
+				"assignedTo": {
+					"title": "Člen",
+					"transCode": "schema.requisitions.basedata.assignedto",
+					"type": "string",
+					"objectLink": {
+						"registry": "people",
+						"surName": "baseData.surName.v",
+						"name": "baseData.name.v"
+					}
+				},
+				"subject": {
+					"title": "Predmet",
+					"transCode": "schema.requisitions.basedata.applicationsubject",
+					"type": "string",
+					"required": true
+				},
+
+				"text": {
+					"title": "Predmet",
+					"transCode": "schema.requisitions.basedata.text",
+					"type": "string",
+					"required": true
+				},
+
+				"responseText": {
+					"title": "Text",
+					"transCode": "schema.requisitions.basedata.responsetext",
+					"type": "string",
+					"required": true
+				},
+				"setupDate": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Datum vystavení",
+					"transCode": "schema.requisitions.basedata.setupdate",
+					"required": true
+				},
+				"status": {
+					"title": "Stav",
+					"transCode": "schema.requisitions.basedata.status",
+					"type": "string",
+					"enum": ["created",
+							"processing",
+							"closed"
+					],
+					"enumTransCodes": [
+						"schema.requisitions.basedata.status.created",
+						"schema.requisitions.basedata.status.processing",
+						"schema.requisitions.basedata.status.closed"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				}
+			}
+		}
+	},
+
+	"models": {
+		"requisition": {
+			"title": "Žiadost",
+			"transCode": "schema.requisitions.title",
+			"table": "requisitions",
+			"security": {
+				"create": {
+					"static": [
+						"Registry - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Registry - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Registry - write"
+					]
+				}
+			},
+			"fireEvents":{
+				"create": "event-requisition-created",
+				"update": "event-requisition-updated"
+			},
+			"properties": {
+				"baseData": {
+					"extends":"uri://registries/requisitions#blocks/baseData"
+				},
+				"attachments": {
+					"extends":"uri://registries/requisitions#blocks/attachments"
+				}
+			}
+		}
+	},
+
+	"views": {
+		"requisition": {
+			"new":{
+				"extends":"uri://registries/requisitions#models/requisition",
+				"saveBySchema":"uri://registries/requisitions#views/requisition/view",
+				"properties":{
+					"baseData": {
+						"properties": {
+							"applicant":null,
+							"assignedTo":null,
+							"club": null,
+							"setupDate":null,
+							"status":null
+						}
+					}
+				}
+			},
+			"view": {
+				"extends":"uri://registries/requisitions#models/requisition"
+			},
+			"search": {
+				"extends":"uri://registries/requisitions#models/requisition",
+				"listFields": [
+					{
+						"field": "baseData.setupDate",
+						"title": "Meno",
+						"transCode": "schema.ferequisitionses.listFields.setupDate"
+					},
+					{
+						"field": "baseData.subject",
+						"title": "Meno",
+						"transCode": "schema.requisitions.listFields.subject"
+					}
+				]
+			}
+		}
+	}
+}
