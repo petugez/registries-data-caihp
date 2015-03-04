@@ -118,7 +118,7 @@
 			"fireEvents":{
 				"create": "event-fee-created",
 				"update": "event-fee-updated"
-			},		
+			},
 			"properties": {
 				"baseData": {
 					"extends":"uri://registries/fees#blocks/fee"

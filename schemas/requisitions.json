@@ -51,7 +51,7 @@
 				},
 				"subject": {
 					"title": "Predmet",
-					"transCode": "schema.requisitions.basedata.applicationsubject",
+					"transCode": "schema.requisitions.basedata.subject",
 					"type": "string",
 					"required": true
 				},
@@ -66,8 +66,7 @@
 				"responseText": {
 					"title": "Text",
 					"transCode": "schema.requisitions.basedata.responsetext",
-					"type": "string",
-					"required": true
+					"type": "string"
 				},
 				"setupDate": {
 					"extends":"uri://registries/commontypes#blocks/date",
@@ -92,6 +91,11 @@
 						"component": "psui-selectbox",
 						"searchable": true
 					}
+				},
+				"modifiedOn": {
+					"transCode": "schema.requisitions.basedata.modifiedOn",
+					"timestamp":true,
+					"readOnly":true
 				}
 			}
 		}
@@ -146,9 +150,12 @@
 							"assignedTo":null,
 							"club": null,
 							"setupDate":null,
-							"status":null
+							"status":null,
+							"responseText":null,
+							"modifiedOn":null
 						}
-					}
+					},
+					"attachments":null
 				}
 			},
 			"view": {
@@ -160,12 +167,12 @@
 					{
 						"field": "baseData.setupDate",
 						"title": "Meno",
-						"transCode": "schema.ferequisitionses.listFields.setupDate"
+						"transCode": "schema.requisitions.basedata.setupdate"
 					},
 					{
 						"field": "baseData.subject",
 						"title": "Meno",
-						"transCode": "schema.requisitions.listFields.subject"
+						"transCode": "schema.requisitions.basedata.subject"
 					}
 				]
 			}

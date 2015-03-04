@@ -120,6 +120,7 @@ angular.module('registries')
 		"schema.requisitions.basedata.status.closed":"Uzavretá",
 		"schema.requisitions.attachments":"Prílohy",
 		"schema.requisitions.basedata.responsetext":"Odpoveď",
+		"schema.requisitions.basedata.modifiedOn":"Čas poslednej zmeny",
 
 
 		"schema.fees.title":"Príspevok",
@@ -429,6 +430,7 @@ angular.module('registries')
 		"schema.requisitions.basedata.status.closed":"Uzavretá",
 		"schema.requisitions.attachments":"Přílohy",
 		"schema.requisitions.basedata.responsetext":"Odpověď",
+		"schema.requisitions.basedata.modifiedOn":"Čas poslednej zmeny",
 
 
 
