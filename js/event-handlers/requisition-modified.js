@@ -11,6 +11,12 @@
 	var renderModule =  module.parent.require('./renderService.js');
 	var transport = nodemailer.createTransport('Sendmail');
 
+
+	/**
+	*	@module server
+	*	@submodule event.handler
+	*	@class RequisitionChangedHandler
+	*/
 	function RequisitionChangedHandler(ctx) {
 		this.ctx=ctx;
 		var self=this;
@@ -26,6 +32,17 @@
 			{collectionName: 'people'}
 		);
 
+		/**
+			Method handles <b>event-requisition-created<b> event.
+			<br>Method does:
+			<li>updates/initializes requisitions attributes setupDate,applicant,status,assignedTo</li>
+			<li>sends notification mail to cfg defined issue solver ('requisitionSolverAddress') </li>
+			<br>
+			Limitations: requisitionSolverAddress should match to systemCredentials.login.email of any user othewise attribute 'assignedTo' is not resolved.
+
+			@method handleRequisitionCreated
+
+		*/
 		this.handleRequisitionCreated=function(event){
 
 			var entity = event.entity;
@@ -49,9 +66,8 @@
 					if (data.length==1){
 						var solver=data[0];
 						entity.baseData.assignedTo={registry:'people',oid:solver.id};
-						self.sendRequisitionCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name+' '+event.user.baseData.surName,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
-
 					}
+					self.sendRequisitionCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name+' '+event.user.baseData.surName,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
 
 					requisitionsDao.save(entity,function(err,data){
 						if (err) {
@@ -65,7 +81,10 @@
 
 		};
 
-
+		/**
+			Method handles <b>event-requisition-updated</b>
+			@method handleRequisitionModified
+		*/
 		this.handleRequisitionModified=function(event){
 
 			var entity = event.entity;
@@ -74,21 +93,15 @@
 			entity.baseData.applicant={registry:'people',oid:event.user.id};
 			var solverAddress=self.ctx.config.mails.requisitionSolverAddress;
 
-
-				var qf=QueryFilter.create();
-				qf.addCriterium("systemCredentials.login.email","eq",solverAddress);
-
-				userDao.find(qf, function(err, data) {
+				userDao.get(entity.baseData.assignedTo.oid, function(err, solver) {
 					if (err){
 						log.error(err);
 						return;
 					}
 
 					// assign to and send mail.
-					if (data.length==1){
-						var solver=data[0];
-						entity.baseData.assignedTo={registry:'people',oid:data.id};
-						self.sendRequisitionModified(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name+' '+event.user.baseData.surName,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
+					if (solver){
+						self.sendRequisitionModified(solver.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name+' '+event.user.baseData.surName,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
 						userDao.get(entity.baseData.applicant.oid,function(err,applicant){
 							if (err){
 								log.error(err);
@@ -134,7 +147,10 @@
 		};
 
 	}
-
+	/**
+	* method dispatch all types of registered events to actual handling method.
+	* @method handle
+	*/
 	RequisitionChangedHandler.prototype.handle = function(event) {
 		log.info('handle called',event,RequisitionChangedHandler.prototype.ctx);
 

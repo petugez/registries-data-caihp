@@ -149,11 +149,22 @@
 
 	}
 
+	/**
+	*	@module server
+	*	@submodule event.handler
+	*	@class FeeHandler
+	*/
 	function FeeHandler(ctx) {
 		this.ctx=ctx;
 		var self=this;
 
 
+
+
+		/**
+			Method recounts status of all users Fees
+			@method handleRecoutFeeStatus
+		*/
 		this.handleRecoutFeeStatus=function(event){
 
 			var peopleId=event.peopleId;
@@ -278,7 +289,10 @@
 
 
 
-
+		/**
+			Method schedules fee recount
+			@method handleFeeChange
+		*/
 		this.handleFeeChange=function(event){
 
 			var entity = event.entity;
@@ -467,7 +481,13 @@
 			this.handleRecoutFeeStatus(event);
 		}
 	};
+	/**
+		Method specifies handeled events.
+		<br> This handler handles events: 
+		'event-fee-updated','event-fee-created','event-fee-overdue','event-fee-recount'
 
+		@method getType
+	*/
 	FeeHandler.prototype.getType=function(){
 		return ['event-fee-updated','event-fee-created','event-fee-overdue','event-fee-recount'];
 	};
