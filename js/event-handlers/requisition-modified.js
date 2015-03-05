@@ -67,7 +67,7 @@
 						var solver=data[0];
 						entity.baseData.assignedTo={registry:'people',oid:solver.id};
 					}
-					self.sendRequisitionCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name+' '+event.user.baseData.surName,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
+					self.sendRequisitionCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
 
 					requisitionsDao.save(entity,function(err,data){
 						if (err) {
@@ -93,24 +93,32 @@
 			entity.baseData.applicant={registry:'people',oid:event.user.id};
 			var solverAddress=self.ctx.config.mails.requisitionSolverAddress;
 
-				userDao.get(entity.baseData.assignedTo.oid, function(err, solver) {
-					if (err){
-						log.error(err);
-						return;
-					}
+				if (entity.baseData.assignedTo){
+					userDao.get(entity.baseData.assignedTo.oid, function(err, solver) {
+						if (err){
+							log.error(err);
+							return;
+						}
 
-					// assign to and send mail.
-					if (solver){
-						self.sendRequisitionModified(solver.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name+' '+event.user.baseData.surName,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
-						userDao.get(entity.baseData.applicant.oid,function(err,applicant){
-							if (err){
-								log.error(err);
-								return;
-							}
-							self.sendRequisitionModified(applicant.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name+' '+event.user.baseData.surName,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
-						});
-					}
-				});
+						// assign to and send mail.
+						if (solver){
+							self.sendRequisitionModified(solver.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
+						}
+					});
+
+				} else {
+					self.sendRequisitionModified(this.ctx.config.mails.requisitionSolverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
+				}
+
+				if (entity.baseData.applicant){
+							userDao.get(entity.baseData.applicant.oid,function(err,applicant){
+								if (err){
+									log.error(err);
+									return;
+								}
+								self.sendRequisitionModified(applicant.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
+							});
+				}
 
 		}
 

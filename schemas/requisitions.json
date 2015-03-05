@@ -173,7 +173,18 @@
 						"field": "baseData.subject",
 						"title": "Meno",
 						"transCode": "schema.requisitions.basedata.subject"
+					},
+					{
+						"field": "baseData.applicant.refData.surName",
+						"title": "Meno",
+						"transCode": "schema.requisitions.basedata.applicant"
+					},
+					{
+						"field": "baseData.assignedTo.refData.surName",
+						"title": "Meno",
+						"transCode": "schema.requisitions.basedata.assignedto"
 					}
+
 				]
 			}
 		}
