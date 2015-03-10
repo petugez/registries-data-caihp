@@ -142,7 +142,44 @@
 		"requisition": {
 			"new":{
 				"extends":"uri://registries/requisitions#models/requisition",
-				"saveBySchema":"uri://registries/requisitions#views/requisition/view",
+				"saveBySchema":"uri://registries/requisitions#views/requisition/view"
+			},
+			"view": {
+				"extends":"uri://registries/requisitions#models/requisition"
+			},
+			"search": {
+				"extends":"uri://registries/requisitions#models/requisition",
+				"listFields": [
+					{
+						"field": "baseData.setupDate",
+						"transCode": "schema.requisitions.basedata.setupdate"
+					},
+					{
+						"field": "baseData.subject",
+						"transCode": "schema.requisitions.basedata.subject"
+					},
+					{
+						"field": "baseData.applicant.refData.surName",
+						"transCode": "schema.requisitions.basedata.applicant"
+					},
+					{
+						"field": "baseData.assignedTo.refData.surName",
+						"transCode": "schema.requisitions.basedata.assignedto"
+					},
+					{
+						"field": "baseData.modifiedOn",
+						"transCode": "schema.requisitions.basedata.modifiedOn"
+					},
+					{
+						"field": "baseData.status",
+						"transCode": "schema.requisitions.basedata.status"
+					}
+				]
+			}
+		},
+		"requisitionApplicant":{
+			"extends":"uri://registries/requisitions#views/requisition",
+			"new":{
 				"properties":{
 					"baseData": {
 						"properties": {
@@ -158,11 +195,23 @@
 					"attachments":null
 				}
 			},
-			"view": {
-				"extends":"uri://registries/requisitions#models/requisition"
+			"view":{
+				"properties":{
+					"baseData": {
+						"properties": {
+							"applicant":{"readOnly":true},
+							"assignedTo":{"readOnly":true},
+							"club": null,
+							"setupDate":{"readOnly":true},
+							"status":{"readOnly":true},
+							"responseText":{"readOnly":true},
+							"modifiedOn":{"readOnly":true}
+						}
+					},
+					"attachments":null
+				}
 			},
-			"search": {
-				"extends":"uri://registries/requisitions#models/requisition",
+			"search":{
 				"listFields": [
 					{
 						"field": "baseData.setupDate",
@@ -175,18 +224,42 @@
 						"transCode": "schema.requisitions.basedata.subject"
 					},
 					{
-						"field": "baseData.applicant.refData.surName",
-						"title": "Meno",
-						"transCode": "schema.requisitions.basedata.applicant"
-					},
-					{
 						"field": "baseData.assignedTo.refData.surName",
 						"title": "Meno",
 						"transCode": "schema.requisitions.basedata.assignedto"
+					},
+					{
+						"field": "baseData.modifiedOn",
+						"title": "Meno",
+						"transCode": "schema.requisitions.basedata.modifiedOn"
 					}
 
 				]
 			}
+
+		},
+		"requisitionSolver":{
+			"extends":"uri://registries/requisitions#views/requisition",
+			"new":null,
+			"view":{
+				"properties":{
+					"baseData": {
+						"properties": {
+							"applicant":{"readOnly":true},
+							"subject":{"readOnly":true},
+							"text":{"readOnly":true},
+							"assignedTo":{"readOnly":false},
+							"club": null,
+							"setupDate":{"readOnly":true},
+							"status":{"readOnly":true},
+							"responseText":{"readOnly":false},
+							"modifiedOn":{"readOnly":true}
+						}
+					},
+					"attachments":null
+				}
+			}
+
 		}
 	}
 }
