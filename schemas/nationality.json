@@ -4,7 +4,7 @@
 	"type": "object",
 	"country": {
 		"title": "Státní příslušnost",
-		"xxtransCode": "schema.people.baseData.nationality",
+		"transCode": "schema.people.baseData.nationality",
 		"type": "string",
 		"enum": [
 			"CZE",
