@@ -50,7 +50,7 @@
 
 			entity.baseData.setupDate=dateUtils.nowToReverse();
 			entity.baseData.status='created';
-			entity.baseData.applicant={registry:'people',oid:event.user.id};
+			entity.baseData.applicant={schema:"uri://registries/people#views/fullperson/view",registry:'people',oid:event.user.id};
 
 
 				var qf=QueryFilter.create();
@@ -65,7 +65,7 @@
 					// assign to and send mail.
 					if (data.length==1){
 						var solver=data[0];
-						entity.baseData.assignedTo={registry:'people',oid:solver.id};
+						entity.baseData.assignedTo={schema:"uri://registries/people#views/fullperson/view",registry:'people',oid:solver.id};
 					}
 					self.sendRequisitionCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
 
@@ -90,7 +90,7 @@
 			var entity = event.entity;
 			// var solverAddress=this.ctx.config.mails.requisitionSolverAddress;
 
-			entity.baseData.applicant={registry:'people',oid:event.user.id};
+			entity.baseData.applicant={schema:"uri://registries/people#views/fullperson/view",registry:'people',oid:event.user.id};
 			var solverAddress=self.ctx.config.mails.requisitionSolverAddress;
 
 				if (entity.baseData.assignedTo){

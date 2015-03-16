@@ -28,10 +28,13 @@
 					"transCode": "schema.fees.baseData.member",
 					"type": "string",
 					"required": true,
-					"objectLink": {
+					"$objectLink2": {
+						"schema":"uri://registries/people#views/fullperson",
 						"registry": "people",
-						"surName": "baseData.surName.v",
-						"name": "baseData.name.v"
+						"fields":{
+							"surName": "baseData.surName",
+							"name": "baseData.name"
+						}
 					}
 				},
 				"clientRef": {

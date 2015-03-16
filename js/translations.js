@@ -1,6 +1,6 @@
-angular.module('registries')
+angular.module('x-registries')
 .config(['$translateProvider', function($translateProvider) {
-	$translateProvider.preferredLanguage('cz');
+	$translateProvider.preferredLanguage('sk');
 	$translateProvider.translations('sk', {
 		"menu.member.title": "Člen",
 		"menu.player.title": "Hráč",
@@ -61,6 +61,11 @@ angular.module('registries')
 		"menu.requisitions.title":"Žiadosti",
 		"menu.requisitions.new.lower.level":"Nová",
 		"menu.requisitions.search.lower.level":"Vyhľadáť",
+
+		"menu.requisitions.solver.title":"Riešenie žiadosti",
+		"menu.requisitions.solver.search.lower.level":"Vyhľadáť",
+
+
 
 		"accounting.info.user.info":"Sumárne informácie",
 		"accounting.info.user.payments":"Prijaté platby",
@@ -367,6 +372,9 @@ angular.module('registries')
 		"menu.requisitions.title":"Žádosti",
 		"menu.requisitions.new.lower.level":"Nová",
 		"menu.requisitions.search.lower.level":"Hledat",
+
+		"menu.requisitions.solver.title":"Rešení žádostí",
+		"menu.requisitions.solver.search.lower.level":"Vyhľadáť",
 
 		"accounting.info.user.info":"Sumárne informace",
 		"accounting.info.user.payments":"Přijaté platby",

@@ -12,13 +12,18 @@
 					"transCode": "schema.requisitions.attachments",
 					"type": "array",
 					"items": {
-						"objectLink": {
-							"registry": "attachments",
-							"fileName": "baseData.fileName",
-							"mimeType": "baseData.mimeType",
-							"createdOn": "baseData.createdOn"
+						"file": {
+							"properties":{
+								"name":{"type":"string"},
+								"size":{"type":"number"},
+								"createdOn":{"type":"string"},
+								"mime":{"type":"string"}
+							}
 						},
-						"required": false
+						"required": false,
+						"render": {
+							"component":"xpsui-uploadable-file"
+						}
 					}
 				}
 			}
@@ -29,53 +34,54 @@
 			"type": "object",
 			"properties": {
 				"applicant": {
-					"title": "Člen",
 					"transCode": "schema.requisitions.basedata.applicant",
 					"type": "string",
 					"required": true,
-					"objectLink": {
+					"$objectLink2": {
+						"schema":"uri://registries/people#views/fullperson",
 						"registry": "people",
-						"surName": "baseData.surName.v",
-						"name": "baseData.name.v"
+						"fields":{
+							"surName": "baseData.surName",
+							"name": "baseData.name"
+						}
 					}
 				},
 				"assignedTo": {
-					"title": "Člen",
 					"transCode": "schema.requisitions.basedata.assignedto",
 					"type": "string",
-					"objectLink": {
+					"$objectLink2": {
+						"schema":"uri://registries/people#views/fullperson",
 						"registry": "people",
-						"surName": "baseData.surName.v",
-						"name": "baseData.name.v"
+						"fields":{
+							"surName": "baseData.surName",
+							"name": "baseData.name"
+						}
 					}
 				},
 				"subject": {
-					"title": "Predmet",
 					"transCode": "schema.requisitions.basedata.subject",
 					"type": "string",
 					"required": true
 				},
 
 				"text": {
-					"title": "Predmet",
 					"transCode": "schema.requisitions.basedata.text",
 					"type": "string",
-					"required": true
+					"required": true,
+					"render":{"component":"psui-textarea"}
 				},
 
 				"responseText": {
-					"title": "Text",
 					"transCode": "schema.requisitions.basedata.responsetext",
-					"type": "string"
+					"type": "string",
+					"render":{"component":"psui-textarea"}
 				},
 				"setupDate": {
 					"extends":"uri://registries/commontypes#blocks/date",
-					"title": "Datum vystavení",
 					"transCode": "schema.requisitions.basedata.setupdate",
 					"required": true
 				},
 				"status": {
-					"title": "Stav",
 					"transCode": "schema.requisitions.basedata.status",
 					"type": "string",
 					"enum": ["created",
@@ -103,7 +109,6 @@
 
 	"models": {
 		"requisition": {
-			"title": "Žiadost",
 			"transCode": "schema.requisitions.title",
 			"table": "requisitions",
 			"security": {
@@ -191,8 +196,8 @@
 							"responseText":null,
 							"modifiedOn":null
 						}
-					},
-					"attachments":null
+					}
+
 				}
 			},
 			"view":{
@@ -207,8 +212,8 @@
 							"responseText":{"readOnly":true},
 							"modifiedOn":{"readOnly":true}
 						}
-					},
-					"attachments":null
+					}
+
 				}
 			},
 			"search":{
@@ -255,8 +260,8 @@
 							"responseText":{"readOnly":false},
 							"modifiedOn":{"readOnly":true}
 						}
-					},
-					"attachments":null
+					}
+
 				}
 			}
 
