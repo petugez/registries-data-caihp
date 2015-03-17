@@ -5,7 +5,7 @@
 	"blocks": {
 		"payment": {
 			"title": "ZÁKLADNÍ INFORMACE",
-			"xtransCode": "schema.payments.baseData",
+			"transCode": "schema.payments.baseData",
 			"type": "object",
 			"properties": {
 				"accountingDate": {

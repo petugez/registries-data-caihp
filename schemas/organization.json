@@ -5,6 +5,7 @@
 	"blocks":{
 		"organization": {
 			"title": "ZÁKLADNÍ INFORMACE",
+			"transCode": "schema.org.baseData",
 			"type": "object",
 			"properties": {
 				"name": {

@@ -3,6 +3,8 @@
 	"id" : "uri://registries/mailtemplates#master",
 	
 	"new" : {
+		"title": "Vzor",
+		"transCode": "schema.mailTemplate.template",
 		"table" : "mailtemplates",
 		"security" : {
 			"$ref" : "uri://registries/mailtemplates#models/mailTemplate/security"
@@ -17,6 +19,8 @@
 		"$ref" : "uri://registries/mailtemplates#master/new"
 	},
 	"search" : {
+		"title": "Vzor",
+		"transCode": "schema.mailTemplate.template",
 		"table": "mailtemplates",
 		"security" : {
 			"$ref" : "uri://registries/mailtemplates#models/mailTemplate/security"
