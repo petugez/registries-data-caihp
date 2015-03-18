@@ -4,10 +4,15 @@
 
 	"blocks":{
 		"datetime":{
-			"type":"String"
+			"type":"string"
+		},
+		"timestamp":{
+			"type":"string",
+			"timestamp":true,
+			"readOnly":true
 		},
 		"date":{
-			"type":"String",
+			"type":"string",
 			"render": {
 				"component": "psui-datepicker"
 			}

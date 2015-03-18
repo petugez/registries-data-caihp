@@ -111,16 +111,16 @@
 				}
 
 				if (entity.baseData.applicant){
-							userDao.get(entity.baseData.applicant.oid,function(err,applicant){
-								if (err){
-									log.error(err);
-									return;
-								}
-								self.sendRequisitionModified(applicant.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
-							});
+					userDao.get(entity.baseData.applicant.oid,function(err,applicant){
+						if (err){
+							log.error(err);
+							return;
+						}
+						self.sendRequisitionModified(applicant.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requisitions/'+entity.id);
+					});
 				}
 
-		}
+		};
 
 
 		this.sendRequisitionCreated=function(email,serviceUrl,applicant,subject,requisitionUri){

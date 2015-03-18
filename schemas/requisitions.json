@@ -37,9 +37,8 @@
 					"transCode": "schema.requisitions.basedata.applicant",
 					"type": "string",
 					"required": true,
-					"$objectLink2": {
-						"schema":"uri://registries/people#views/fullperson",
-						"registry": "people",
+					"objectLink2": {
+						"schema":"uri://registries/people#views/fullperson/view",
 						"fields":{
 							"surName": "baseData.surName",
 							"name": "baseData.name"
@@ -49,9 +48,8 @@
 				"assignedTo": {
 					"transCode": "schema.requisitions.basedata.assignedto",
 					"type": "string",
-					"$objectLink2": {
-						"schema":"uri://registries/people#views/fullperson",
-						"registry": "people",
+					"objectLink2": {
+						"schema":"uri://registries/people#views/fullperson/view",
 						"fields":{
 							"surName": "baseData.surName",
 							"name": "baseData.name"
@@ -79,7 +77,7 @@
 				"setupDate": {
 					"extends":"uri://registries/commontypes#blocks/date",
 					"transCode": "schema.requisitions.basedata.setupdate",
-					"required": true
+					"readOnly":true
 				},
 				"status": {
 					"transCode": "schema.requisitions.basedata.status",
@@ -99,9 +97,8 @@
 					}
 				},
 				"modifiedOn": {
-					"transCode": "schema.requisitions.basedata.modifiedOn",
-					"timestamp":true,
-					"readOnly":true
+					"extends":"uri://registries/commontypes#blocks/timestamp",
+					"transCode": "schema.requisitions.basedata.modifiedOn"
 				}
 			}
 		}
@@ -109,7 +106,9 @@
 
 	"models": {
 		"requisition": {
+
 			"transCode": "schema.requisitions.title",
+
 			"table": "requisitions",
 			"security": {
 				"create": {
@@ -205,41 +204,19 @@
 					"baseData": {
 						"properties": {
 							"applicant":{"readOnly":true},
+							"subject":{"readOnly":false},
+							"text":{"readOnly":false},
+
 							"assignedTo":{"readOnly":true},
 							"club": null,
-							"setupDate":{"readOnly":true},
-							"status":{"readOnly":true},
 							"responseText":{"readOnly":true},
+							"status":{"readOnly":true},
+							"setupDate":{"readOnly":true},
 							"modifiedOn":{"readOnly":true}
 						}
 					}
 
 				}
-			},
-			"search":{
-				"listFields": [
-					{
-						"field": "baseData.setupDate",
-						"title": "Meno",
-						"transCode": "schema.requisitions.basedata.setupdate"
-					},
-					{
-						"field": "baseData.subject",
-						"title": "Meno",
-						"transCode": "schema.requisitions.basedata.subject"
-					},
-					{
-						"field": "baseData.assignedTo.refData.surName",
-						"title": "Meno",
-						"transCode": "schema.requisitions.basedata.assignedto"
-					},
-					{
-						"field": "baseData.modifiedOn",
-						"title": "Meno",
-						"transCode": "schema.requisitions.basedata.modifiedOn"
-					}
-
-				]
 			}
 
 		},
@@ -253,11 +230,8 @@
 							"applicant":{"readOnly":true},
 							"subject":{"readOnly":true},
 							"text":{"readOnly":true},
-							"assignedTo":{"readOnly":false},
 							"club": null,
 							"setupDate":{"readOnly":true},
-							"status":{"readOnly":true},
-							"responseText":{"readOnly":false},
 							"modifiedOn":{"readOnly":true}
 						}
 					}
