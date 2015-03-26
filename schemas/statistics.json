@@ -19,7 +19,8 @@
 				"numberOfMembers":{
 					"title":"Pocet clenov",
 					"transCode":"schema.statistics.member.count",
-					"type":"Decimal"
+					"type":"number",
+					"readOnly":true
 				}
 			}
 		},
@@ -31,33 +32,39 @@
 					"expectedCount":{
 						"title":"Pocet vystavených",
 						"transCode":"schema.statistics.fees.expected.count",
-						"type":"Decimal"
+						"type":"number",
+						"readOnly":true
 					},
 					"expectedSum":{
 						"title":"Suma vystavených",
 						"transCode":"schema.statistics.fees.expected.sum",
-						"type":"Decimal"
+						"type":"number",
+						"readOnly":true
 					},
 					"paidCount":{
 						"title":"Pocet zaplatených",
 						"transCode":"schema.statistics.fees.paid.count",
-						"type":"Decimal"
+						"type":"number",
+						"readOnly":true
 					},
 					"paidSum":{
 						"title":"Suma zaplatených",
 						"transCode":"schema.statistics.fees.paid.sum",
-						"type":"Decimal"
+						"type":"number",
+						"readOnly":true
 					},
 
 					"overdueCount":{
 						"title":"Pocet po splatnosti",
 						"transCode":"schema.statistics.fees.overdue.count",
-						"type":"Decimal"
+						"type":"number",
+						"readOnly":true
 					},
 					"overdueSum":{
 						"title":"Suma po splatnosti",
 						"transCode":"schema.statistics.fees.overdue.sum",
-						"type":"Decimal"
+						"type":"number",
+						"readOnly":true
 					}
 				}
 			}

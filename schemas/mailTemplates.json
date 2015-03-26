@@ -9,27 +9,29 @@
 			"type": "object",
 			"properties": {
 				"name": {
+					"type": "string",
 					"title": "Názov vzoru",
 					"transCode":"schema.mailTemplate.basedata.name",
-					"type": "string",
 					"required": true
 				},
 				"subjectTemplate": {
+					"type": "string",
 					"title": "Predmet vzoru",
 					"transCode":"schema.mailTemplate.basedata.subject",
-					"type": "string",
 					"required": true
 				},
 				"textTemplate":{
+					"type": "string",
 					"title": "Text vzoru",
 					"transCode":"schema.mailTemplate.basedata.text",
-					"type": "string",
-					"required": true
+					"required": true,
+					"render":{"component":"psui-textarea"}
 				},
 				"htmlTemplate":{
+					"type": "string",
 					"title": "HTML vzor",
-					"transCode":"schema.mailTemplate.basedata.html",
-					"type": "string"
+					"render":{"component":"psui-contenteditable"},
+					"transCode":"schema.mailTemplate.basedata.html"
 				}
 			}
 		}
@@ -37,7 +39,8 @@
 
 	"models": {
 		"mailTemplate": {
-			"title": "Security group",
+			"title": "Šablóna mailu",
+			"transCode":"schema.schema.mailTemplate.title",
 			"table": "mailtemplates",
 			"security": {
 				"create": {

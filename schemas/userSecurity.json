@@ -1,8 +1,8 @@
 {
 	"$schema": "http://json-schema.org/schema#",
-	"id": "uri://registries/user#security",
+	"id": "uri://registries/userSecurity#",
 	"new": {
-		"extends": "uri://registries/people#models/person",
+		"extends":"uri://registries/people#models/fullperson",
 		"title": "Nový člen",
 		"transCode": "schema.member.new",
 		"security": {
@@ -27,7 +27,7 @@
 		"extends": "uri://registries/people#models/person",
 		"title": "Člen",
 		"transCode": "schema.member.view",
-		"table": "people",
+
 		"security": {
 			"create": {
 				"static": [
@@ -47,7 +47,7 @@
 		}
 	},
 	"search": {
-		"extends": "uri://registries/people#views/fullperson/search",
+		"extends":"uri://registries/people#views/fullperson/search",
 		"security": {
 			"create": {
 				"static": [
