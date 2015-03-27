@@ -219,7 +219,6 @@
 					"title": "Názov klubu",
 					"transCode": "schema.people.hockeyPlayerInfo.clubName",
 					"objectLink2": {
-						"registry": "organizations",
 						"schema":"uri://registries/organization#views/organization/view",
 						"fields":{
 							"name": "baseData.name"
