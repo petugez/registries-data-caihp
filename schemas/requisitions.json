@@ -113,17 +113,17 @@
 			"security": {
 				"create": {
 					"static": [
-						"Registry - write"
+						"System User"
 					]
 				},
 				"read": {
 					"static": [
-						"Registry - read"
+						"System User"
 					]
 				},
 				"modify": {
 					"static": [
-						"Registry - write"
+						"System User"
 					]
 				}
 			},
