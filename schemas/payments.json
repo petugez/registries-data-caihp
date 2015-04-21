@@ -9,27 +9,27 @@
 			"type": "object",
 			"properties": {
 				"accountingDate": {
+					"type": "string",
 					"title": "Datum zauctovania",
 					"transCode": "schema.payments.baseData.accountingDate",
-					"type": "string",
 					"required": true,
 					"render": {
 						"component": "psui-datepicker"
 					}
 				},
 				"clientName": {
+					"type": "string",
 					"title": "Ref. klient",
 					"transCode": "schema.payments.baseData.clientName",
-					"type": "string",
 					"required": true
 				},
 				"member": {
+					"type": "string",
 					"title": "Člen",
 					"transCode": "schema.fees.baseData.member",
-					"type": "string",
 					"required": true,
-					"$objectLink2": {
-						"schema":"uri://registries/people#views/fullperson",
+					"objectLink2": {
+						"schema":"uri://registries/people#views/fullperson/view",
 						"registry": "people",
 						"fields":{
 							"surName": "baseData.surName",
@@ -43,45 +43,45 @@
 					"type": "string"
 				},
 				"bankCode": {
+					"type": "string",
 					"title": "Ref. banka",
-					"transCode": "schema.payments.baseData.bankCode",
-					"type": "string"
+					"transCode": "schema.payments.baseData.bankCode"
 				},
 				"bankRef": {
+					"type": "string",
 					"title": "Ref. banka",
-					"transCode": "schema.payments.baseData.bankRef",
-					"type": "string"
+					"transCode": "schema.payments.baseData.bankRef"
 				},
 				"amount": {
+					"type": "number",
 					"title": "Suma",
 					"transCode": "schema.payments.baseData.amount",
-					"type": "number",
 					"required": true
 				},
 				"variableSymbol": {
+					"type": "string",
 					"title": "Variabilny Symbol",
-					"transCode": "schema.payments.baseData.variableSymbol",
-					"type": "string"
+					"transCode": "schema.payments.baseData.variableSymbol"
 				},
 				"constantSymbol": {
+					"type": "string",
 					"title": "Konstatny Symbol",
-					"transCode": "schema.payments.baseData.constantSymbol",
-					"type": "string"
+					"transCode": "schema.payments.baseData.constantSymbol"
 				},
 				"specificSymbol": {
+					"type": "string",
 					"title": "Specificky Symbol",
-					"transCode": "schema.payments.baseData.specificSymbol",
-					"type": "string"
+					"transCode": "schema.payments.baseData.specificSymbol"
 				},
 				"transactionMessage": {
+					"type": "string",
 					"title": "Sprava pre prijemncu",
-					"transCode": "schema.payments.baseData.transactionMessage",
-					"type": "string"
+					"transCode": "schema.payments.baseData.transactionMessage"
 				},
 				"status": {
+					"type": " string",
 					"title": "Stav spracovania",
 					"transCode": "schema.payments.baseData.status",
-					"type": " string",
 					"enum": [
 						"Paired",
 						"Unpaired",
@@ -93,14 +93,14 @@
 					}
 				},
 				"importId":{
+					"type": "string",
 					"title": "Identifikator importu",
-					"transCode": "schema.payments.baseData.importId",
-					"type": "string"
+					"transCode": "schema.payments.baseData.importId"
 				},
 				"checksum":{
+					"type": "string",
 					"title": "Kontrolny sucet",
-					"transCode": "schema.payments.baseData.checksum",
-					"type": "string"
+					"transCode": "schema.payments.baseData.checksum"
 				}
 			}
 		}
@@ -151,7 +151,6 @@
 							"clientName": null,
 							"clientRef": null,
 							"bankRef": null,
-							"variableSymbol": null,
 							"status": null,
 							"importId": null,
 							"checksum": null

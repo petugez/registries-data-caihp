@@ -2,69 +2,69 @@
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/statistics",
 	"view": {
-	"title": "statistics",
-	"transCode":"schema.statistics.view",
-	"security": {
-		"read": {
-			"static":["Registry - read"]
-		}
-	},
-	"properties":{
-
-		"baseData": {
-			"title": "Základné statistiky",
-			"transCode": "schema.statistics.baseData",
-			"type": "object",
-			"properties":{
-				"numberOfMembers":{
-					"title":"Pocet clenov",
-					"transCode":"schema.statistics.member.count",
-					"type":"number",
-					"readOnly":true
-				}
+		"title": "statistics",
+		"transCode": "schema.statistics.view",
+		"security": {
+			"read": {
+				"static": [
+					"Registry - read"
+				]
 			}
 		},
-		"fees": {
+		"properties": {
+			"baseData": {
+				"title": "Základné statistiky",
+				"transCode": "schema.statistics.baseData",
+				"type": "object",
+				"properties": {
+					"numberOfMembers": {
+						"title": "Pocet clenov",
+						"transCode": "schema.statistics.member.count",
+						"type": "string",
+						"readOnly": true
+					}
+				}
+			},
+			"fees": {
 				"title": "Poplatky",
 				"transCode": "schema.statistics.fees",
 				"type": "object",
-				"properties":{
-					"expectedCount":{
-						"title":"Pocet vystavených",
-						"transCode":"schema.statistics.fees.expected.count",
-						"type":"number",
-						"readOnly":true
+				"properties": {
+					"expectedCount": {
+						"title": "Pocet vystavených",
+						"transCode": "schema.statistics.fees.expected.count",
+						"type": "string",
+						"readOnly": true
 					},
-					"expectedSum":{
-						"title":"Suma vystavených",
-						"transCode":"schema.statistics.fees.expected.sum",
-						"type":"number",
-						"readOnly":true
+					"expectedSum": {
+						"title": "Suma vystavených",
+						"transCode": "schema.statistics.fees.expected.sum",
+						"type": "string",
+						"readOnly": true
 					},
-					"paidCount":{
-						"title":"Pocet zaplatených",
-						"transCode":"schema.statistics.fees.paid.count",
-						"type":"number",
-						"readOnly":true
+					"paidCount": {
+						"title": "Pocet zaplatených",
+						"transCode": "schema.statistics.fees.paid.count",
+						"type": "string",
+						"readOnly": true
 					},
-					"paidSum":{
-						"title":"Suma zaplatených",
-						"transCode":"schema.statistics.fees.paid.sum",
-						"type":"number",
-						"readOnly":true
+					"paidSum": {
+						"title": "Suma zaplatených",
+						"transCode": "schema.statistics.fees.paid.sum",
+						"type": "string",
+						"readOnly": true
 					},
-
-					"overdueCount":{
-						"title":"Pocet po splatnosti",
-						"transCode":"schema.statistics.fees.overdue.count",
-						"type":"number",
-						"readOnly":true
+					"overdueCount": {
+						"title": "Pocet po splatnosti",
+						"transCode": "schema.statistics.fees.overdue.count",
+						"type": "string",
+						"readOnly": true
 					},
-					"overdueSum":{
-						"title":"Suma po splatnosti",
-						"transCode":"schema.statistics.fees.overdue.sum",
-						"type":"number",
-						"readOnly":true
+					"overdueSum": {
+						"title": "Suma po splatnosti",
+						"transCode": "schema.statistics.fees.overdue.sum",
+						"type": "string",
+						"readOnly": true
 					}
 				}
 			}

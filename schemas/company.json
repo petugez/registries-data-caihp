@@ -2,24 +2,24 @@
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/company#",
 	"new": {
-        "title": "Nová organizácia",
+		"title": "Nová organizácia",
 		"transCode":"schema.org.new",
-        "table": "organizations",
-        "security" : {
+		"table": "organizations",
+		"security" : {
 			"$ref" : "uri://registries/organization#security"
 			},
 
-        "properties": {
-            "baseData": {
-                "$ref": "uri://registries/organization#properties/baseData"
-            }
-        }
+		"properties": {
+			"baseData": {
+				"$ref": "uri://registries/organization#properties/baseData"
+			}
+		}
 	},
 	"view": {
-        "title": "Organizácia",
+		"title": "Organizácia",
 		"transCode":"schema.org.view",
-        "table": "organizations",
-        "security" : {
+		"table": "organizations",
+		"security" : {
 			"$ref" : "uri://registries/organization#security"
 		},
 		"properties":{
@@ -30,17 +30,17 @@
 		"table": "organizations",
 		"security" : {
 			"$ref" : "uri://registries/organization#security"
-	    },
-        "title": "organizácia",
+		},
+		"title": "organizácia",
 		"transCode":"schema.org.view",
-        "listFields": {
-            "$ref": "uri://registries/organization#listFields"
-        },
-        "properties": {
-	  
-            "baseData": {
-                "$ref": "uri://registries/organization#properties/baseData"
-            }
-        }
+		"listFields": {
+			"$ref": "uri://registries/organization#listFields"
+		},
+		"properties": {
+	
+			"baseData": {
+				"$ref": "uri://registries/organization#properties/baseData"
+			}
+		}
 	}
 }

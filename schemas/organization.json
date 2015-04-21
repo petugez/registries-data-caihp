@@ -8,16 +8,16 @@
 			"type": "object",
 			"properties": {
 				"name": {
+					"type": "string",
 					"title": "Názov organizacie",
 					"transCode": "schema.org.baseData.name",
-					"type": "string",
 					"required": true,
 					"collate":true
 				},
 				"competitionCategory": {
+					"type": "string",
 					"title": "Kategorie soutěže",
 					"transCode": "schema.people.hockeyPlayerInfo.category",
-					"type": "string",
 					"enum": [
 						"Extraliga",
 						"1.NHL"

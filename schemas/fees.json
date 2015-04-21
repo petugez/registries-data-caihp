@@ -13,8 +13,8 @@
 					"transCode": "schema.fees.baseData.member",
 					"type": "string",
 					"required": true,
-					"$objectLink2": {
-						"schema":"uri://registries/people#views/fullperson",
+					"objectLink2": {
+						"schema":"uri://registries/people#views/fullperson/view",
 						"registry": "people",
 						"fields":{
 							"surName": "baseData.surName",
@@ -25,7 +25,7 @@
 				"club": {
 					"title": "Organizácia",
 					"transCode": "schema.org.baseData.name",
-					"$objectLink2": {
+					"objectLink2": {
 						"registry": "organizations",
 						"schema":"uri://registries/organization#views/organization/view",
 						"fields":{
