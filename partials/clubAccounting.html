@@ -5,45 +5,68 @@
 
 				<fieldset>
 
-					<legend>{{'accounting.info.user.info'|translate}} </legend>
+					<span class="x-fieldset-title">{{'accounting.info.user.info'|translate}}</span>
 
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'schema.org.baseData.name'|translate}}</label>
-							<div class=" psui-inlineedit-view">
-									{{model.baseData.name}}
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'schema.org.baseData.name'|translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
+								{{model.baseData.name}}
 							</div>
 						</div>
+					</div>
 
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'accounting.info.company.fees.topay'|translate}}</label>
-							<div class=" psui-inlineedit-view">
-									{{model.accounting.overal.feesToPay}}
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'accounting.info.company.fees.topay'|translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
+								{{model.accounting.overal.feesToPay}}
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'accounting.info.company.fees.topay.value' |translate}}</label>
-							<div class=" psui-inlineedit-view">
-									{{model.accounting.overal.feesToPayValue}}
-							</div>
-						</div>
+					</div>
 
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'accounting.info.company.fees.overdue' |translate}}</label>
-							<div class=" psui-inlineedit-view">
-									{{model.accounting.overal.feesOverdue}}
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'accounting.info.company.fees.topay.value' |translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
+								{{model.accounting.overal.feesToPayValue}}
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'accounting.info.company.fees.overdue.value' |translate}}</label>
-							<div class=" psui-inlineedit-view">
-									{{model.accounting.overal.feesOverdueValue}}
+					</div>
+
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'accounting.info.company.fees.overdue' |translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
+								{{model.accounting.overal.feesOverdue}}
 							</div>
 						</div>
+					</div>
+
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'accounting.info.company.fees.overdue.value' |translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
+								{{model.accounting.overal.feesOverdueValue}}
+							</div>
+						</div>
+					</div>
 
 				</fieldset>
 
 				<fieldset>
-				<legend>{{'accounting.info.club.user.status' |translate}} </legend>
+					<span class="x-fieldset-title">{{'accounting.info.club.user.status' |translate}}</span>
+
 					<div class="table-responsive" id="table1" ng-show="model.accounting.people" >
 						<table  class="table"  >
 							<thead>
@@ -92,10 +115,10 @@
 							</thead>
 							<tbody>
 								<tr class="list-row">
-										<td colspan="{{headers.length}}" >
-											{{'generic.search.nodata.found'|translate}}
-										</td>
-									</tr>
+									<td colspan="8" >
+										{{'generic.search.nodata.found'|translate}}
+									</td>
+								</tr>
 							</tbody>
 						</table>
 					</div>

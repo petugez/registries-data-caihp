@@ -1,59 +1,83 @@
-<div class="container-fluid">
+<div class="container-fluid" >
 	<div class="row">
 		<div class="psui-search col-md-12 col-lg-8 ">
 			<div>
 
 				<fieldset>
-					<legend>{{'accounting.info.user.info'|translate}} </legend>
+					<span class="x-fieldset-title">{{'accounting.info.user.info'|translate}}</span>
 
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'schema.people.baseData.name'|translate}}</label>
-							<div class=" psui-inlineedit-view">
-									{{model.baseData.name}}
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'security.profile.edit.name' |translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
+								{{model.baseData.name}}
 							</div>
 						</div>
-
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'schema.people.baseData.surName'|translate}}</label>
-							<div class=" psui-inlineedit-view">
+					</div>
+					
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'schema.people.baseData.surName'|translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
 								{{model.baseData.surName}}
-
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'schema.people.hockeyPlayerInfo.clubName'|translate}}</label>
-							<div class=" psui-inlineedit-view">
+					</div>
+
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'schema.people.hockeyPlayerInfo.clubName'|translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
 								{{model.hockeyPlayerInfo.clubName.refData.name}}
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'schema.people.contactInfo.email'|translate}}</label>
-							<div class=" psui-inlineedit-view">
+					</div>
+
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'schema.people.contactInfo.email'|translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
 								{{model.contactInfo.email}}
 							</div>
 						</div>
+					</div>
 
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'schema.people.hockeyPlayerInfo.category'|translate}}</label>
-							<div class=" psui-inlineedit-view">
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'schema.people.hockeyPlayerInfo.category'|translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
 								{{model.hockeyPlayerInfo.competitionCategory}}
 							</div>
 						</div>
+					</div>
 
-						<div class="form-group">
-							<label for="name" class="col-sm-4 control-label">{{'schema.people.membershipFeeInfo.membershipFee'|translate}}</label>
-							<div class=" psui-inlineedit-view">
-									{{model.membershipFeeInfo.membershipFee}}
+					<div class="x-fieldset-row">
+						<div class="x-fieldset-label">
+							<label for="name" >{{'schema.people.membershipFeeInfo.membershipFee'|translate}}</label>
+						</div>
+						<div class="x-fieldset-value">
+							<div class="x-fieldset-value-content">
+								{{model.membershipFeeInfo.membershipFee}}
 							</div>
 						</div>
-
+					</div>
 
 				</fieldset>
 
 
 
 				<fieldset>
-				<legend>{{'accounting.info.user.payments' |translate}} </legend>
+					<span class="x-fieldset-title">{{'accounting.info.user.payments'|translate}}</span>
 					<div class="table-responsive" id='table1' ng-show="model.accounting.payments">
 						<table class="table"  >
 							<thead>
@@ -101,7 +125,7 @@
 					</div>
 				</fieldset>
 				<fieldset>
-				<legend>{{'accounting.info.user.fees.unpaid' |translate}} </legend>
+					<span class="x-fieldset-title">{{'accounting.info.user.fees.unpaid'|translate}}</span>
 					<div class="table-responsive" id='table2' ng-show="model.accounting.counted.toPay">
 
 						<table class="table">
@@ -140,11 +164,10 @@
 
 							</thead>
 							<tbody>
-
 								<tr class="list-row">
-										<td colspan="{{headers.length}}">
-											{{'generic.search.nodata.found'|translate}}
-										</td>
+									<td colspan="6">
+										{{'generic.search.nodata.found'|translate}}
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -155,7 +178,7 @@
 					</div>
 				</fieldset>
 				<fieldset>
-				<legend>{{'accounting.info.user.fees.history' |translate}} </legend>
+					<span class="x-fieldset-title">{{'accounting.info.user.fees.history'|translate}}</span>
 					<div class="table-responsive" id="table3" ng-show="model.accounting.counted.paid" >
 						<table class="table">
 							<thead>
@@ -195,10 +218,10 @@
 								</thead>
 								<tbody>
 									<tr class="list-row">
-											<td colspan="{{headers.length}}" >
-												{{'generic.search.nodata.found'|translate}}
-											</td>
-										</tr>
+										<td colspan="6" >
+											{{'generic.search.nodata.found'|translate}}
+										</td>
+									</tr>
 								</tbody>
 							</table>
 							</div>
